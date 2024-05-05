@@ -1,4 +1,7 @@
-import Load_File as load
+from flask import render_template
+from flaskr import app
 
-if __name__=='__main__':
-    load.app.run(debug=True)
+@app.route('/')
+def index():
+    print("OK")
+    return render_template('index.html')
