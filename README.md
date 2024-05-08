@@ -29,7 +29,7 @@ set FLASK_ENV=development
 
 #### For Windows(power shell)
 $env:FLASK_APP="flaskr"  
-$env:FLASK_APP="development"
+$env:FLASK_ENV="development"
 
 ### flask起動
 flask run
