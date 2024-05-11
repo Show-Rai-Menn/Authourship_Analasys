@@ -12,6 +12,7 @@ def load_files(file_paths):
             data.append(file.read())
     return data
 
+#created by chatgpt
 def search_texts(texts, search_type, keyword):
     results = []
     for text in texts:
@@ -33,6 +34,7 @@ def search_texts(texts, search_type, keyword):
                 end = min(len(text), match.end() + 10)
                 results.append(text[start:end].replace(keyword, f"\033[1;31m{keyword}\033[0m"))
     return results
+###################################
 
 def save_results(results, case_number, initials, term):
     date_time = datetime.now().strftime("%Y%m%d-%H%M")
