@@ -12,4 +12,3 @@ pip install flask
 pip install jinja2
 ## 起動手順
 
-python main.py
