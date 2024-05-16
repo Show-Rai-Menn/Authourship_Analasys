@@ -33,6 +33,13 @@ def delete_file(filename):
     conn.commit()  # Commit changes to the database
 
     print(f"File '{filename}' deleted.")
+
+
+def search_all():  #すべてのファイルを取り出す関数
+    cursor.execute("SELECT original_name FROM files")
+    filename=cursor.fetchall()
+    print(type(filename))
+    return [name[0] for name in filename]
     
     
 
