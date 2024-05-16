@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function submitForm(action){
+            const form = document.getElementById("selected_file");
+            const formData = new FormData(form);  // FormDataオブジェクトを正しく作成
+            let url;
+
+            if(action === 'search_token'){
+                url = "/token";
+            }
+
+            fetch(url, {  // POSTリクエストの送信
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())  // bodyをテキストとして解釈
+            .then(data => {
+                console.log(data);
+                document.getElementById("result").innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+         }
+
+    </script>
+</head>
+<body>
+    <form id="selected_file">
+    {%for name in namelist%}
+        <label>
+            <input type="checkbox" name="option" value={{name}}>
+            {{name}}
+
+        </label>
+        <br>
+        {%endfor%}
+
+        <input type="button" value="search token" onclick="submitForm('search_token')">
+        <input type="button" value="?????">
+        </form>
+
+        <div id="result"></div>
+</body>
+</html>
