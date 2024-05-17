@@ -26,7 +26,6 @@ def upload_file():
 
         db.upload(filename, app.root_path)
         return redirect(url_for('index'))
-    
 
 
 @app.route('/search/file')
