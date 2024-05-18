@@ -13,8 +13,8 @@ Your text goes here. This is a sample text to demonstrate the frequency of words
 You can replace this text with any other text you want to analyze.
 """
 
-
-def search_token(file_path):
+#token_numで何単語出力するのかを決める
+def search_token(file_path, token_num):
     try:
         with open(file_path, 'r') as f:
             content=f.read()
@@ -26,9 +26,10 @@ def search_token(file_path):
 
         word_freq = Counter(words)
 
-        top20_words=word_freq.most_common(20)
+        top_words=word_freq.most_common(token_num)
 
-        return top20_words
+        return top_words
+    #返り値はtokenのlist(string)
     except FileNotFoundError:
         print("Error file not found ", file_path)
         return

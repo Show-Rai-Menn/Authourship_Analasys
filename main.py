@@ -26,6 +26,7 @@ def upload_file():
 
         db.upload(filename, app.root_path)
         return redirect(url_for('index'))
+    
 
 
 @app.route('/search/file')
@@ -64,6 +65,7 @@ def update():
 @app.route('/select')
 def select_file():
     filename=db.search_all()
+    
     return render_template('select.html', namelist=filename)
 
 @app.route('/token', methods=['POST'])
@@ -71,17 +73,22 @@ def token():
     try:
         print("success access /token")
         selected=request.form.getlist("option")
+        counter=int(request.form.get('counter'))
+        
         filelist=[]
         for filename in selected:
             filepath=os.path.join("uploads", filename)
-            tokenlist=search_token.search_token(filepath)
+            print(counter*20)
+            tokenlist=search_token.search_token(filepath, counter*20)
             if tokenlist is None:
                 tokenlist=[]
                 print("tokenlist is none")
+            filelist.append(filename)
             filelist.append(tokenlist)
             print("get filelist")
             print(filelist)
-        return render_template('token.html', filelist=filelist)
+        return render_template('token.html', filelist=filelist, analysis_method="search frequency token", token_num=counter*20)
+    
     except Exception as e:
         print(f"An error occurred: {e}")
         return "An error occurred", 500

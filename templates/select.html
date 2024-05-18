@@ -5,14 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        function submitForm(action){
+        let counter=1;
+        let op="default";
+        function submitForm(){
+            
+            const action=document.getElementById("analysis_input").value;
             const form = document.getElementById("selected_file");
             const formData = new FormData(form);  // FormDataオブジェクトを正しく作成
             let url;
+            
 
-            if(action === 'search_token'){
-                url = "/token";
+            const result=document.getElementById("result");
+            if(result.innerText!=""){
+                if (op === action) {
+                    counter++;
+                } else {
+                    counter = 1;
+                }
             }
+            formData.append('counter', counter);
+
+            if(action === 'search token'){
+                url = "/token";
+                
+            }
+            if(action==='token frequency'){
+                url="/token"
+            }
+            op=action;
 
             fetch(url, {  // POSTリクエストの送信
                 method: 'POST',
@@ -21,7 +41,7 @@
             .then(response => response.text())  // bodyをテキストとして解釈
             .then(data => {
                 console.log(data);
-                document.getElementById("result").innerHTML = data;
+                result.innerHTML = data;
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -40,9 +60,15 @@
         </label>
         <br>
         {%endfor%}
+        <input type="text" list="analysis_option" id="analysis_input">
+        <datalist id="analysis_option">
+            <option value="search token">search token</option>
+            <option value="token frequency">token frequency</option>
+            <option value="search lema">search lema</option>
 
-        <input type="button" value="search token" onclick="submitForm('search_token')">
-        <input type="button" value="?????">
+        </datalist>
+        <input type="button" value="start" onclick="submitForm()">
+        
         </form>
 
         <div id="result"></div>
