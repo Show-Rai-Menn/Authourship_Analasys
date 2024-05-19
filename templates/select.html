@@ -13,8 +13,8 @@
             const form = document.getElementById("selected_file");
             const formData = new FormData(form);  // FormDataオブジェクトを正しく作成
             let url;
-            
 
+            formData.append('type', action);
             const result=document.getElementById("result");
             if(result.innerText!=""){
                 if (op === action) {
@@ -26,7 +26,7 @@
             formData.append('counter', counter);
 
             if(action === 'search token'){
-                url = "/token";
+                url = "/display/search";
                 
             }
             if(action==='token frequency'){
@@ -42,6 +42,34 @@
             .then(data => {
                 console.log(data);
                 result.innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+         }
+
+
+        function start_search(){
+            const action=document.getElementById("analysis_input").value;
+            const form = document.getElementById("selected_file");
+            const formData = new FormData(form);  // FormDataオブジェクトを正しく作成
+            const keyword=document.getElementById("keyword").value;
+            let url;
+
+            if(action=='search token'){
+                url='/token/search'
+            }
+           
+            formData.append('keyword', keyword);
+            
+            fetch(url, {  // POSTリクエストの送信
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())  // bodyをテキストとして解釈
+            .then(data => {
+                console.log(data);
+                document.getElementById("analysis_result").innerHTML = data;
             })
             .catch(error => {
                 console.error("Error:", error);
