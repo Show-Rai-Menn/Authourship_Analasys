@@ -1,4 +1,19 @@
+    <!--このファイルはselect.htmlに挿入するファイル-->
 
+    {% if analysis_method == "token_search" %}
+    <h2>display {{ keyword }}</h2>
     {% for file in filelist %}
-    <p>{{ file }}</p>
+        {% for sentence in file %}
+            <p>{{ sentence | safe }}</p>
+        {% endfor %}
     {% endfor %}
+    
+
+    {%elif analysis_method == "search frequency token"%}
+        <h2>display {{token_num}} tokens</h2>
+        {% for file in filelist %}
+            {% for token in file %}
+                <p>{{ token | safe }}</p>
+            {% endfor %}
+        {% endfor %}
+    {%endif%}
