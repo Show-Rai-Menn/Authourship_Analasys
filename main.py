@@ -5,6 +5,14 @@ import db
 import analysis
 app = Flask(__name__)
 
+UPLOAD_FOLDER='uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+ALLOWED_EXTENSIONS = {'txt'}
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/')
 def index():
     return render_template('home.html')
@@ -15,17 +23,30 @@ def upload_index():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    if 'file' not in request.files:
-        return redirect('/')
-    file = request.files['file']
-    if file.filename == '':
-        return redirect(request.url)
-    if file:
-        filename = secure_filename(file.filename)
-        file.save(os.path.join('uploads', filename))
+    if 'files' not in request.files:
+        return render_template('upload.html', message='No file part', method='Upload')
+    
+    files = request.files.getlist('files')
+    if not files:
+        return render_template('upload.html', message='No selected file', method='Upload')
+    
+    
+    
+    for file in files:
+        if file.filename == '':
+            return render_template('upload.html', message='No selected file', method='Upload')#ファイル選択画面を開いたが何も選択していない場合
+        
+        
+        
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join('uploads', filename))
+            db.upload(filename, app.config['UPLOAD_FOLDER'])
 
-        db.upload(filename, app.root_path)
-        return redirect(url_for('index'))
+        else:
+            return render_template('upload.html', message='file extension is wrong', method='Upload')
+
+    return render_template('upload.html', message='file upload successfully', method='Upload')
     
 
 
@@ -84,8 +105,8 @@ def token_frequency():#ここでは選択されたファイルを受け取って
                 tokenlist=[]#listの初期化
                 print("tokenlist is none")
             filename="".join(filename)
-            filelist.append(filename)#listの中に[filename, tokenlist]で値を格納
-            filelist.append(tokenlist)
+            filelist.append([filename, tokenlist])#listの中に[filename, tokenlist]で値を格納
+            
             print("get filelist")
             print(filelist)
         return render_template('token.html', filelist=filelist, analysis_method="search frequency token", token_num=counter*20)
@@ -115,8 +136,8 @@ def token_search():
                 sentence_list=[]
                 print("sentence is none")
             filename="".join(filename)
-            filelist.append(filename)
-            filelist.append(sentence_list)
+            filelist.append([filename, sentence_list])
+            
         return render_template('token.html', filelist=filelist, analysis_method="token_search", keyword=keyword)
             
     except Exception as e:
