@@ -37,7 +37,7 @@ def upload_file():
     if not files:
         return render_template('file.html', message='No selected file', method='Upload')
     
-    
+    kind=request.form.get('kind')
     
     for file in files:
         if file.filename == '':
@@ -48,7 +48,11 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join('uploads', filename))
-            db.upload(filename, app.config['UPLOAD_FOLDER'])
+            if kind=="upload as Q":
+                db.upload(filename, 'Q', app.config['UPLOAD_FOLDER'])
+            elif kind=="upload as K":
+                db.upload(filename, 'K', app.config['UPLOAD_FOLDER'])
+            
 
         else:
             return render_template('file.html', message='file extension is wrong', method='Upload')

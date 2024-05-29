@@ -11,7 +11,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS files (
                 )''')
 conn.commit()
 
-def upload(filename, root_dir):
+def upload(filename, kind, root_dir):
 
     file_path=os.path.join(root_dir, 'templates', filename)
     
