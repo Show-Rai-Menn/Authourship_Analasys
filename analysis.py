@@ -1,7 +1,7 @@
 import spacy
 from collections import Counter
 import os
-
+import heapq
 
 
 
@@ -22,11 +22,11 @@ def token_frequency(file_path, token_num):
 
         doc=nlp(content)
 
-        words=[token.text.lower() for token in doc if not token.is_punct]
+        words=(token.text.lower() for token in doc if not token.is_punct)
 
         word_freq = Counter(words)
 
-        top_words=word_freq.most_common(token_num)
+        top_words=heapq.nlargest(token_num, word_freq.items(), key=lambda x:x[1])
 
         return top_words
     #返り値はtokenのlist(string)
@@ -40,7 +40,7 @@ def token_frequency(file_path, token_num):
 def load_files(file_path):
 
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:  # 念の為utf-8で読み込む。
+        with open(file_path, 'r') as file:  # 念の為utf-8で読み込む。
             data=file.read()
         
     except FileNotFoundError:

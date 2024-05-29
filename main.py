@@ -3,29 +3,57 @@ import os
 from werkzeug.utils import secure_filename
 import db
 import analysis
+from concurrent.futures import ThreadPoolExecutor, as_completed
 app = Flask(__name__)
 
+UPLOAD_FOLDER='uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+ALLOWED_EXTENSIONS = {'txt'}
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/')
-def index():
+def home():
     return render_template('home.html')
 
-@app.route('/up')
-def upload_index():
-    return render_template('upload.html', method='Upload')
+@app.route('/file')
+def file():
+    return render_template('file.html')
+
+@app.route('/exploratory')
+def exploratory():
+    return render_template('exploratory.html')
+
+
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    if 'file' not in request.files:
-        return redirect('/')
-    file = request.files['file']
-    if file.filename == '':
-        return redirect(request.url)
-    if file:
-        filename = secure_filename(file.filename)
-        file.save(os.path.join('uploads', filename))
+    if 'files' not in request.files:
+        return render_template('file.html', message='No file part', method='Upload')
+    
+    files = request.files.getlist('files')
+    if not files:
+        return render_template('file.html', message='No selected file', method='Upload')
+    
+    
+    
+    for file in files:
+        if file.filename == '':
+            return render_template('file.html', message='No selected file', method='Upload')#ファイル選択画面を開いたが何も選択していない場合
+        
+        
+        
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join('uploads', filename))
+            db.upload(filename, app.config['UPLOAD_FOLDER'])
 
-        db.upload(filename, app.root_path)
-        return redirect(url_for('index'))
+        else:
+            return render_template('file.html', message='file extension is wrong', method='Upload')
+
+    return render_template('file.html', message='file upload successfully', method='Upload')
     
 
 
@@ -60,7 +88,7 @@ def delete():
 
 @app.route('/update')
 def update():
-    return render_template('upload.html', method='Update')
+    return render_template('file.html', method='Update')
 
 @app.route('/select')
 def select_file():
@@ -74,22 +102,37 @@ def token_frequency():#ここでは選択されたファイルを受け取って
         print("success access /token")
         selected=request.form.getlist("option")
         counter=int(request.form.get('counter'))
+        token_num = counter * 20
+
+        # 選択されたファイルのパスを生成
+        file_paths = [os.path.join("uploads", filename) for filename in selected]
         
-        filelist=[]
-        for filename in selected:
-            filepath=os.path.join("uploads", filename)
-            print(counter*20)
-            tokenlist=analysis.token_frequency(filepath, counter*20)
+        # ファイルを処理する関数
+        def process_file(filepath):
+            tokenlist = analysis.token_frequency(filepath, token_num)
             if tokenlist is None:
-                tokenlist=[]#listの初期化
+                tokenlist = []  # listの初期化
                 print("tokenlist is none")
-            filename="".join(filename)
-            filelist.append(filename)#listの中に[filename, tokenlist]で値を格納
-            filelist.append(tokenlist)
-            print("get filelist")
-            print(filelist)
-        return render_template('token.html', filelist=filelist, analysis_method="search frequency token", token_num=counter*20)
-    #ここではtoken.htmlはselect.htmlのid=resultに埋め込んでいる
+            filename = os.path.basename(filepath)
+            return filename, tokenlist
+        
+        filelist = []
+        
+        # ThreadPoolExecutorを使用して非同期にファイルを処理
+        with ThreadPoolExecutor() as executor:
+            future_to_file = {executor.submit(process_file, path): path for path in file_paths}
+            for future in as_completed(future_to_file):
+                try:
+                    filename, tokenlist = future.result()
+                    filelist.append([filename, tokenlist])
+                except Exception as e:
+                    print(f"An error occurred while processing a file: {e}")
+        
+        print("get filelist")
+        print(filelist)
+        
+        # 結果をレンダリング
+        return render_template('token.html', filelist=filelist, analysis_method="search frequency token", token_num=token_num)
     except Exception as e:
         print(f"An error occurred: {e}")
         return "An error occurred", 500
@@ -115,8 +158,8 @@ def token_search():
                 sentence_list=[]
                 print("sentence is none")
             filename="".join(filename)
-            filelist.append(filename)
-            filelist.append(sentence_list)
+            filelist.append([filename, sentence_list])
+            
         return render_template('token.html', filelist=filelist, analysis_method="token_search", keyword=keyword)
             
     except Exception as e:
