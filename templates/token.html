@@ -3,7 +3,7 @@
     {% if analysis_method == "token_search" %}
     <h2>display {{ keyword }}</h2>
     {% for file in filelist %}
-        <p>{{file[0]}}</p>
+        <h3>{{file[0]}}</h3>
         {% for sentence in file[1] %}
             <p>{{ sentence | safe }}</p>
         {% endfor %}
@@ -13,7 +13,7 @@
     {%elif analysis_method == "search frequency token"%}
         <h2>display {{token_num}} tokens</h2>
         {% for file in filelist %}
-        <p>{{file[0]}}</p>
+        <h3>{{file[0]}}</h3>
             {% for token in file[1] %}
                 <span>{{ token | safe }}</span>
                 {% if loop.index0 != 0 and loop.index0 % 20 == 0 %}

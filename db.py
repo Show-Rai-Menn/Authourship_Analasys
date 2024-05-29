@@ -6,6 +6,7 @@ cursor = conn.cursor()
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS files (
                    original_name TEXT PRIMARY KEY,
+                   Q_or_K TEXT, 
                    file_path TEXT
                 )''')
 conn.commit()
