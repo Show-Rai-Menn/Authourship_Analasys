@@ -9,8 +9,29 @@
 <form method="POST" action="/upload" enctype="multipart/form-data">
     <input type="file" name="files" multiple>
     <input type=submit name="kind" value="upload as Q">
-    <input type=submit name="kind "value="upload as K">
+    <input type=submit name="kind" value="upload as K">
 </form>
+
+<div>
+    {% if Q_file%}
+        {% for Q in Q_file %}
+        <li>{{ Q[0] }}  ({{ Q[1] }})</li>
+        {% endfor %}
+    {% else %}
+        <p>No Q files found.</p>
+    {% endif %}
+    {% if K_files %}
+        {% for K in K_files %}
+            <li>{{ K[0] }}  ({{ K[1] }})</li>
+        {% else %}
+            <p>No K files found.</p>
+        {% endfor %}
+    {% else %}
+        <p>No K files found.</p>
+    {% endif %}
+</div>
+    
+
 
 {%if message%}
 <p>{{message}}</p>
