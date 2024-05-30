@@ -20,7 +20,11 @@ def home():
 
 @app.route('/file')
 def file():
-    return render_template('file.html')
+    
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    
+    return render_template('file.html', Q_file=Q_file, K_files=K_files)
 
 @app.route('/exploratory')
 def exploratory():
@@ -31,29 +35,33 @@ def exploratory():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'files' not in request.files:
-        return render_template('file.html', message='No file part', method='Upload')
+        return render_template('file.html', message='No file part')
     
     files = request.files.getlist('files')
     if not files:
-        return render_template('file.html', message='No selected file', method='Upload')
+        return render_template('file.html', message='No selected file')
     
-    
+    kind=request.form.get('kind')
     
     for file in files:
         if file.filename == '':
-            return render_template('file.html', message='No selected file', method='Upload')#ファイル選択画面を開いたが何も選択していない場合
+            return render_template('file.html', message='No selected file')#ファイル選択画面を開いたが何も選択していない場合
         
         
         
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join('uploads', filename))
-            db.upload(filename, app.config['UPLOAD_FOLDER'])
+            if kind=="upload as Q":
+                db.upload(filename, 'Q', app.config['UPLOAD_FOLDER'])
+            elif kind=="upload as K":
+                db.upload(filename, 'K', app.config['UPLOAD_FOLDER'])
+            
 
         else:
-            return render_template('file.html', message='file extension is wrong', method='Upload')
+            return render_template('file.html', message='file extension is wrong')#拡張子が違うとき
 
-    return render_template('file.html', message='file upload successfully', method='Upload')
+    return render_template('file.html', message='file upload successfully and please reload')#正常なとき
     
 
 
@@ -67,10 +75,7 @@ def search():
 def search_file():
     return render_template('search.html')
 
-@app.route('/file')
-def file_manage():
-    filename=request.args.get('filename')
-    return render_template('file_manage.html', filename=filename)
+
 
 @app.route('/delete', methods=['POST'])
 def delete():
