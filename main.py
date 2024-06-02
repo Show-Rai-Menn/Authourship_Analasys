@@ -47,23 +47,37 @@ def upload_file():
         if file.filename == '':
             return render_template('file.html', message='No selected file')#ファイル選択画面を開いたが何も選択していない場合
         
-        
+        content = file.read().decode('shift_jis')  # テキストファイルの場合
+       
         
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join('uploads', filename))
+            
             if kind=="upload as Q":
-                db.upload(filename, 'Q', app.config['UPLOAD_FOLDER'])
+                db.upload(filename, 'Q', content)
             elif kind=="upload as K":
-                db.upload(filename, 'K', app.config['UPLOAD_FOLDER'])
+                db.upload(filename, 'K', content)
             
 
         else:
             return render_template('file.html', message='file extension is wrong')#拡張子が違うとき
 
     return render_template('file.html', message='file upload successfully and please reload')#正常なとき
-    
 
+
+@app.route('/K_and_K')
+def K_and_K():
+    K_files=db.search_allK()
+    
+    return render_template('K_and_K.html',  K_files=K_files)
+    
+@app.route('/K_and_K/result', methods=['POST'])
+def Kresult():
+    Kfilename=request.form.getlist('K')
+    null, Kfiles=db.get_content(None, Kfilename)
+    
+    result=analysis.K_and_K(Kfilename, Kfiles)
+    return render_template('K_and_K_result.html', result=result)
 
 @app.route('/search/file')
 def search():
@@ -174,7 +188,6 @@ def token_search():
 
     
 
-if not os.path.exists('uploads'):
-    os.makedirs('uploads')
+
 if __name__ == '__main__':
     app.run(debug=True)

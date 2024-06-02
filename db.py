@@ -6,24 +6,24 @@ cursor = conn.cursor()
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS Q_files (
                    original_name TEXT PRIMARY KEY,
-                   file_path TEXT
+                   content TEXT
                 )''')#Qのテーブル
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS K_files (
                    original_name TEXT PRIMARY KEY,
-                   file_path TEXT
+                   content TEXT
                 )''')#Kのテーブル
 
 conn.commit()
 
-def upload(filename, kind, root_dir):
+def upload(filename, kind, content):
     try:
-        file_path = os.path.join(root_dir, 'templates', filename)
+        
 
         if kind == 'Q':
-            cursor.execute("INSERT OR IGNORE INTO Q_files (original_name, file_path) VALUES (?, ?)", (filename, file_path))
+            cursor.execute("INSERT OR IGNORE INTO Q_files (original_name, content) VALUES (?, ?)", (filename, content))
         elif kind == 'K':
-            cursor.execute("INSERT OR IGNORE INTO K_files (original_name, file_path) VALUES (?, ?)", (filename, file_path))
+            cursor.execute("INSERT OR IGNORE INTO K_files (original_name, content) VALUES (?, ?)", (filename, content))
         else:
             print(f"Unknown kind: {kind}")
             return
@@ -73,6 +73,23 @@ def search_allK():
 
     print(type(new_filesK))  # デバッグ用
     return new_filesK
+
+
+def get_content(filenameQ, filenameK):
+    if filenameQ:
+        cursor.execute("SELECT original_name, content FROM Q_files")
+        Qdata=cursor.fetchall()
+    else:
+        Qdata=[]
+    if filenameK:
+        Kdata=[]
+        for filename in filenameK:
+            cursor.execute("SELECT content FROM K_files WHERE original_name = ?", (filename,))
+            fetched_data = cursor.fetchall()
+            Kdata.extend([row[0] for row in fetched_data])
+    else:
+        Kdata=[]
+    return Qdata, Kdata
     
     
 

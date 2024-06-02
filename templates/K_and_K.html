@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}K and K Tab - My Web App{% endblock %}
+
+{% block content %}
+<h1>This page is K and K Tab</h1>
+<p>This is the home page of our web application.</p>
+
+<div>
+    <form method="post" action="/K_and_K/result">
+        <button type="submit">送信</button>
+
+    {% if K_files %}
+        {% for K in K_files %}
+            <li><input type="checkbox" name="K" value="{{K[0]}}">{{ K[0] }}  ({{ K[1] }})</li>
+        {% else %}
+            <p>No K files found.</p>
+        {% endfor %}
+    {% else %}
+        <p>No K files found.</p>
+    {% endif %}
+    </form>
+</div>
+{% endblock %}
+

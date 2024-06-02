@@ -1,5 +1,5 @@
 import spacy
-from collections import Counter
+from collections import Counter, defaultdict
 import os
 import heapq
 
@@ -69,3 +69,45 @@ def token_search(keyword, filepath, context_size=5):
             result = "".join(context_tokens)  # join関数を使用してリスト内の文字列を結合する
             results.append(result)
     return results
+
+
+def K_and_K(filenames, contents):
+    
+    counter=create_Counter(contents, filenames)
+    
+    newcounter=sort_counter(counter)
+    
+    return newcounter
+    
+
+
+
+
+
+
+def create_Counter(contents, filenames):
+    
+    counter = defaultdict(Counter)
+    for content, filename in zip(contents, filenames):
+        print(type(content))
+        print(filename)
+        doc = nlp(content)  # contentを文字列として渡す
+        seen_tokens = set()
+        for token in doc:
+            if token.text.lower().isalpha():
+                token_text=token.text.lower()
+                counter[token_text][filename]+=1
+                if token_text not in seen_tokens:
+                    counter[token_text]['sum'] += 1
+                    seen_tokens.add(token_text)
+            
+    return counter
+
+def sort_counter(counter):
+    sort_item= sorted(counter.items(), key=lambda item: item[1]['sum'], reverse=True)
+
+    sorted_item=defaultdict(Counter, sort_item)
+    return sorted_item
+        
+
+    
