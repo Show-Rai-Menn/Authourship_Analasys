@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Web App{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Home Page</h1>
+<p>This is the home page of our web application.</p>
+{% if result %}
+<table border="1">
+    <tr>
+        <th>Token</th>
+        <th>Sum</th>
+        {% if result|length > 0 %}
+            {% set first_item = result.values() | first %}
+            {% for filename in first_item.keys() %}
+                {% if filename != 'sum' %}
+                    <th>{{ filename }}</th>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </tr>
+    {% for token, counts in result.items() %}
+        <tr>
+            <td>{{ token }}</td>
+            <td>{{ counts['sum'] }}</td>
+            {% for filename, count in counts.items() %}
+                {% if filename != 'sum' %}
+                    <td>{{ count }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No results to display.</p>
+{% endif %}
+
+
+{% endblock %}
