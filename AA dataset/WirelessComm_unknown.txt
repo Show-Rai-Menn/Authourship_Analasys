@@ -1,0 +1,827 @@
+
+Title
+Joint Decorrelating Multiuser Detection and
+Channel Estimation in Asynchronous CDMA Mobile
+Communications Channels
+
+Issue Date 1995-08
+
+Abstract- The asymptotic efficiencies of two decorrelators,
+path-by-path and channel-matched decorrelators, are analyzed in
+fading multipath propagation environments, and based upon the
+analytical results, a new joint multiuser detection and channel
+estimation scheme is proposed for asynchronous code division
+multiple access (CDMA) mobile communications channels. In
+the path-by-path decorrelator, each of the received signals corresponding
+to one of the multiple propagation paths is regarded
+as an independent interference source. On the contrary, in the
+channel-matched decorrelator, each composif signal transmitted
+from an identical user is regarded as a response of the multipath
+channel to the corresponding user's spreading sequence. The
+asymptotic efficiency of the path-by-path decorrelator is shown
+to drop rapidly as the number of simultaneous users increases. It
+is shown that the asymptotic efficiency can be made independent
+of the number of the propagation paths by the channel-matched
+decorrelator at the expense of requiring knowledge about the
+fading complex envelopes of all the propagation paths.
+The proposed joint multiuser detection and channel estimation
+scheme uses both path-by-path and channel-matched decorrelators.
+The path-by-path decorrelator is used for providing the
+channel estimator with the (noisy) channel information pathby-
+path, and decisions are made on the output of the channelmatched
+decorrelator. The decision results are fed back to the
+channel estimator, and used as the reference signals. The received
+complex envelope of each of the propagation paths is estimated in
+the channel estimator. Results of a series of exhaustive computer
+simulations are presented in order to demonstrate the overall
+performance of the proposed scheme, both in non-fading and
+fading multipath propagation environments.
+I. INTRODUCTION
+A S SUGGESTED by previous papers [1]-[3], the near-far problem is the principal obstacle to be overcome for mobile/
+personal communications systems using direct sequence
+code division multiple access (DS/CDMA) signaling schemes,
+in which, so far, interference signals transmitted from other
+users are regarded as equivalent to noise. Multiuser detection
+techniques have been considered as a breakthrough for this
+problem, and recently several algorithm have been proposed
+for multiuser detection [4]-[6]. The use of knowledge about
+the crosscorrelations between the simultaneous users for whom
+Manuscript received March 11, 1994; revised February 23, 1995.
+T. Kawahara is with the NlT Mobile Communications Network Inc.,
+Yokosuka-shi, Kanagawa-ken, 238-03 Japan.
+T. Matsumoto was with the NlT Mobile Communications Network Inc.,
+Yokosuka-shi, Kanagawa-ken, 238-03 Japan. He is now with NlT America,
+c/o Nextel Communications, Lafayette, CA 94549, USA.
+IEEE Log Number 9413007.
+symbol synchronism is not necessarily assumed, in the multiuser
+detection process, makes it possible to eliminate the
+near-far problem. The improvement in detected data quality,
+as well as the increase in the system user capacity over
+conventional CDMA mobile communications systems, is the
+major outcome wrought by multiuser detection at the expense
+of increased receiver complexity.
+The optimum multiuser detector calculates the Euclidean
+distances between the received matched filter output vector
+and each of the candidate vectors constructed, assuming that
+all possible patterns of user information have been transmitted.
+The calculated distances are then compared, and the vector
+considered most likely to have been transmitted is output.
+This process can efficiently be performed using the Viterbi
+algorithm, whose complexity exponentially increases, unfortunately,
+with the number of the users. Hence, the recent
+research target has been multiuser detection using suboptimum
+algorithms of practical complexity [7]-[ 101, [ 121.
+The decorrelator proposed by Lupas and Verdu [7], [8] is a
+suboptimum multiuser detector, and its complexity increases
+only in proportion to the number of the users. The bit error rate
+(BER) performance of the decorrelator is independent of the
+interferer's received energies, and hence is near-far resistant.
+It has been proven by Varanasi [9] that such near-far resistance
+can be inherited by a multiuser detection system in which the
+decorrelator is followed by a differential detector, aiming that
+decorrelators can even be used in the situations where the
+received signal phase varies, as in mobile communications.
+One major drawback of the decorrelator is that it enhances
+the noise present in the received signals. The measure which
+well reflects the effect of the noise enhancement on the signal
+transmission performance is the asymptotic efficiency. The
+asymptotic efficiencies of the optimum and various suboptimum
+multiuser detection schemes were analyzed in [ 111.
+In mobile communications environments, because there are
+many propagation paths with different delays between the
+transmitter and receiver, the transmitted signal components
+corresponding to these multiple propagation paths arrive at
+different times. If the chip duration T, is smaller than all of the
+differences in propagation delay time, each signal component
+can be resolved in the despreading process. Recently, [ 161
+derived the optimum multiuser detection scheme in Rician
+fading environments, and analyzed the effects of the multipaths
+on the asymptotic efficiencies of multiuser detection
+0018-9545/95$04.00 0 1995 IEEE
+KAWAHARA AND MATSUMOTO JOINT DECORRELATING MULTIUSER DETFXTION 507
+schemes, assuming memoryless fading for each user. This
+assumption makes the mathematical analysis simple. However,
+it characterizes the fading variation as unestimatable.
+The first half of this paper also analyzes the asymptotic
+efficiency of the decorrelator under the multipath propagation
+environment. It is shown that, if each received signal corresponding
+to one of the multiple propagation paths is regarded
+as an independent interference source in the decorrelator (this
+type decorrelator is referred to as Ågpath-by-path decorrelator,Åh
+for convenience) even though it bears the identical information
+transmitted from the same user, the asymptotic efficiency drops
+rapidly as the number of the users increases. If there are
+L propagation paths for each of the simultaneous users, for
+example, the asymptotic efficiency is almost equivalent to that
+in the situation in which there is only one propagation path
+and there are L times the number of users.
+This decrease in the asymptotic efficiency due to the multipaths
+can be recovered by decorrelating the composite of
+those waveforms that are matched to the convolutions of the
+corresponding userÅfs spreading sequences and channel impulse
+responses (referred to as Ågchannel-matchedÅh decorrelator), as
+proposed in [ 101. However, the channel-matched decorrelator
+requires knowledge about the fading complex envelopes of all
+propagation paths.
+Based upon the above analysis of the asymptotic efficiency,
+this paper proposes a new joint multiuser detection and channel
+estimation scheme for asynchronous CDMA mobile communications
+channels. Both the path-by-path and channel-matched
+decorrelators are used. The path-by-path decorrelator is not
+used for making decisions on the simultaneous users, but
+is used for providing the channel estimator with the (noisy)
+channel information path-by-path. Decisions are made on the
+output of the channel-matched decorrelator to obtain estimates
+of each userÅfs transmitted information. The estimates are fed
+back to the channel estimator, and used as the reference
+signals. The received complex envelope of each propagation
+path is estimated by the channel estimator, and then input to
+the channel-matched decorrelator.
+This paper is organized as follows: Section 11 presents the
+system model used in this paper. The asynchronous CDMA
+communication channel suffering from multipath propagation
+is first described, and the matrix transfer functions of the pathby-
+path and channel-matched decorrelators are then presented.
+It is shown that these decorrelators can be implemented in the
+form of a vector digital filter whose implementation does not
+require the inverse of the matrix rational transfer function;
+instead, it only requires the inverse of the partial correlation
+matrices. This configuration corresponds to an infinite
+series expansion of the matrix transfer function. Section 111
+presents a simple expression of the asymptotic efficiencies
+of the decorrelators, using the series expansion of the matrix
+transfer function. Section I11 then examines the effect of the
+multipath on the asymptotic efficiency. Section IV describes
+the proposed joint multiuser detection and channel estimation
+scheme, where the standard recursive least square (RLS)
+algorithm is used for channel estimation. Section V shows the
+results of computer simulations conducted for the performance
+evaluations of the proposed scheme.
+11. SYSTEM MODEL
+A. Multipath Channel Model
+There are K simultaneous users in the system being considered.
+Each of the simultaneous users transmits its information
+symbol using the DS/CDMA signalling scheme. The complex
+received signal can be expressed as
+Z ( t ) = S( t , b) + n( t ) (1)
+where n(t) is additive white Guassian noise (AWGN) with
+power spectral density u2, and
+. S k ( t - i T - - T k , l ) . (2)
+s k ( t ) is the normalized spreading sequence, and is zero
+outside the interval [0, T] with T being the information symbol
+duration. b(i) = [ b l ( i ) , b 2 ( i ) , . . . , bK(i)lt is the information
+symbol vector and i E { -00, m}. L k is the number of the
+propagation paths encountered by the kth user. Z k , I ( z ) is the
+normalized fading complex envelope with the Zth path of the
+kth user, and W k ( i ) is the kth userÅfs received energy, both of
+which are in the ith time slot. w k ( z ) reflects the normalization
+on Z k , l ( Z ) Åf S such that
+Lk
+~ , , l ( i )z i , l ( i )= 1 , for 1 IIC I K (3)
+where * denotes the complex conjugate. T k , 1 is the delay on
+Z k , l ( i ) . It is assumed that T~~ = 0, without loss of generality,
+and others lie within the range of [O,T],Åf and that the chip
+duration T, is smaller than all of the differences in propagation
+delay time.
+1=1
+B. Decorrelators
+The received signal components corresponding to the
+multipaths are despread path-by-path. The z-transform
+Y(z) of output vector y ( i ) = [ y l , l ( i ) , . . . , y l , L 1 (i),
+y z , ~ ( i .) ., . , Y K ,h K( i ) l t of the matched filters, each of which
+is matched to its corresponding spreading sequence, can be
+expressed as
+Y(2)= [RH(l)*+ R(0)+ R( l ) z - l ][ PWB](2+) N( z )
+(4)
+where R(O) and R(1) are the partial correlation matrices,
+and RH(m) with m = 0,l denotes the transposed complex
+conjugate of R(m). The (p, q) element of R(m) is given by
+[81
+00
+Rpq(m) = s k ( t - T k , j ) sk/(t f mT-Tkf,jt) dt (5)
+with
+k - 1 P=CL m + j
+m=l
+ÅeFor delays lying out of the range of [O. TI, a similar theory may be derived
+by denoting the channel gain matrix P, given by (6), a function of z . This is
+out of the scope of this paper.
+508 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 44. NO. 3. AUGUST 1995
+and
+m=l
+p corresponds to the kth userÅfs lth path, q corresponds to
+kÅfth userÅfs lÅfth path with 1 5 j 5 Lk, 1 5 jÅf 5 L k , ,
+1 5 k 5 K and 1 5 ICÅf 5 K . [PWB] ( za)n d N (2) are the z -
+transforms of the vector sequence P(i)W(i)b(iw) ith W( i )=
+Ding [ a,m, . . . ,, /man]d t he noise sequence
+n( i )= [n,l,l ( i ) ,. . . 721, L~ ( i ) ,7 ~ 2~,( i ) , .. . , n ~L~ ,( i ) l t at the
+matched filter output, respectively. P is the channel gain
+matrix given by
+1) Path-by-Path Decorrelator: The path-by-path decorrelator
+assumes that each of the received signals corresponding
+to the propagation paths is an independent interference [ 131,
+[17], [18]. Hence, signal processing of the path-by-path decorrelator
+is equivalent to the inverse filter of [RH(1 ). + R(0)+
+R( l ) z - l ]T. he z-transform Z,(Zo)f its output vector z p ( i )=
+[ z , ~ , ~ ( i ) : . .. z p l , ~ l ( i z)p.2 , 1 ( i ) . . . . . z , K , L K ( ~ ) ]b~ec omes
+transform Z,(z) of the decorrelator output vector z,(i) =
+[ z c l ( i ) .z ,z(i), . . . . z , ~ ( i )b]ec~om es
+where
+is the matrix transfer function. Furthermore, if C = PH,
+(12) is equivalent to decorrelating the composite of those
+waveforms that are matched to the convolutions of the corresponding
+usersÅf spreading sequences and channel impulse
+responses (or equivalently, matched to the channel responses
+to the usersÅf spreading sequences) [lo]. Hence, this decorrelator
+is referred to as a Ågchannel-matchedÅe decorrelator.*
+The assumption that the channel gains Zk, l(i)Åfs are constant
+is reasonable if the memory length (= length of the impulse
+response) of the decorrelator is sufficiently small compared
+to the speed of the channel variation. If so, matrix P can be
+updated every time the new estimates of Zk,l ( i ) Åf s are obtained.
+This effect will be investigated in Section V.
+C. Series Expansion of Matrix Transfer Function
+Both matrix transfer functions, G p ( z ) and Gc(z), respectively,
+of the path-by-path and channel-matched decorrelators,
+have the same form of
+where
+is the matrix transfer function of the path-by-path decorrelator.
+The combiner combines all the decorrelated signal components
+transmitted from the identical users. Assuming that
+the complex envelopes zk, l(2)Åfs are known to the receiver,
+maximum ratio combining (MRC) can be used. The output
+vector zL( i ) = [ z b l ( i ) ,z b 2 ( 2 ) , . . . , z&(i)lt of the MRC
+combiner can be expressed as
+2) Channel-Matched Decorrelator: The other type of decorrelator
+combines all the received signal components
+transmitted from the identical users prior to decorrelation.
+The z-transform YÅf(z) of the combiner output yÅf(i) =
+[yi ( 2 ) . yi ( i ) , . . . , yk (i)]Åf can therefore be expressed as
+YÅf(z) = c Y ( z )
+=CIRH( l ) z+ R(0)+ R( l ) z - l ]
+. [PWB]( 2 )+ CN(z ) (10)
+where, for the path-by-path decorrelator, A1 = RH( l )A,0 =
+R(O), and A-1 = R(l), and for the channel-matched decorrelator,
+AI = PHRH( l )PA,0 = PHR(0)P,a nd A-1 =
+PHR(l)P. It is likely that P is column full rank since
+PÅfs elements are the samples of independent complex fading
+envelopes. Assume that R(0) is nonsingular. PHR(0)Pth en
+becomes nonsingular. Because of the nonsingularity of matrix
+A0 for both decorrelators, (13) can be expanded into an infinite
+series as
+Equation (14) has terms of zm with m > 0 which correspond
+to noncausal components in the decorrelatorÅfs impulse
+response. In practice, at the cost of appreciable performance
+degradation, these noncausal components can be truncated
+after an appropriate delay. Let ICT denote the delay for the
+truncation. Equation (14) can then be approximated by the
+where matrix C corresponds to combining. If the channel
+gains z k , l ( i ) Åf s are constant in in (lo)
+can be taken out of [PWB] ( z )t;h e result is that the z-
+* [ 191 has used this Ågchannel matchedÅh concept for the multiuser maximum
+likelihood sequence detection scheme in multipath Rayleigh fading channels,
+assuming the perfect knowledge of zk [ ( I ) .
+the matrix
+KAWAHARA AND MATSUMOTO: JOINT DECORRELATING MULTIUSER DETECTION
+~
+509
+Tc) Output
+Input- - ..
+j -1
+Fig. 1. Block diagram of decorrelator with truncation length k r .
+2 4 6 8 10 12 14 16
+Number of Users
+Fig. 2. Asymptotic efficiency versus number of users.
+causal filter
+which indicates that the impulse response of the approximated
+decorrelator has a length of 2 k +~ 1 .
+A block diagram of the signal processing required to implement
+the approximated decorrelators given by (15) is shown
+in Fig. 1. Obviously, the inverse matrix of the rational transfer
+function is not needed; only matrix inversion for Ai' is
+needed. This is promising for the practical implementation of
+the decorrelators.
+111. ASYMFTOTIC EFFICIENCY
+Asymptotic efficiency is known to well express the nearfar
+resistance of multiuser detectors. Several suboptimum
+multiuser detectors' near-far resistance have been analyzed in
+[ 113 from the asymptotic efficiency viewpoint. This section
+evaluates the asymptotic efficiencies of the path-by-path and
+channel-matched decorrelators.
+The kth user's asymptotic efficiencies T$ and vi, of the
+path-by-path and channel-matched decorrelators, respectively,
+are related to the vector impulse response of the noncausal
+linear filter [Alz+ A. + A-lz-l]at timing 0. Let dpk,l(0)
+denote the response of Gp ( z )a t time 0 to the input vector
+ip(i) = [ O . . .o 1 0. * * O]t, 2 = 0 r (E Lm + l ) th element (16)
+m=l
+and let dck(0) denote the impulse response of G,(z) at time
+0 to the input vector
+i , ( i ) = [ O . . . O 1 O...O]t, i = o r
+lcth element (17)
+for which ip(i) = 0 and ic(i) = 0 for i # 0. dpk,1(O) and
+d,k(O) can be approximately calculated as the responses of
+the causal linear filter of (15) to the input vectors of ip(i) and
+ic( i ) ,re spectively, at time l c ~T.$ and are calculated below.
+A. Path-by-Path Decorrelator
+Let Np(z)d enote the z-transform of the vector noise
+sequence np(i)= [nPl(i)n,P 2(i),. . . nP~(i)latt the MRC
+combiner output. Obviously, Np ( z )= PHGF( z )N( z )a,n d
+thus the z-transform of the covariance matrix sequence
+(np(o)nF(o+ i ) ) is equal to a2PHGp(z)Ps,in ce the ztransform
+of the covariance matrix sequence (n( O ) n H ( + i ) )
+of the noise sequence at the matched filter output is equal to
+a2Gi1(z). Hence, npk(i) is a zero mean Gaussian random
+variable with variance a2[PHDp(0)kP,] wkh,er e
+and the kth user's asymptotic efficiency qf of the path-by-path
+decorrelator tums out to be
+B. Channel-Matched Decorrelator
+The z-transform N,(z) of the vector noise sequence n,(i) =
+[n,1, n , ~ ( i.) . ~ e nC~(i)latt the channel-matched decorrelator
+output can be expressed as N,(z) = G,(z)PHN(z).
+Thus, the z-transform of the covariance matrix sequence
+(n,(o)nF(o + i)) is equal to 02G,(z) since, with the ztransform
+of (n(o)nH(o + i)) being azGil(z), G,(z) =
+[PHG; l ( ~ )P] -Hle.n ce, n , k ( i ) is a zero mean Gaussian
+random variable with variance 02[Dc(0k), ]wkhe,r e
+510 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 44, NO. 3, AUGUST 1995
+and the kth userÅfs asymptotic efficiency 7; of the channelmatched
+decorrelator becomes
+C. Numerical Calculations
+Under fading, the received normalized fading complex
+envelope z k , J ( i ) with the Ith path of the kth user is an independent
+complex random Gaussian variable. Also, in practical
+asynchronous CDMA mobile communications environments,
+delays Tk,lÅfs are random variables. Hence, the kth userÅfs
+asymptotic efficiencies 7: and vi, respectively, of the pathby-
+path and of the channel-matched decorrelators, become
+random variables.
+For numerical calculations, the 7; and 77; values were evaluated
+for fixed values of zk,l(z)Åfs and Tk,lÅfs. The spreading
+sequences for each user were randomly picked from among
+the length 31 Gold sequences. The calculated 7;Åfs and 7;Åfs
+were then averaged over a large number of sets of the values
+of z k , l ( i ) Åf s and r k , l Åf s , and among the users. Tk,lÅfs took
+values of nT,, where n is an integer uniformly distributed
+over the range of [0, 301. Fig. 2 shows the calculated average
+asymptotic efficiencies (qp) and (7Åe) versus the number K
+of the simultaneous users with the number of the propagation
+paths as a parameter. It is found from this figure that, in the
+multipaths, the average asymptotic efficiency of the path-bypath
+decorrelator decreases rapidly as K increases. If there are
+L propagation paths for each simultaneous user, for example,
+( r f ) is almost equivalent to that in the situation in which there
+is only one propagation path and there are L times as many as
+users. On the other hand, (7Åe) does not rapidly decrease as K
+increases, and is equivalent to the path-by-path decorrelatorÅfs
+asymptotic efficiency with one propagation path.
+IV. JOINT DECORRELATINMG ULTIUSER
+DETECTIONA ND CHANNEL ESTIMATION
+An important outcome of the numerical calculations in
+Section 111 is the fact that the average asymptotic efficiency
+of the channel-matched decorrelator does not degrade in
+the presence of multipaths at the expense of a complexity
+increase for channel estimation. However, the information
+about each of the multipath channels is lost at the output of the
+channel-matched decorrelator. On the contrary, path-by-path
+channel estimation is possible at the path-by-path decorrelator
+output which, unfortunately, suffers from increased noise
+enhancement due to the presence of multipaths.
+One reasonable solution to the problem of joint multiuser
+detection and channel estimation using decorrelators is to use
+the path-by-path decorrelator to provide the channel estimator
+with the (noisy) channel information path-by-path, and to use
+the channel-matched decorrelator for making the decisions that
+yield estimates of each userÅfs transmitted information symbol.
+A block diagram of the proposed joint multiuser detection and
+channel estimation system is shown in Fig. 3(a). The input to
+the system is the sum of the signals transmitted from K users.
+lcth user is suffering from the multipaths comprised of LI,
+propagation paths. The outputs of the matched filters, which
+are matched to each userÅfs spreading sequence, have signal
+components corresponding to the propagation paths; kth userÅfs
+matched filter output has LI, signal components in one symbol
+duration T. Assuming that the delays on each propagation
+paths are known, these signal components are sampled, and
+input to both the path-by-path and channel-matched decorrelators.
+In the channel-matched decorrelator, combining takes
+place prior to decorrelation, where an estimate of the channel
+gains matrix P output from the channel estimator is used. The
+PÅfs estimate is also used in the channel-matched decorrelator
+to calculate the matrices of AI = PHRH( l ) PA, 0 =
+PHR(0)P and A-1 = PHR(l)P.
+As shown in Fig. 3(b), training sequences are embedded in
+each userÅfs information symbol stream to be transmitted in
+order to enhance the convergence of the algorithm used for
+channel estimation. Fig. 3(c) shows a block diagram of the
+channel estimator for the kth userÅfs Ith path. Assuming that
+the timing, at which the training sequences are transmitted
+from each user, is known to the receiver, each userÅfs training
+pattern can be used in the channel estimator as the reference
+signal during the training period (Selectors in Fig. 3(a) and
+(c) are switched to ÅgTraining.Åh) Decisions are made on the
+output of the channel-matched decorrelator output to obtain
+the estimates of the transmitted information. These estimates
+are not only the system output, but they are also used as the
+reference signals outside the training period.
+The received complex envelope zk,l of the kth userÅfs Ith
+propagation path is estimated by the channel estimator using
+the path-by-path decorrelator outputs and the reference signals.
+The estimation process for the lcth user is done independently
+of other users. The estimated values of zk,lÅfs are then used
+to construct the channel gain matrix P. The approximated
+decorrelators with the truncation length of 2 l c ~+ 1 are used
+for both the path-by-path and channel-matched decorrelators.
+Therefore, the influence of one sample vector of the matched
+filter outputs lasts for ( 2 k +~ l )T after the sampling takes
+place.
+The standard RLS algorithm [14] was used to estimate the
+fading complex envelopes zI,, 1 Åf s . The estimate of the channel
+gain matrix P can be updated every time the path-by-path
+decorrelator output z p ( i ) and the reference signal vector are
+obtained. However, the approximated decorrelatorÅfs matrix
+transfer function of (15), whose block diagram was depicted in
+Fig. 1, suggests that the values of zk, 1Åfs in the matrix P should
+be kept constant during the period of 2 l c ~+ 1. Nevertheless,
+updating the PÅfs estimate in the approximated decorrelator at
+every symbol timing may not affect the overall performance of
+the proposed system, if the required truncation length l c f~or an
+acceptable approximation is sufficiently small compared to the
+channel variation. This effect was examined through computer
+simulations, and the results are presented in Section V.
+V. SIMULATIONR ESULTS
+An exhaustive series of computer simulations was conducted
+in order to examine what factor of the proposed system
+dominates the overall performance. Results of the simulations
+are described below.
+KAWAHARA AND MATSUMOTO JOINT DECORRELATING MULTIUSER DETECTION 511
+L D a t a
+e
+e
+#2
+e
+Data
+__c #K
+. . . ............ ............................................. Channel Matched Decorrelator Åe Åeq)
+(a)
+Path-by-Path Decorrelator Output Training Sequence
+...... ......
+...... ......
+Estimate of the
+k-lh UserÅfs
+zkjs Estimate From Decision
+Algorithm Circuit
+To Channel Matched
+Information Sequence Decorrelator
+(b) (C)
+Fig. 3.
+for the kth userÅfs Ith path.
+(a) Block diagram of proposed joint multiuser detection and channel estimation system. (b) Frame format. (c) Block diagram of channel estimator
+I ) Without Fading: First, it was determined how large the
+truncation length k~ must be for (15) to accurately approximate
+decorrelation. To do so, in the initial stage of the
+simulations, neither multipath nor fading was assumed. Even
+in this simple situation, each userÅfs BER performance is
+affected by the relative delays. Hence, in the simulations, each
+userÅfs BER was evaluated for fixed values of the relative
+delays; this process was repeated many times for different
+values of the relative delays. The spreading sequences were
+randomly picked up from among the length 3 1 Gold sequences.
+The obtained BERÅfs were then averaged over the relative
+delays and among the users. Binary phase shift keying (BPSK)
+was assumed. Fig. 4 shows the average BER performance
+versus the truncation length k~ (length of the impulse response
+is 2kT + 1) for the signal-to-noise (SNR) power ratio after
+despreading of 7 dB with the number of users as a parameter.
+In this case, each userÅfs received signal is assumed to have
+identical energy. It is found that if k~ 2 2, the BER reduction
+plateaus. Hence, in this case, k~ = 2 is sufficient.
+The approximated decorrelators may lose the near-far resistance
+originally offered by the decorrelator. In order to
+examine the effect of truncation on the near-far resistance,
+BERÅfs were evaluated assuming that the received signal energies
+of interferers are larger than that of the one reference
+user. Fig. 5 shows the reference userÅfs BER averaged over
+the relative delays versus the received signal energy ratio
+of wl/wk with 2 5 k 5 K; it was assumed that each
+interferer has identical received signal energy. Parameters are
+the number of users K and truncation length kT. It is found
+that ICT = 2 truncation length obviously degrades the nearfar
+resistance. If k~ = 4 and K = 5, the approximated
+decorrelator is still near-far resistant up to ÅewI/wk = -10.0
+dB. If k~ = 4 and K = 10, power control with the aim of
+achieving w1 /wk 2 - 10 dB is required.
+512 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 44, NO. 3, AUGUST 1995
+t SNR after Despreading = 7dB Without Fading
+10
+WLe
+a,
+m s
+1U 2 4 6 8
+Truncation Length
+Fig. 4. Average BER versus truncation length.
+Fig. 6 shows the BERÅfs of the path-by-path and channelmatched
+decorrelators, averaged over various values of the
+channel gains Z k , l Åf s satisfying (3) and among users, versus
+SNR after despreading in one-path and equal energy twopath
+propagation environments for K = 5 and K = 10
+(ÅgL-path propagationÅh indicates that there are L propagation
+paths for each user, for convenience). ICT = 4 was used for
+the approximation. Perfect knowledge about the channel gains
+was assumed. It is found that for the path-by-path decorrelator,
+the average BER performance for the five-user two-path
+propagation environment is almost equivalent to that for the
+ten-user one-path propagation environment. As observed in
+this figure, the channel-matched decorrelatorÅfs average BER
+performance is independent of the multipaths: the BERÅfs for
+K = 5 and 10 in two-path propagation environment are
+equivalent, respectively, to that for K = 5 and to that for K =
+10 in one-path propagation environment. These results support
+the analysis of the asymptotic efficiency made in Section 111.
+In the proposed scheme, the channel-matched decorrelator
+uses estimates of channel gains z k , 1Åfs. Hence, the overall
+performance depends largely on the accuracy of the channel
+estimation using the path-by-path decorrelator output and the
+results of the data decision made at the output of the channelmatched
+decorrelator. The behavior of the estimated channel
+gains, ~ 1 1 , 2 1 2i,s demonstrated in Fig. 7 for the three-user twopath
+propagation environment with the SNR after despreading
+of 15 dB. The length 8 training symbols were embedded
+among the information data streams to be transmitted, which
+are asynchronous among the users, but whose timings are assumed
+to be known to the receiver. The channel gain matrix P
+in this case was (see bottom of this page). It is found that these
+values converge after 20 input symbols, including training.
+2) With Fading: Under fading, the channel gains Zk, 1Åfs (or
+equivalently fading complex envelopes), vary as the users
+move. Hence, mismatch between the channel-matched decorrelator
+and the actual channel gains Z k , l Åf s may result in
+SNR after Despreading = 7 dB
+10 3Åf I
+-10 -20
+wilwk (dW
+Fig. 5 . First userÅfs average BER versus received signal energy ratio ~ Åe /1w k .
+. + 2 paths 10 users Pathbypath
+. 1 path 5 users
+1 path 10 users
+- __- - - .. 1 path 1 userneory
+10-43 5 7 9
+SNR after Despreading (dB)
+Fig. 6. BER versus SNR after despreading (without fading).
+an overall performance degradation of the proposed system.
+This mismatch is caused by two factors: 1) too large a
+required truncation length ICT compared to the speed of the
+channel variation, and 2) insufficient tracking performance of
+the RLS algorithm used for channel estimation. Fortunately,
+however, Fig. 5 indicated that ICT = 4 truncation length,
+which corresponds to the impulse response length of 9, can
+prevent the near-far resistance from being degraded, if K =
+5. Therefore, even under fading, if channels can be regarded
+as remaining unchanged during 9 time slots of information
+symbols, the effect of the update of the matrix PÅfs estimate
+at every symbol timing is of no significance.
+-0.80 + j0.76 -0.87 - j0.29 0.00 0.00 0.00 0.00
+P = [ 0.00 0.00 0.35 + j0.81 0.90 - j0.61 0.00 0.00 ] 0.00 0.00 0.00 0.00 -0.51 - j0.10 0.69 + j0.44
+KAWAHARA AND MATSUMOTO: JOINT DECORRELATING MULTIUSER DETECTION
+Training Period
+.........
+0.5
+SNR after despreading = 15dB
+E
+e . x i
+........................ .........-...._..
+20 40 60 80 100
+-1.51 " ' ' ' ' ' ' ' ' '
+Iterations
+Fig. 7. Behavior of estimated channel gains.
+Fig. 8 compares, for k~ = 4, the average BER performance
+of the proposed system to those with three other (unrealistic)
+systems using actual values of the channel gains: a) the
+decisions are made using channel-matched decorrelator output;
+b) the path-by-path decorrelator outputs are combined by
+the MRC combiner, and the decisions are made using its
+output; and c) the matched filter outputs are combined by the
+MRC combiner, and the decisions are made using its output,
+in which a 3-path propagation environment is assumed and
+the matrix P's estimate is updated at every symbol timing
+(these three systems are referred to as system (a), (b), and
+(c), respectively, for convenience). Assuming that every user
+moves with the same speed, the normalized maximum Doppler
+frequency f D T given by speed of users' move x symbol
+duratiodcarrier wave length was set at 0.002. The frame
+length was 64 symbols, which includes an 8-symbol raining
+sequence. Binary 8-symbol random sequences were picked up
+and used as training sequences for the users, and the results
+were averaged over the users.
+In the fading L-path propagation environment, the theoretical
+average BER Pb for the BPSK coherent detection can be
+calculated from [ 151
+where I? is the average SNR. The theoretical average BER
+is also plotted in Fig. 8. Obviously, the best performance
+is achieved by system (a). The simulation results indicate
+that, because of the noise enhancement, the system (a)'s BER
+performance is slightly worse than the theoretical curve (the
+average asymptotic efficiency is 0.6 dB in this case; however,
+because of data dispersion, this 0.6 dB noise enhancement
+cannot be clearly observed). This indicates that, for foT =
+0.002, the effect of the update of the matrix P's estimate at
+every symbol timing is not significant.
+Because of the increased noise enhancement in the multipath
+propagation environment, the BER of system (b) is 2 dB worse
+513
+I
+7 9 11 13 15 17
+Average SNR after Despreading
+Fig. 8. Average BER versus average SNR after despreading (in fading).
+(c) is far worse than the systems with decorrelators. For the
+proposed system, the BER is worse than that of system (a), and
+is almost equivalent to that of system (b) for small values of
+average SNR after despreading. The BER curve deviates from
+that of system (b) as the average SNR becomes larger. These
+BER degradations are due to insufficient tracking performance
+of the channel estimator.
+Fig. 9 shows, for frame lengths of 32, 64, and 128, the
+average BER's of the proposed system and system (a) versus
+the normalized maximum Doppler frequency f D T . The average
+BER of the proposed system increases as foT becomes
+larger, and the BER degradation is more significant for a larger
+frame length than a smaller one. This can easily be understood
+because it is likely to happen that, for a longer frame length,
+the channel estimation error becomes larger at the tail of the
+frame than at other parts of the frame. The average BER of
+system (a) stays the same even when ~ D inTcr eases. Hence,
+the major cause of bit error in the proposed scheme is the
+channel estimation error. The effects of the truncation in the
+approximated decorrelator and the update of the matrix P's
+estimate at every symbol timing are of no significance.
+VI. CONCLUSION
+In this paper, we have analyzed the asymptotic efficiencies
+of the path-by-path and channel-matched decorrelators in
+the multipath propagation environment, and proposed a new
+joint multiuser detection and channel estimation scheme for
+asynchronous CDMA mobile communications channels. It has
+been shown that in the multipath propagation environment, the
+asymptotic efficiency of the path-by-path decorrelator drops
+rapidly as the number of the simultaneous users increases. If
+there are L propagation paths for each simultaneous user, for
+example, the asymptotic efficiency is almost equivalent to that
+in the situation in which there is only one propagation path
+and L times as many users.
+It was shown that this decrease in the asymptotic efficiency
+due to the multipaths can be recovered by the channelthan
+that of system (a) at BER = The BER of system matched decorrelator for those waveforms that are matched
+514 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 44, NO. 3, AUGUST 1995
+SNR after despreading = lOdB 1
+5 users
+u - - - - - o
+128 symbols (Perfect Knowledge about Channel Gains)
+10 -2
+IU _______
+10 -3
+Normalized Maximum Doppler Frequency fDT
+Fig. 9. Average BER versus normalized maximum Doppler frequency f n T .
+to the multipath channel responses to the usersÅf spreading
+sequences. The channel-matched decorrelator does, however,
+require knowledge about the fading complex envelopes of all
+propagation paths.
+In the proposed joint multiuser detection and channel estimation
+scheme, both path-by-path and channel-matched decorrelators
+are used. The path-by-path decorrelator is not used
+for making decisions on the simultaneous users, but is used
+for providing the channel estimator with the channel information
+path-by-path. Decisions are made on the output of
+the channel-matched decorrelator to obtain estimates of each
+usersÅf transmitted information. The estimates are fed back
+to the channel estimator, and used as the reference signals.
+The received complex envelope of each propagation path is
+estimated in the channel estimator using the RLS algorithm,
+and then input to the channel-matched decorrelator. Assuming
+that the truncation length required to achieve an acceptable
+approximation is sufficiently small compared to the channel
+variation, the channel gain matrix is updated every time the
+path-by-path decorrelator output and the reference vector are
+obtained.
+An exhaustive series of computer simulations was conducted
+in order to evaluate the overall performance of the proposed
+scheme, and examine what factor of the proposed system
+dominates performance. Reasonable results were obtained in
+the non-fading and fading environments. It was shown that the
+truncation length assumption is not a major cause of overall
+performance degradation. The simulation results showed that a
+major cause of bit error in the proposed scheme is channel estimation
+error. Hence, it should be emphasized that improving
+the tracking performance of the channel estimator improves
+the overall performance of the proposed joint decorrelating
+multiuser detection and channel estimation scheme.
+ACKNOWLEDGMENT
+The authors would like to thank reviewers for their helpful
+criticism and comments which greatly improved this paper.
+REFERENCES
+[l] G. R. Cooper and R. W. Nettleton, ÅgA spread spectrum technique for
+high cauacitv mobile communications,Åh IEEE Trans. Veh. Technol., vol.
+V?-27,-pp. i64-275, Nov. 1978.
+1_21_ K. S. Gilhousen et al.. ÅgOn the capacity of a cellular CDMA system,Åh
+IEEE Trans. Veh. Technol., vol. 4 0 pp..303-312, May 1991.
+[3] W. C. Y. Lee, ÅgOverview of cellular CDMA,Åh IEEE Trans. Veh.
+Technol., vol. 40, pp. 291-302, May 1991.
+[4] A. J. Viterbi, ÅgVery low rate codes for maximum theoretical performance
+of spread-spectrum multiple-access channels,Åh IEEE J. Selecr. Areas
+Commun., vol. 8, no. 4, pp. 641449, May 1990.
+[5] Z. Xie, C. K. Rushforth, and R. T. Short, ÅgMultiuser signal detection
+using sequential decoding,Åh IEEE Trans. Commun., vol. 38, pp. 578-583,
+no. 5, May 1990.
+[6] S. Verdu, ÅgOptimum multiuser asymptotic efficiency,Åh IEEE Trans.
+Commun., vol. COM-34, no. 9, pp. 89&897, Sept. 1986.
+[7] R. Lupas and S. Verdu, ÅgLinear multiuser detectors for synchronous
+code-division multiple-access channels,Åh IEEE Trans. Inform. Theory,
+vol. 35, no. 1, pp. 123-136, Jan. 1989.
+[8] -, ÅgNear-far resistance of multiuser detectors in asynchronous
+channels,Åh IEEE Trans. Commun., vol. 38, no. 4, pp. 496508, April
+1990.
+[9] M. K. Varanasi, ÅgNoncoherent detection in asynchronous multiuser
+channels,Åh IEEE Trans. Inform. Theory, vol. 39, no. 1, pp. 157-176,
+Jan. 1993.
+[lo] A. Klein and P. W. Baier, ÅgLinear unbiased data estimation in mobile
+radio systems applying CDMA,Åh IEEE J. Select. Areas Commun., vol.
+11, no. 7, pp. 1058-1066, Sept. 1993.
+[ l l ] Z. Xie, R. T. Short, and C. K. Rushforth, ÅgA family of suboptimum
+detectors for coherent multiuser communications,Åh IEEE J. Selecr. Areas
+Commun., vol. 8, no. 4, pp. 683490, May 1990.
+[ 121 A. Duel-Hallen, ÅgDecorrelating decision-feedback multiuser detector
+for synchronous code-division multiple-access channel,Åh IEEE Trans.
+Commun., vol. 41, no. 2, pp. 285-290, Feb. 1993.
+[13] S. S. H. Wijayasuriya, J. P. McGeehan, and G.H. Norton, ÅgRAKE
+decorrelating receiver for DS-CDMA mobile radio networks,Åh IEE
+Electron. Lett., vol. 29, pp. 395-396, Aug. 1993.
+141 S. Haykin, Adaptive Filter Theory, 2nd ed. Englewood Cliffs, NJ:
+Prentice-Hall, 1991, pp. 477-507.
+151 M. Schwartz, W. R. Bennett, and S. Stein, Communication Systems and
+Techniques.
+161 S. Vasudevan and M. K. Varanasi, ÅgOptimum diversity combiner based
+multiuser detection for time-dispersive Rician fading channels,Åh IEEE
+J. Select. Areas Commun., vol. 12, no. 4, pp. 580-592, May 1994.
+171 Z. Zvonar and D. Brady, ÅgCoherent and differentially coherent multiuser
+detectors for asynchronous CDMA frequency-selective channels,Åh in
+Proc. Military Communications Con& San Diego, CA, Oct. 1992, pp.
+442446.
+181 -, ÅgSuboptimum multiuser detector for synchronous CDMA
+frequency-selective Rayleigh fading channels,Åh in Proc. Globecom,
+Communication Theory Mini-Con$, Orlando, FL, Dec. 1992, pp. 82-86.
+191 __ , ÅgOptimum detection in asynchronous multiple-access multipath
+Rayleigh fading channels,Åh in Proc. Con$ on Information Sciences and
+Systems, Princeton University, Princeton, NJ, Mar. 1992, pp. 826-831.
+.
+New York: McGraw-Hill, 1966, pp. 459466.
+Toshim Kawahara (MÅf92) received the B.S. degree
+and the M.S. degree in electronics from Kyoto
+University, Kyoto, Japan, in 1989 and 1991, respectively.
+In 1991, he joined Nippon Telegraph and Telephone
+Corporation (NlT). He researched Direct
+Sequence (DS) and Frequency Hopping (FH) Code
+Division Multiple Access (CDMA) applications to
+mobile radio communications systems. Since July
+1992, he has been with ÅgIT Mobile Communications
+Network Inc (NlT DoCoMo), Yokosukashi,
+Kanagawa-ken, Japan From 1993 to 1994, he researched voice signal
+processing for a low bit rate speech codec Recently, he has been researching
+combined source and channel coding algonthm for mobile video
+communications His current research interest covers CDMA technologies
+and sourcekhannel coding schemes for multimedia mobile communications
+applications
+KAWAHARA AND MATSUMOTO: JOINT DECORRELATING MULTIUSER DETECTION 515
+Tadashi Matsumoto (MÅf84) received the B.S.
+degree, the M.S. degree, and the Doctorate degree
+in electrical engineering from Keio University,
+Yokohama-shi, Japan, in 1978, 1980, and 1991,
+respectively.
+He joined Nippon Telegraph and Telephone
+Corporation (NTT) in April 1980. From April 1980
+to May 1987, he researched signal transmission
+technoloeies. such as modulationldemodulation v
+schemes, as well as radio link design for mobile
+communications systems He participated in the
+R&D project of NTTÅfs high-capacity mobile communications system, where
+he was responsible for the development of the base station transmitter/receiver
+equipment for the system From May 1987 to February 1991, he researched
+error control strategies, such as Forward Error Correction (FEC), Trellis
+Coded Modulation (TCM), and Automatic Repeat Request (ARQ) in digital
+mobile radio channels He developed an efficient new ARQ scheme suitable
+to the error occurrence in TDMA mobile signal transrmssion environments
+He was involved in the development of a Japanese TDMA Digital Cellular
+Mobile Communications System He took the leadership for the development
+of the facsirmle and data communications service units for the system
+Since July 1992, he has been with NTT Mobile Communications Network
+Inc (NlT DoCoMo), Yokosuka-shi, Kanagawa-ken, Japan From February
+1991 to Apnl 1994, he was responsible for research on Code Division
+Multiple Access (CDMA) mobile communications systems. He intensively
+researched multiuser detection schemes for multipath mobile communications
+environments He was also responsible for research on error control schemes
+for CDMA Mobile communicahons systems He concentrated on research
+of Maximum Apostenori Probability (MAP) algonthm and its reduced
+complexity version for decoding of concatenated codes He took the leadership
+for the development of error control equipment for NTT DoCoMoÅfs CDMA
+Mobile Communications System. From 1992 to 1994, he served as a part-time
+lecturer at Keio University. In Apnl 1994, he moved to N?T Amenca, and
+since then he has been serving as a senior technical advisor of the joint
+project with NTT and NEXTEL Communications
+Dr Matsumoto is a member of the Institute of Electronics, Information,
+and Communication Engineers of Japan.

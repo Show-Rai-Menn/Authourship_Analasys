@@ -4,6 +4,8 @@ from werkzeug.utils import secure_filename
 import db
 import analysis
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import exploratory
+
 app = Flask(__name__)
 
 UPLOAD_FOLDER='uploads'
@@ -28,7 +30,38 @@ def file():
 
 @app.route('/exploratory')
 def exploratory():
-    return render_template('exploratory.html')
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('exploratory.html', Q_file=Q_file, K_files=K_files)
+
+@app.route('/explonatory/search', methods=['POST'])
+def search():
+    data = request.get_json()
+    search_type = data['searchType']
+    search_term = data['searchTerm']
+    directory = './AA dataset'
+    try:
+        texts = load_files_from_directory(directory)
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 400
+
+    context_size = 5
+
+    if search_type == 'wordToken':
+        results = search_word_token(texts, search_term, context_size)
+    elif search_type == 'lemma':
+        results = search_lemma(texts, search_term, context_size)
+    elif search_type == 'pos':
+        results = search_pos(texts, search_term, context_size)
+    elif search_type == 'ngram':
+        n = 3  # Default value for n-gram, can be adjusted as needed
+        results = search_ngram(texts, search_term, n, context_size)
+    elif search_type == 'regex':
+        results = search_regex(texts, search_term, context_size)
+    else:
+        results = []
+
+    return jsonify(results)
 
 
 

@@ -1,0 +1,2699 @@
+Intra-link
+Errors <span class='highlight'>and </span>a Similarity Constellation to ARQ
+BICM-ID) technique <span class='highlight'>and </span>apply the net-
+work 
+correlation knowledge between the source <span class='highlight'>and </span>the relay nodes. This 
+change the relay locations, <span class='highlight'>and </span>provide the
+analysis of 
+, source, relay nodes <span class='highlight'>and </span>a common
+destination node
+to both the
+relay <span class='highlight'>and </span>the destination nodes. The 
+receives signals from the source <span class='highlight'>and </span>re-transmits them
+
+signals from both the source <span class='highlight'>and </span>the relay
+sides can 
+interleaver between the
+￣rst <span class='highlight'>and </span>second transmissions in order.
+The
+proposed decoding method <span class='highlight'>and </span>the BICM-ID technique 
+
+the EXIT Chart analysis <span class='highlight'>and </span>the results of the BER 
+subscripts 2sr, 2sd, <span class='highlight'>and </span>2rd are used to indicate 
+, source-destination
+<span class='highlight'>and </span>relay-destination links, 
+signals to both the relay <span class='highlight'>and </span>the destination nodes. After
+-encodes the extracted data <span class='highlight'>and </span>re-transmits them
+
+rdg) at the relay <span class='highlight'>and </span>the destination node can be 
+4)
+where s <span class='highlight'>and </span>sr represent the symbols transmitted 
+symbols transmitted from the source <span class='highlight'>and </span>the relay, respectively. 
+AWGN channel. Notations nr <span class='highlight'>and</span>
+nd represent the zero
+noise vectors at the relay <span class='highlight'>and </span>the destination with variances ?
+?2
+r
+<span class='highlight'>and </span>?2
+d, 
+) of source-relay <span class='highlight'>and </span>relay-destination links at
+= SNRsd + 21.19 dB <span class='highlight'>and </span>SNRrd = SNRsd + 4.4 
+SNRsd
++ 4.4 dB <span class='highlight'>and </span>SNRrd = SNRsd + 21.19 
+for both encoders
+C1 <span class='highlight'>and </span>C2. The original information 
+with a doping rate Pd1 <span class='highlight'>and </span>modulated using BICM. We 
+. We use
+4PSK <span class='highlight'>and </span>8PSK for the modulation. 
+
+to both the relay <span class='highlight'>and </span>the destination in phase one
+the BICM demapper, ACC!1 <span class='highlight'>and </span>de-
+interleaver |!1
+
+, Cocke, Jelinek, <span class='highlight'>and </span>Raviv (BCJR) is 
+for
+decoding convolutional codes <span class='highlight'>and </span>the ACC. It's 
+bits are interleaved by |0 <span class='highlight'>and</span>
+forwarded to C2 encoder
+C2 encoder, |2, <span class='highlight'>and </span>then ACC (with doping 
+modulated
+into sr, <span class='highlight'>and </span>transmitted to the destination during 
+, the received signals ysd <span class='highlight'>and </span>yrd are ￣rstly decoded via 
+the
+two decoders D1 <span class='highlight'>and </span>D2 in HI are exchanged 
+Obviously, for both 4PSK <span class='highlight'>and </span>8PSK cases, channel decoding 
+is exchanged between the demapper <span class='highlight'>and </span>the decoder,
+through 
+5)
+where S1 <span class='highlight'>and </span>S0 denote the set of 
+number of bits per symbol <span class='highlight'>and </span>La(sw) is the LLR 
+bits, Lu
+p;D1 <span class='highlight'>and </span>Lu
+p;D2, from 
+from the decoders
+D1 <span class='highlight'>and </span>D2, the intra-
+
+4. EXIT CHART <span class='highlight'>AND </span>BER ANALYSIS
+The EXIT 
+ID detector
+using 4PSK <span class='highlight'>and </span>8PSK are shown in Fig
+in Fig. 3(a) <span class='highlight'>and </span>Fig. 3(b), 
+VI take place between D1 <span class='highlight'>and </span>D2, which pushes
+
+
+curves of the demapper <span class='highlight'>and </span>the ACC!1, the x
+MI Ic
+a(D1) <span class='highlight'>and </span>x-axis denotes the 
+values between the demapper's <span class='highlight'>and </span>decoder's EXIT curves, 
+the source-destination link <span class='highlight'>and </span>the Pd2 for the relay
+the scenarios A, B <span class='highlight'>and </span>C, respectively, for 
+the proposed system with 4PSK <span class='highlight'>and </span>8PSK modula-
+tions. 
+in Fig. 4(a) <span class='highlight'>and </span>Fig. 4(b), 
+for
+both the 4PSK <span class='highlight'>and </span>8PSK modulations. Therefore, 
+!1:55 dB for 4PSK <span class='highlight'>and </span>1.61 dB for 8PSK cases
+proposed system are 2.75 dB <span class='highlight'>and </span>2.89 dB for 4PSK and 
+and 2.89 dB for 4PSK <span class='highlight'>and </span>8PSK,
+respectively.
+for (a) 4PSK <span class='highlight'>and </span>(b) 8PSK in 
+for (a) 4PSK <span class='highlight'>and </span>(b) 8PSK in 
+)
+FER
+P1 <span class='highlight'>and </span>P2
+P3
+-4 
+: (a) FER <span class='highlight'>and </span>(b) the average 
+the source to the destination <span class='highlight'>and </span>the receiver only performs HI 
+perfectly recovers the source bits <span class='highlight'>and </span>interleaves them before re-
+
+system, which combines VI <span class='highlight'>and </span>HI,
+based on 
+the collaboration of HI
+<span class='highlight'>and </span>VI decoding, can be 
+is 4000 in our simulations <span class='highlight'>and </span>10000 frames
+are tested
+SNR versus P1, P2 <span class='highlight'>and</span>
+P3 and Fig. 
+, P2 and
+P3 <span class='highlight'>and </span>Fig. 5(b) shows 
+the correlation knowledge between source <span class='highlight'>and </span>relay nodes, which can 
+which can be
+estimated <span class='highlight'>and </span>further exploited at the receiver 
+1. Anwar, K. <span class='highlight'>and </span>T. Matsumoto, \Accumulator-
+D., A. Dauch, <span class='highlight'>and </span>T. Matsumoto, \BICM-
+-ID using extented mapping <span class='highlight'>and </span>repetition
+code with irregular 
+, T. H. Liew, <span class='highlight'>and </span>B. L. Yeap, Turbo 
+Turbo Coding, Turbo Equalisation <span class='highlight'>and </span>Space-time
+Coding 
+Tervo, K. Anwar, <span class='highlight'>and </span>T. Matsumoto,, \Low
+6. Anwar, K. <span class='highlight'>and </span>T. Matsumoto, \Spatially concatenated 
+B. Beferull-Lozano, <span class='highlight'>and </span>M. Vetterli, \Networked Slepian
+Theory, algo-
+rithm <span class='highlight'>and </span>scalling laws," IEEE 
+8. Youssef, R. <span class='highlight'>and </span>A. Graell, and I. 
+R. and A. Graell, <span class='highlight'>and </span>I. Amat, \Distributed serially 
+namely, at the gathering <span class='highlight'>and </span>scattering problems. Given a 
+robots with arbitrary initial locations <span class='highlight'>and</span>
+no initial agreement on 
+. Using Markov chains tools <span class='highlight'>and </span>additional assumptions on the environment
+mobile robots self-organizing <span class='highlight'>and </span>cooperating
+toward the resolution 
+no global positioning), <span class='highlight'>and </span>ensure coordination in
+spite 
+environmental changes.
+Suzuki <span class='highlight'>and </span>Yamashita [8] proposed 
+a formal model to analyze <span class='highlight'>and </span>prove the correctness of agreement 
+computes a target position, <span class='highlight'>and </span>moves towards it. The 
+robots with arbitrary initial locations <span class='highlight'>and </span>no initial agreement on a 
+order to analyze the correctness <span class='highlight'>and </span>the complexity of probabilistic algorithms
+fundamental limits of deterministic
+<span class='highlight'>and </span>probabilistic gathering in the face 
+a wide range of synchrony <span class='highlight'>and </span>fault assumptions. Probabilistic
+
+the first time by Dieudonn´e <span class='highlight'>and </span>Petit [2]. 
+Markov chains as a simple <span class='highlight'>and </span>efficient tool to analyze and 
+and efficient tool to analyze <span class='highlight'>and </span>compare
+probabilistic strategies in 
+tool for analyzing their correctness <span class='highlight'>and </span>complexity since, by definition
+existing probabilistic strategies for scattering <span class='highlight'>and </span>gathering. We also claim
+strong multiplicity knowledge). <span class='highlight'>And</span>, even when information on 
+2 describes the robot network <span class='highlight'>and </span>system model. Section 3
+
+formally defines the gathering <span class='highlight'>and </span>scattering problems. Section 4 
+analyze the convergence of gathering <span class='highlight'>and </span>scattering both under strong multiplicity 
+(Sect. 5) <span class='highlight'>and </span>under weak
+multiplicity (
+Section 7 concludes the paper <span class='highlight'>and </span>discusses some open problems.
+The model of robots, <span class='highlight'>and </span>most of the definitions,
+
+are due to Suzuki <span class='highlight'>and </span>Yamashita [8] and 
+and Yamashita [8] <span class='highlight'>and </span>Prencipe [6].
+
+computing a position, <span class='highlight'>and </span>moving toward a destination. 
+model first introduced by Suzuki <span class='highlight'>and </span>Yamashita [8], 
+
+robots are repeatedly active <span class='highlight'>and </span>inactive. When a robot 
+: observation, computation, <span class='highlight'>and </span>motion.
+ Observation
+the robots become
+active <span class='highlight'>and </span>complete an entire computation cycle
+its input/output variables <span class='highlight'>and </span>the state of its local 
+state of its local variables <span class='highlight'>and </span>registers. A network of 
+c0 is the initial configuration,2 <span class='highlight'>and </span>every transition ci ! ci+1 
+distributed.
+3 Gathering <span class='highlight'>and </span>Scattering
+A network of 
+was first introduced by Suzuki <span class='highlight'>and </span>Yamashita [7]. 
+following definition proposed by Dieudonn´e <span class='highlight'>and </span>Petit [2]:
+time of probabilistic gathering
+<span class='highlight'>and </span>scattering. A detailed description 
+all integers n  0 <span class='highlight'>and </span>all states i0; i1
+position.
+Asynchronous rounds <span class='highlight'>and </span>moving distance. An asynchronous 
+5.1 Probabilistic scattering
+Dieudonn´e <span class='highlight'>and </span>Petit [2] proved 
+without additional
+assumptions, <span class='highlight'>and </span>proposed an original probabilistic solution 
+of Voronoi diagrams, described <span class='highlight'>and</span>
+analysed in Section 6.1
+cell of point pi if <span class='highlight'>and </span>only if, for any 
+the Euclidean distance between p <span class='highlight'>and </span>q. In particular, the 
+points at time t1, <span class='highlight'>and</span>
+4
+Algorithm 5.1 
+because we use Voronoi diagrams <span class='highlight'>and </span>thus
+any two robots 
+one of its
+neighbors <span class='highlight'>and </span>moves towards its position with 
+robots have unlimited visibility, <span class='highlight'>and </span>hence the value of  
+under an arbitrary scheduler
+<span class='highlight'>and </span>converges in 2 rounds in 
+bounded scheduler without multiplicity knowledge <span class='highlight'>and </span>converges under fair bounded schedulers 
+robot p tosses a coin <span class='highlight'>and </span>moves only with probability 1
+it does not belong, <span class='highlight'>and </span>moves toward it.
+
+1 Given an arbitrary configuration <span class='highlight'>and </span>only one single robot being 
+with probability 1
+2n <span class='highlight'>and </span>selects one of the points 
+fact that aj  n <span class='highlight'>and</span>
+Pj??1
+h=1 ah 
+Zt)t2N is a Markov chain <span class='highlight'>and </span>we need the expectation of 
+T1
+0 = 8 <span class='highlight'>and </span>the fact that as soon 
+probability 3
+4 , <span class='highlight'>and </span>1 with probability 1
+
+are activated at least once <span class='highlight'>and </span>execute
+Algorithm 6.1. 
+x0 at time t0, <span class='highlight'>and </span>Q as the set of
+3
+4 jRj] <span class='highlight'>and </span>P[Z2  3
+4 
+distribution
+with parameter jRj <span class='highlight'>and </span>1
+2 ,4 
+x0 activated at t0, <span class='highlight'>and </span>Y to be the random 
+3
+4 jRj, <span class='highlight'>and </span>thus there is no chance 
+period containing k rounds, <span class='highlight'>and </span>let m be the maximal 
+3m
+4 , <span class='highlight'>and </span>Zi = 0 otherwise. 
+> 11 log 4n, <span class='highlight'>and </span>the second one
+follows 
+
+9
+7 Conclusion <span class='highlight'>and </span>Discussions
+The contribution of 
+
+agreement algorithms (gathering <span class='highlight'>and </span>scattering). Second, 
+, using Markov chains tools <span class='highlight'>and </span>multiplicity
+knowledge, we 
+the two problems (gathering <span class='highlight'>and</span>
+scattering are two important 
+gratitude to the associate editor <span class='highlight'>and </span>the anonymous reviewers for their 
+Xavier D´efago),
+<span class='highlight'>and </span>by the Telecommunication Advancement Foundation 
+Gradinariu, St´ephane Messika, <span class='highlight'>and </span>Philippe Raipin Parv´edy. Fault
+Parv´edy. Fault-tolerant <span class='highlight'>and </span>selfstabilizing
+mobile robots gathering
+[2] Yoann Dieudonn´e <span class='highlight'>and </span>Franck Petit. Robots and 
+and Franck Petit. Robots <span class='highlight'>and </span>demons (code of the 
+Lynch, R. Segala, <span class='highlight'>and </span>F. W. Vaandrager. Hybrid 
+/O automata. Information <span class='highlight'>and </span>Computation,
+185(1):105?157, 
+[7] I. Suzuki <span class='highlight'>and </span>M. Yamashita. A theory 
+distributed anonymous mobile robots formation <span class='highlight'>and </span>agreement
+problems. Technical 
+[8] I. Suzuki <span class='highlight'>and </span>M. Yamashita. Distributed anonymous 
+
+Title
+Accelerated UCT <span class='highlight'>and </span>Its Application to Two-
+to recently visited actions, <span class='highlight'>and </span>lower weights to actions that 
+Results in Othello, Havannah <span class='highlight'>and </span>Go
+show that Accelerated 
+[12, 15] <span class='highlight'>and </span>Havannah [19].
+simulation called
+playout, <span class='highlight'>and </span>tree search. In a 
+the leaf to the root <span class='highlight'>and </span>update the values of all 
+of visits to j, <span class='highlight'>and </span>C is a constant value 
+situation is to discount wins <span class='highlight'>and </span>losses
+for the playouts 
+previous playouts. Although Kocsis <span class='highlight'>and </span>Szepesv´ari’s Discounted
+UCB 
+reliability of past winning ratios <span class='highlight'>and </span>focuses on exploring the subtrees
+UCT over
+plain UCT <span class='highlight'>and </span>Discounted UCT, which is 
+, in Othello, Havannah <span class='highlight'>and </span>Go.
+3. 
+Section 6 discusses
+conclusions <span class='highlight'>and </span>future work.
+2 
+Drawback of UCT
+Kocsis <span class='highlight'>and </span>Szepesv´ari proved that the UCB 
+Assume that D, E <span class='highlight'>and </span>H are winning
+positions 
+H are winning
+positions <span class='highlight'>and </span>F and I are losing 
+winning
+positions and F <span class='highlight'>and </span>I are losing positions for 
+, A !
+B <span class='highlight'>and </span>A ! C are losing 
+A ! C are losing <span class='highlight'>and </span>winning moves with the optimal 
+! F is a loss <span class='highlight'>and </span>A ! C ! G 
+at
+D, E <span class='highlight'>and </span>H are wins and the 
+E and H are wins <span class='highlight'>and </span>the playout results at F 
+the playout results at F <span class='highlight'>and </span>I are losses, the
+
+to modifying playout policies <span class='highlight'>and </span>can be usually combined with 
+
+policies.
+Coquelin <span class='highlight'>and </span>Munos showed an example in 
+proved about the regret bound <span class='highlight'>and</span>
+the playout sizes performed 
+, let rD
+t;j <span class='highlight'>and </span>nD
+t;j be the 
+winning ratio of branch j <span class='highlight'>and </span>the discounted visits to j
+i
+nD
+t;i <span class='highlight'>and </span>C is a constant. 
+
+updates rD
+t;j <span class='highlight'>and </span>nD
+t;j in the 
+
+5 Precisely, Kocsis <span class='highlight'>and </span>Szepesv´ari used the UCB1-
+largest discounted UCB value
+<span class='highlight'>and </span>performs a playout at j
+a playout at j, <span class='highlight'>and </span>then updates the discounted UCB
+5.1 for details)
+<span class='highlight'>and </span>no success in combining Discounted 
+reported yet.
+Ramanujan <span class='highlight'>and </span>Selman’s UCTMAXH combines UCT 
+Selman’s UCTMAXH combines UCT <span class='highlight'>and </span>minimax tree
+search [
+
+function at each leaf <span class='highlight'>and </span>backs up its minimax value 
+that UCTMAXH outperforms UCT
+<span class='highlight'>and </span>minimax search in the game 
+domains where both minimax search <span class='highlight'>and </span>UCT perform well.
+
+baselines
+rather than UCT <span class='highlight'>and </span>their applicability to UCT remains 
+combination of robust
+max <span class='highlight'>and </span>mean [6].
+term is identical to UCB <span class='highlight'>and </span>rA
+j is the 
+j is selected at P <span class='highlight'>and </span>is 0 otherwise, and
+and is 0 otherwise, <span class='highlight'>and</span>
+ is a decay 
+decay of
+Discounted UCB <span class='highlight'>and </span>is empirically preset. For 
+that creates position
+P <span class='highlight'>and </span>rA
+j be the 
+the legal moves at P <span class='highlight'>and </span>wj := vt;j=(
+j is selected, vt;j <span class='highlight'>and </span>wj are increased, resulting 
+Nodes
+a, b <span class='highlight'>and </span>c are leaves in the 
+are
+performed at a <span class='highlight'>and </span>the winning ratio of move 
+children (i.e., d <span class='highlight'>and</span>
+e) and one 
+d and
+e) <span class='highlight'>and </span>one virtual child a
+
+are a win at d <span class='highlight'>and </span>a loss at e)
+ratios of a ! d <span class='highlight'>and </span>a ! e in the 
+child a
+′
+<span class='highlight'>and </span>(virtual) move a 
+
+, a ! d <span class='highlight'>and </span>a ! e) at
+plus tree search), <span class='highlight'>and </span>Accelerated UCT algorithms to evaluate 
+games of Othello, Havannah <span class='highlight'>and </span>Go.
+All the 
+them from scratch in Othello <span class='highlight'>and </span>Havannah.
+Since Discounted 
+opening book for the experiments <span class='highlight'>and</span>
+thus obtained a variety 
+Plain, Discounted,
+<span class='highlight'>and </span>Accelerated UCT Algorithms
+Table 
+UCT in Othello, Havannah <span class='highlight'>and </span>99 Go
+with 95
+7) for both Discounted <span class='highlight'>and</span>
+Accelerated UCT. For 
+0:9999999 with k = 7 <span class='highlight'>and </span> = 0:9
+with 
+In contrast, in Havannah <span class='highlight'>and </span>Othello,
+when a 
+the potential of the Accelerated <span class='highlight'>and </span>Discounted UCT algorithms
+against 
+might be different from plain <span class='highlight'>and </span>Accelerated UCT due
+to 
+the best C for plain <span class='highlight'>and </span>Accelerated UCT either.
+
+biased terms of Discounted
+<span class='highlight'>and </span>Accelerated UCT with the best 
+were incorporated
+in Othello <span class='highlight'>and </span>Havannah, Accelerated UCT was 
+), both
+Discounted <span class='highlight'>and </span>Accelerated UCT performed poorly. 
+This subsection answers the question <span class='highlight'>and </span>shows experimental results
+when 
+result of
+a playout <span class='highlight'>and </span>the moves that appear during 
+playout value of j, <span class='highlight'>and </span>Wj is the unnormalized weight 
+Discounted UCT implementation, rj <span class='highlight'>and </span>nj in ravej are replaced
+
+by rD
+t;j <span class='highlight'>and </span>nD
+t;j in Equations 
+
+t;j in Equations 3 <span class='highlight'>and </span>4, respectively9. In 
+Fuego with switching on RAVE <span class='highlight'>and </span>all important
+enhancements in 
+the winning percentages of Discounted <span class='highlight'>and </span>Accelerated
+UCT with RAVE 
+of
+deceptions in MCTS <span class='highlight'>and </span>Accelerated UCT may correct some 
+of Discounted UCB, t <span class='highlight'>and </span>j indicate the situation after 
+not only outperformed
+plain <span class='highlight'>and </span>Discounted UCT in a variety 
+. We thank Tomoyuki Kaneko <span class='highlight'>and </span>Martin M¨uller for their valuable
+N. Cesa-Bianchi, <span class='highlight'>and </span>P. Fischer. Finite-
+
+2. B. Bouzy <span class='highlight'>and </span>B. Helmstetter. Monte Carlo 
+
+4. P.-A. Coquelin <span class='highlight'>and </span>R. Munos. Bandit algorithms 
+R. Coulom. Efficient selectivity <span class='highlight'>and </span>backup operators in Monte-
+
+International Conference on
+Computers <span class='highlight'>and </span>Games, (CG2006)
+M¨uller, B. Arneson, <span class='highlight'>and </span>R. Segal. Fuego -
+source framework for board games <span class='highlight'>and </span>Go engine based
+on 
+Transactions on Computational
+Intelligence <span class='highlight'>and </span>AI in Games, 2(4):259?270
+
+9. S. Gelly <span class='highlight'>and </span>D. Silver. Combining online 
+D. Silver. Combining online <span class='highlight'>and </span>offline knowledge in
+UCT
+Wang, R. Munos, <span class='highlight'>and </span>O. Teytaud. Modification of
+Huang, R. Coulom, <span class='highlight'>and </span>S.-S. Lin. Monte-
+International Conference
+on Computers <span class='highlight'>and </span>Games, (CG2010)
+Kloetzer, H. Iida, <span class='highlight'>and </span>B. Bouzy. A comparative 
+on Compu-
+tational Intelligence <span class='highlight'>and </span>Games, (CIG2008)
+
+13. L. Kocsis <span class='highlight'>and </span>C. Szepesv´ari. Bandit based 
+
+14. L. Kocsis <span class='highlight'>and </span>C. Szepesv´ari. Discounted UCB
+
+national Conference on Computers <span class='highlight'>and </span>Games, (CG2008)
+
+16. R. Ramanujan <span class='highlight'>and </span>B. Selman. Trade-
+Conference on
+Automated Planning <span class='highlight'>and </span>Scheduling, (ICAPS2011)
+
+17. D. Silver <span class='highlight'>and </span>G. Tesauro. Monte-
+
+19. F. Teytaud <span class='highlight'>and </span>O. Teytaud. Creating an 
+
+20. D. Tom <span class='highlight'>and </span>M. M¨uller. A study 
+. A study of UCT <span class='highlight'>and </span>its enhancements in
+an 
+noisy channel	 Recently Palmieri <span class='highlight'>and </span>Pereira pro
+posed a 
+with
+probability 	
+ <span class='highlight'>and </span>the sender does not know 
+sender has two
+secrets <span class='highlight'>and </span>the receiver can choose one 
+not know the receivers choice <span class='highlight'>and </span>the receiver cannot know 
+is available between the sender <span class='highlight'>and</span>
+the receiver OT can 
+in 	 Palmieri <span class='highlight'>and </span>Pereira 
+ proposed a 
+have
+ KaiYuen Cheong <span class='highlight'>and </span>Atsuko Miyaji
+any error 
+assumption than the noisy channel <span class='highlight'>and </span>random channel delays are
+
+assumptions about the channel used <span class='highlight'>and </span>the denition of 
+accepts binary strings called packets <span class='highlight'>and </span>delivers them with some delay 
+allowed time for transmitting
+<span class='highlight'>and </span>receiving the packets A packet 
+p is
+publicly known <span class='highlight'>and </span>set q  	 ?
+
+ft?? t g <span class='highlight'>and </span>output times U  fu?? 
+once with probability
+p <span class='highlight'>and </span>is subject to further delays 
+time is an analog quantity <span class='highlight'>and </span>the mean
+and variance 
+quantity and the mean
+<span class='highlight'>and </span>variance of the actual delay 
+of secret bits s?? s <span class='highlight'>and </span>the receiver Bob
+inputs 
+ Correctness If both Alice <span class='highlight'>and </span>Bob are honest Bob outputs 
+are honest Bob outputs sc <span class='highlight'>and </span>Alice
+outputs nothing
+
+the concatenation of index i <span class='highlight'>and </span>bit ei Next she also
+i Each
+of vi <span class='highlight'>and </span>v
+i is treated 
+condition that jIcj  n <span class='highlight'>and </span>Bob has received
+a 
+the protocol
+ KaiYuen Cheong <span class='highlight'>and </span>Atsuko Miyaji
+ Alice 
+ei 	
+<span class='highlight'>and </span>then sets ?? 
+?  ?? <span class='highlight'>and </span>  s  
+c  LiIc
+ei <span class='highlight'>and </span>nally
+sc  
+message Alice sends to Bob <span class='highlight'>and </span>v
+i is
+
+if he gets vi
+<span class='highlight'>and </span>v
+i at the 
+the proof of security properties <span class='highlight'>and </span>functionality
+is divided into 
+parts correctness security for Alice <span class='highlight'>and </span>security for Bob
+Correctness 
+has no such
+power <span class='highlight'>and </span>is thus strictly weaker
+
+any i if both vi <span class='highlight'>and </span>v
+i are received 
+are indistinguishable to
+Bob <span class='highlight'>and </span>he would have zero information 
+the BDDC at time t <span class='highlight'>and </span>after Moreover Alice cannot 
+ Alice sends both vi <span class='highlight'>and </span>v
+i at t??
+q by seeing both vi <span class='highlight'>and </span>v
+i at u?? 
+will not detect anything wrong <span class='highlight'>and </span>it becomes
+certain that 
+
+ KaiYuen Cheong <span class='highlight'>and </span>Atsuko Miyaji
+ The 
+set k  n Alice <span class='highlight'>and </span>Bob run k times the 
+	  i  n <span class='highlight'>and </span>	  j  k 
+	  j  k <span class='highlight'>and </span>sets vij  jjjijjeij 
+to the BDDC at t?? <span class='highlight'>and </span>all v
+ij at 
+waits to receive all packets <span class='highlight'>and </span>records their time of arrival 
+such that for every i <span class='highlight'>and </span>j he receives both jjjijj 
+j he receives both jjjijj <span class='highlight'>and</span>
+jjjijj	 for exactly 
+not receive both
+jjjijj <span class='highlight'>and </span>jjjijj	 at u?? He 
+a counter X   <span class='highlight'>and </span>enter the following procedure For
+jIjcj j 
+n <span class='highlight'>and </span>for all i  Ijcj 
+iIj
+eij 
+<span class='highlight'>and </span>then sets j?? 
+??j  j?? <span class='highlight'>and </span>j  j  j
+divided into correctness Alices security <span class='highlight'>and</span>
+Bobs security Relying on 
+
+ KaiYuen Cheong <span class='highlight'>and </span>Atsuko Miyaji
+using the 
+j Alice sends both vij <span class='highlight'>and </span>v
+ij at t??
+if Alice sends both vij <span class='highlight'>and </span>v
+ij at t??
+	 k ?? n <span class='highlight'>and </span>there are at least k 
+only consider these k??n subprotocols <span class='highlight'>and </span>ignore
+the rest With 
+probabilities on correctness Alices security <span class='highlight'>and </span>Bobs security
+being negligible 
+n This is rather high <span class='highlight'>and </span>it would be better if 
+	 C	 Crepeau <span class='highlight'>and </span>J	 Kilian Achieving oblivious 
+	 Crepeau K	 Morozov <span class='highlight'>and </span>S	 Wolf Ecient unconditional 
+	
+
+	 C	 Crepeau <span class='highlight'>and </span>G	 Savvides Optimal reductions 
+	 Even O	 Goldreich <span class='highlight'>and </span>A	 Lempel A randomized 
+	 P	 Palmieri <span class='highlight'>and </span>O	 Pereira Building oblivious 
+goal of best
+performance <span class='highlight'>and </span>load balance. We describe 
+a
+dynamic environment, <span class='highlight'>and </span>perform experimental evaluation using collected 
+79%. The training <span class='highlight'>and </span>testing time is extremely low
+
+in such an open <span class='highlight'>and </span>highly dynamic computing environment, 
+RMI [5], <span class='highlight'>and </span>emerging GridRPC [6]
+useful degree from historical data <span class='highlight'>and </span>self-similarity [8
+of the host load history <span class='highlight'>and </span>the dynamic nature
+of 
+previously proposed linear
+models <span class='highlight'>and </span>tendency-based models in 
+cost for training, validating <span class='highlight'>and </span>testing, to generate such 
+predictions.
+Finally, <span class='highlight'>and </span>most importantly, we examine 
+
+facing tradeoffs between benefits <span class='highlight'>and </span>expenses.
+We perform 
+
+We perform experimental evaluation <span class='highlight'>and </span>show that the neural network
+low mean prediction errors, <span class='highlight'>and </span>without the need of being
+Section 2
+introduces background <span class='highlight'>and </span>related work. The neural 
+
+applied to actual measurements <span class='highlight'>and </span>compared to results of other 
+from 0.73 to 0.99, <span class='highlight'>and </span>that
+loads display epochal 
+, ARMA, ARIMA, <span class='highlight'>and </span>ARFIMA models were rigorously
+
+very
+useful degree, <span class='highlight'>and </span>that the simple AR model 
+
+relatively good prediction ability <span class='highlight'>and </span>low overhead. However, 
+
+themselves are limited, <span class='highlight'>and </span>may not be able to 
+value will also increase, <span class='highlight'>and </span>vice versa. In [
+behaviours when “ascending” <span class='highlight'>and </span>“descending”. One 
+
+learn from data examples <span class='highlight'>and </span>capture the underlying functional relationships 
+functional relationships between
+input <span class='highlight'>and </span>output values. Neural networks 
+time series [18] <span class='highlight'>and </span>even
+scheduling problems [
+differences between
+their approach <span class='highlight'>and </span>our approach. First, 
+ensuring both high
+performance <span class='highlight'>and </span>low overhead. Second, 
+low overhead. Second, <span class='highlight'>and </span>more important, their work
+cost for training, validating <span class='highlight'>and </span>testing, to examine
+
+learning rate of 0.2, <span class='highlight'>and </span>20 minutes of the load
+used combinations of different architectures <span class='highlight'>and </span>learning rates with
+4 
+an
+activation function, <span class='highlight'>and </span>produces an output signal to 
+with a learning algorithm, <span class='highlight'>and</span>
+form a mapping between 
+form a mapping between inputs <span class='highlight'>and </span>desired outputs from the training 
+
+dependencies between the inputs <span class='highlight'>and </span>outputs and generalize to data 
+between the inputs and outputs <span class='highlight'>and </span>generalize to data never before 
+. More importantly, simplicity <span class='highlight'>and </span>fast convergence
+ability make 
+feedforward network
+for input <span class='highlight'>and </span>output data.
+3.2
+information is
+received, <span class='highlight'>and </span>1 output layer C with 
+. The
+network inputs <span class='highlight'>and </span>the output layer are separated 
+with 4
+nodes, <span class='highlight'>and </span>layer B with 3 nodes
+by a weight,
+<span class='highlight'>and </span>each node has an extra 
+node in the hidden layers <span class='highlight'>and </span>the output layer
+performs 
+1 on its input, <span class='highlight'>and </span>transfers the result Oc to 
+from xc,i, <span class='highlight'>and </span>bc is the bias. 
+vector> where input vector <span class='highlight'>and </span>output vector are equal in 
+1)
+network inputs <span class='highlight'>and </span>outputs, respectively. Then
+fed to the network inputs <span class='highlight'>and </span>the network is run:
+(the output vector) <span class='highlight'>and </span>the actual network output Oc
+node in the next layer <span class='highlight'>and </span>wi,c is the 
+is computed using Equation 4 <span class='highlight'>and </span>added to the
+weight
+the error of node c <span class='highlight'>and </span>Op is the
+output 
+learning rate controls how quickly <span class='highlight'>and </span>how finely the network
+
+period with N examples, <span class='highlight'>and </span>Oi and
+Di are
+N examples, and Oi <span class='highlight'>and</span>
+Di are, respectively
+, respectively, the predicted <span class='highlight'>and </span>the desired outputs at time 
+neural network
+applications freely <span class='highlight'>and </span>commercially available, we developed 
+own program to
+customize <span class='highlight'>and </span>extend various features and parameters 
+customize and extend various features <span class='highlight'>and </span>parameters using Microsoft Visual Studio
+number of hidden layers, <span class='highlight'>and </span>the number of nodes for
+we followed the trial-<span class='highlight'>and</span>-error method for obtaining
+promise both high performance
+<span class='highlight'>and </span>low overhead.
+The 
+.
+The trial-<span class='highlight'>and</span>-error process proceeded as 
+20:10:1, 30:10:1, 50:20:1 <span class='highlight'>and </span>60:30:1.
+Another important 
+, 0.1, 0.2, <span class='highlight'>and</span>
+0.3.
+Table 
+, axp7, sahara, <span class='highlight'>and </span>themis in a number of 
+queue at some rate, <span class='highlight'>and</span>
+averages a number of 
+both in capture
+periods <span class='highlight'>and </span>machine types, as displayed 
+improving the numerical
+condition <span class='highlight'>and </span>ensuring that various default values 
+default values involved in initialization <span class='highlight'>and</span>
+termination are appropriate. 
+different ranges of input values <span class='highlight'>and </span>applications. By observing
+
+By observing
+the Means <span class='highlight'>and </span>Standard Deviations of the load 
+
+load traces are positive <span class='highlight'>and </span>most of them are distributed 
+maintain the
+original conditions <span class='highlight'>and </span>does not discard much information
+trace.
+where xmax <span class='highlight'>and </span>xmin are the maximum and 
+and xmin are the maximum <span class='highlight'>and </span>minimum value of the load 
+
+the lower bound, <span class='highlight'>and </span>UPB is the upper bound 
+set,
+validating set <span class='highlight'>and </span>testing set, and each 
+set and testing set, <span class='highlight'>and </span>each accounts for a percentage 
+%, 30%, <span class='highlight'>and</span>
+20% of the 
+measured using the validating set <span class='highlight'>and</span>
+used to validate whether 
+process will be
+stopped <span class='highlight'>and </span>weights shall be restored to 
+4 different network
+architectures <span class='highlight'>and </span>5 different values for learning 
+in the testing set, <span class='highlight'>and </span>Oi and Di are the
+testing set, and Oi <span class='highlight'>and </span>Di are the
+predicted 
+Di are the
+predicted <span class='highlight'>and </span>the actual values at the 
+%] in sahara, <span class='highlight'>and </span>[0.7%, 1.2
+behaviour of the host load <span class='highlight'>and </span>made highly accurate predictions. 
+no combination of learning rate <span class='highlight'>and </span>network architecture is the best 
+changes in learning rate
+<span class='highlight'>and </span>network architecture, although the 
+60:30:1, 20:10:1, 50:20:1 <span class='highlight'>and </span>the learning rate of 0.3 
+on axp0, axp7, <span class='highlight'>and </span>sahara, respectively. The 
+of NMSE on axp0
+<span class='highlight'>and </span>axp7. If we look 
+look back at Figure 2 <span class='highlight'>and </span>Table 2 for the shapes 
+Table 2 for the shapes <span class='highlight'>and </span>partitioning of
+Figure 3
+has
+been trained with <span class='highlight'>and </span>results in the highest accuracy
+exhibited in the load traces <span class='highlight'>and </span>the degree of prediction
+
+are obtained with the Mean <span class='highlight'>and </span>Standard Deviation (SD) 
+%] in sahara, <span class='highlight'>and </span>[1.6%, 3.7
+%] in sahara, <span class='highlight'>and </span>[2.5%, 3.3
+choices of learning
+rate <span class='highlight'>and </span>network architecture, again, 
+.
+The learning rate <span class='highlight'>and </span>network architecture have a significant 
+With the same training set <span class='highlight'>and </span>the same
+network architecture
+
+Table 3. Mean <span class='highlight'>and </span>Standard Deviation (SD) 
+) axp0
+Mean
+<span class='highlight'>and </span>SD
+Learning Rate
+
+) axp7
+Mean
+<span class='highlight'>and </span>SD
+Learning Rate
+
+) sahara
+Mean
+<span class='highlight'>and </span>SD
+Learning Rate
+
+) themis
+Mean
+<span class='highlight'>and </span>SD
+Learning Rate
+
+with the same training set <span class='highlight'>and </span>learning rate,
+there 
+cases with the longest times <span class='highlight'>and </span>the largest
+network architecture 
+of learning rate of 0.3 <span class='highlight'>and </span>network architecture of 20:10:1 can 
+ranges from 172,800 (sahara <span class='highlight'>and </span>themis) to 648,000
+
+a tradeoff between
+accuracy <span class='highlight'>and </span>time; a training set 
+on the network architecture
+<span class='highlight'>and </span>learning rate, the validating 
+learning rate, the validating <span class='highlight'>and </span>testing times behave in a 
+behave in a different way <span class='highlight'>and</span>
+remain fairly stable. 
+4 shows the average validating <span class='highlight'>and </span>testing time for each
+
+, the longer the validating <span class='highlight'>and </span>testing time is. The
+The
+lines representing sahara <span class='highlight'>and </span>themis nearly overlap each other 
+
+increase in the validating <span class='highlight'>and </span>testing times. However, 
+In the cases of sahara <span class='highlight'>and </span>themis, for instance, 
+methods in terms of Mean <span class='highlight'>and </span>Standard Deviation of the
+
+selected the networks of 20:10:1 <span class='highlight'>and </span>30:10:1, both with the 
+high degree of prediction accuracy <span class='highlight'>and </span>short training time. Their
+several past
+load values <span class='highlight'>and </span>previous similar patterns. At 
+
+Figure 4. Validating <span class='highlight'>and </span>testing time.
+Table 
+comparison in terms of Mean <span class='highlight'>and </span>Standard Deviation (SD) 
+direction.
+On axp0 <span class='highlight'>and </span>sahara, both networks of 
+, both networks of 20:10:1 <span class='highlight'>and </span>30:10:1 always outclass
+the 
+axp7 where both Yang method <span class='highlight'>and</span>
+Zhang method were especially 
+day, 5 days, <span class='highlight'>and </span>10 days on
+themis
+(100%), <span class='highlight'>and </span>the 30:10:1 network is better 
+which are increasingly obsolete, <span class='highlight'>and</span>
+hence, experiments on 
+low CPU load with Mean <span class='highlight'>and </span>Standard Deviation
+equal to 
+Deviation
+equal to 0.08 <span class='highlight'>and </span>0.18, respectively. Meanwhile
+
+divided into two parts <span class='highlight'>and </span>standard deviations are 0.08 and 
+and standard deviations are 0.08 <span class='highlight'>and </span>0.15 for each part. 
+the selected networks of 20:10:1 <span class='highlight'>and</span>
+30:10:1 with a constant 
+, for cases of 10,000 <span class='highlight'>and </span>5,000 samples.
+The 
+Table 6, where abyss <span class='highlight'>and </span>mystere stand for
+abyss.cs.uchicago.edu 
+mystere stand for
+abyss.cs.uchicago.edu <span class='highlight'>and </span>mystere.ucsd.edu respectively. As expected
+have exhibited high prediction accuracy <span class='highlight'>and </span>low overhead with not much 
+
+between the new traces <span class='highlight'>and </span>the older ones. NMSE 
+%, 7.56%] <span class='highlight'>and </span>the training time is virtually 
+we have studied the performance <span class='highlight'>and </span>cost of a neural network 
+with previously proposed linear models <span class='highlight'>and </span>tendency-based models on 
+) of the prediction errors <span class='highlight'>and</span>
+training time (T. 
+T. Time), validating <span class='highlight'>and </span>testing time (V. Time
+more than 100,000 samples, <span class='highlight'>and </span>then makes tens of thousands 
+.
+The prediction ability <span class='highlight'>and </span>low overhead convincingly demonstrate application
+such as
+computational grids <span class='highlight'>and </span>clouds. Inspired by these 
+
+computing system using NetSolve <span class='highlight'>and </span>GridSolve. We also plan 
+relation to
+network traffic <span class='highlight'>and </span>latency, etc.
+
+would like to thank Dinda <span class='highlight'>and </span>Yang for the use of 
+Culture, Sports, Science <span class='highlight'>and </span>Technology of Japan
+under 
+[1] I. Foster <span class='highlight'>and </span>C. Kesselman, The Grid
+Figueira, J. Schopf, <span class='highlight'>and </span>G. Shao, Application-
+] A. S. Gokhale, <span class='highlight'>and </span>B. Natarajan, GriT: 
+5] M. Alt, <span class='highlight'>and </span>S. Gorlatch, Adapting Java 
+Takemiya, H. Nakada, <span class='highlight'>and </span>S. Sekiguchi, Design, 
+, Design, implementation
+<span class='highlight'>and </span>performance evaluation of GridRPC programming 
+8] P. Dinda, <span class='highlight'>and </span>D. O'Hallaron, Host Load 
+, 16th International
+Parallel <span class='highlight'>and </span>Distributed Processing Symposium, Fort 
+Yang, I. Foster, <span class='highlight'>and </span>J. Schopf, Homeostatic and 
+and J. Schopf, Homeostatic <span class='highlight'>and </span>Tendency-based CPU Load
+
+Prediction, International Parallel <span class='highlight'>and </span>Distributed Processing Symposium, Nice
+Zhang, W. Sun, <span class='highlight'>and </span>Y. Inoguchi, CPU Load 
+International Symposium on Cluster Computing <span class='highlight'>and </span>the Grid, Singapore,
+Zhang, B.E. Patuwo, <span class='highlight'>and </span>M.Y. Hu, Forecasting with 
+] B. W. Wah, <span class='highlight'>and </span>M. L. Qian, Constrained 
+L. Qian, Constrained formulations <span class='highlight'>and </span>algorithms for
+predicting stock 
+] B. G. Aslan, <span class='highlight'>and </span>M. M. Inceoglu, A 
+on Intelligent Systems
+Design <span class='highlight'>and </span>Applications, Rio de Janeiro
+Behzad, F. Yumei, <span class='highlight'>and </span>K. Valeri, Forecasting of 
+, Artificial Neural Networks, <span class='highlight'>and </span>Linear Regression
+Models, 
+] S. F. Crone, <span class='highlight'>and </span>R. Dhawan, Forecasting Seasonal 
+] G. P. Zhang, <span class='highlight'>and </span>D. M. Kline, Quarterly 
+Jin, X. Xie, <span class='highlight'>and </span>Q. Zhang, Using NARX 
+Reed, R. D., <span class='highlight'>and </span>R. J. Marks, Neural 
+Witten, I. H., <span class='highlight'>and </span>E. Frank, Data Mining 
+? Practical Machine Learning Tools <span class='highlight'>and</span>
+Techniques, 2nd Edition
+result of the increasing size <span class='highlight'>and </span>complexity of embedded
+systems
+as real-time properties <span class='highlight'>and</span>
+resource requirements. To 
+to the increase in size <span class='highlight'>and </span>complexity of embedded
+systems
+such as real-time <span class='highlight'>and </span>resource
+constraints. In 
+, we can directly design <span class='highlight'>and </span>implement objects as
+software 
+between objects, threads
+<span class='highlight'>and </span>real-time constraints.
+1: Objects, threads <span class='highlight'>and </span>real-time constraints.
+
+approach. OCTOPUS[9] <span class='highlight'>and </span>SES approach[2] have
+
+our approach, both analysis <span class='highlight'>and </span>design models
+are defined 
+a real application development, <span class='highlight'>and</span>
+- to show that 
+describes how to formalize analysis <span class='highlight'>and </span>design
+models on concurrent 
+Section 6 gives some conclusions <span class='highlight'>and </span>the directions of our
+
+to formalize our analysis
+<span class='highlight'>and </span>design models. CREs are 
+systems. Vijay K. Garg <span class='highlight'>and </span>M.T. Ragunath proposed it as
+],
+CSP[6] <span class='highlight'>and </span>ACP[8]. These methods 
+a set of such processes <span class='highlight'>and </span>transition relationships between
+them
+we use only interleaving
+<span class='highlight'>and </span>synchronous composition operators. We 
+E U {1,E} <span class='highlight'>and </span>operators:
+choice(+)
+), interleaving(1)
+<span class='highlight'>and </span>composition([S])I. and ? are the 
+interleaving(1)
+and composition([S])I. <span class='highlight'>and </span>? are the special symbols
+
+means an empty set <span class='highlight'>and </span>E means an empty sequence
+P.1 = 1.P = 1 <span class='highlight'>and </span>P.6 = 6.P = P 
+Expressions which contain no interleaving <span class='highlight'>and </span>synchronous
+composition operators are 
+. P Q, P.Q <span class='highlight'>and </span>P* are CREs if 
+* are CREs if P <span class='highlight'>and </span>Q are CREs.
+
+is a CRE if P <span class='highlight'>and </span>Q are CREs.
+
+is a CRE if P <span class='highlight'>and </span>Q are CREs and S 
+P and Q are CREs <span class='highlight'>and </span>S C E.
+5
+is a sequence if x <span class='highlight'>and </span>y are sequences.
+
+, P2 = P.P
+<span class='highlight'>and </span>P3 = P.P.P, .... 
+.
+3 Formalizing Analysis <span class='highlight'>and </span>Design Models
+In this 
+, we formalize both analysis <span class='highlight'>and </span>design
+models with CREs
+model as concurrent
+objects <span class='highlight'>and </span>the design model as concurrent 
+open. close. post <span class='highlight'>and </span>get are actions.
+
+actions
+login. work <span class='highlight'>and </span>exit in this order. 
+the action close occurrs
+<span class='highlight'>and </span>the system reaches the final 
+-read.
+exit <span class='highlight'>and </span>open-write-exit
+system could be too large <span class='highlight'>and </span>sometimes
+defined by an 
+a notation that makes loops <span class='highlight'>and </span>switches
+explicit. We 
+describe loops with closure operators <span class='highlight'>and </span>switches with
+choice operators
+sequence
+P. When P <span class='highlight'>and </span>Q execute concurrently, we 
+there is communicationb etween concurrentP <span class='highlight'>and</span>
+Q, P[ 
+For
+example, a.b.cHd.c.f <span class='highlight'>and </span>a.(b11c).d are concurrent thread
+
+.
+3.6 Formalizing Objects <span class='highlight'>and </span>Threads
+Both objects and 
+and Threads
+Both objects <span class='highlight'>and </span>threads are defined as regular 
+In our models, objects <span class='highlight'>and </span>threads have no internal
+
+. Objects run
+concurrently <span class='highlight'>and </span>communicate with each other. 
+two
+threads. P <span class='highlight'>and </span>Q are CREs which define 
+that
+P = a.b <span class='highlight'>and </span>Q - c.d. Then
+interleaved sequences
+of a.b <span class='highlight'>and </span>c.d. Therefore, L(a.blIc.d
+two
+objects. P <span class='highlight'>and </span>Q are CREs which define 
+run concurrently
+4
+<span class='highlight'>and </span>communicate with each other. 
+no communication
+between P <span class='highlight'>and </span>Q. In P[ ]
+
+appering in both P <span class='highlight'>and </span>Q are called communication symbols
+synchronized communication
+between P <span class='highlight'>and </span>Q. In our approach, 
+two objects defined as a.b <span class='highlight'>and </span>a.c
+in a system 
+a.c
+in a system <span class='highlight'>and </span>these objects run concurrently. 
+? a ? c
+<span class='highlight'>and </span>a ? b ? c 
+performs b without blocking
+<span class='highlight'>and </span>waiting for object a.c to 
+] operator deletes such behavior <span class='highlight'>and </span>leaves:
+{a.a?b?c.a?a?c?b
+propose has two rules
+<span class='highlight'>and </span>12 axioms for the [ 
+.AnEy.B) <span class='highlight'>and </span>x y
+x.A[S]y
+Bn Ey.D)U S <span class='highlight'>and</span>
+(EA.x.BU 
+One is the rewrite rule <span class='highlight'>and </span>the other is
+the 
+rule.
+Let A <span class='highlight'>and </span>B be concurrent regular expressions
+
+B means that A <span class='highlight'>and </span>B are derivable from each 
+A '' B means A <span class='highlight'>and </span>B are derivable from
+
+
+Let A, B <span class='highlight'>and </span>P be concurrent regular expressions
+
+Let S, A <span class='highlight'>and </span>B be concurrent regular expressions
+expressions.
+SbA*.BifS A.S+B <span class='highlight'>and </span>c L(A)
+4.2 
+
+To evaluate our approach <span class='highlight'>and </span>to apply it in the 
+stream to control its volume <span class='highlight'>and </span>frequency.
+5.1 Target 
+CPU , 1 hardware clock <span class='highlight'>and </span>1 DAC.
+In 
+driver.
+- Play <span class='highlight'>and </span>stop up to 3 PCM 
+.
+- Both frequency <span class='highlight'>and </span>volume are changed on the 
+phase, we define classes <span class='highlight'>and </span>behavior
+of objects in 
+, we analyzed the system <span class='highlight'>and </span>defined some classes as
+
+API, SYN, CLK <span class='highlight'>and </span>DAC in the Table 3 
+API, Synth, Clock <span class='highlight'>and </span>D/A. The
+
+pi, si, fi <span class='highlight'>and </span>vi correspond to
+play
+play, stop, freq <span class='highlight'>and </span>vol the methods of CH
+
+CH0, CH1i CH2 <span class='highlight'>and </span>SYN simultaneously. In this 
+
+objects CH0, CH1 <span class='highlight'>and </span>CH2 calculate their output values 
+CH2 calculate their output values <span class='highlight'>and</span>
+SYN generates an output 
+play, stop, freq <span class='highlight'>and </span>vol mean that start playing
+playing,
+change frequency <span class='highlight'>and </span>change volume for the corresponding
+a synthesizer for 3 channels <span class='highlight'>and </span>Clock is a
+class 
+
+- CHo, CH1 <span class='highlight'>and </span>CH2 start playing, stop 
+value
+(calc) <span class='highlight'>and </span>sends it to the D
+
+By distributivlea wo f. <span class='highlight'>and </span>[ ],
+a 
+al, Q=Um=0bi <span class='highlight'>and </span>EP(lEq =
+P*
+
+By (1) <span class='highlight'>and </span>(2),
+
+f i + v1) <span class='highlight'>and </span>by Theorem 5.2,
+
+the two concurrent threads API <span class='highlight'>and </span>SYN. These
+threads 
+
+extract subthreads of API <span class='highlight'>and </span>SYN.
+5.6.1 Subthreads
+that T is a CRE <span class='highlight'>and </span>Pi is a regular expression
+play, stop, freq <span class='highlight'>and </span>vol are the external events
+PLAY, STOP, FREQ <span class='highlight'>and</span>
+VOL shown in Table 
+: The subthreads of API <span class='highlight'>and </span>SYN
+In the thread 
+PLAY, STOP, FREQ <span class='highlight'>and </span>VOL, their external
+
+the number of channel
+<span class='highlight'>and </span>the other is the amount 
+system observes the
+clock <span class='highlight'>and </span>it invokes the function CLK 
+PLAY, STOP, FREQ <span class='highlight'>and </span>VOL never run concurrently. 
+PLAY, STOP, FREQ <span class='highlight'>and</span>
+VOL. We wrote 
+beginning of the functions
+<span class='highlight'>and </span>LEAVE (sem) at 
+which makes the semaphore down <span class='highlight'>and </span>the caller
+leaves the 
+;
+Similarly, ENTER <span class='highlight'>and </span>LEAVE are added to the
+the
+PLAY. STOP <span class='highlight'>and </span>FREQ functions. Thus, 
+. FREQ
+9
+<span class='highlight'>and </span>VOL share one semaphore and 
+and VOL share one semaphore <span class='highlight'>and </span>they are executed exclusively.
+analysis model of the driver <span class='highlight'>and </span>we extracted a set
+
+threads from the design model <span class='highlight'>and </span>implemented them
+using C 
+our approach
+to larger <span class='highlight'>and </span>more complex systems. For 
+: Concurrent regular
+expressions <span class='highlight'>and </span>their relationship to Petri nets
+[2] Toshiaki Aoki <span class='highlight'>and </span>Takuya Katayama: SES Model 
+Conference
+on Artificial Intelligence <span class='highlight'>and </span>Computational Intelligence
+for Decision
+for Decision, Control, <span class='highlight'>and </span>Automation in Engineering
+and 
+and Automation in Engineering
+<span class='highlight'>and </span>Industrial Applications ACIDCA'2000,
+
+[3] Toshiaki Aoki <span class='highlight'>and </span>Takuya Katayama: SES Model
+Japan Society for Software Science <span class='highlight'>and </span>Technology,
+FOSE'2000 Foundations 
+Akira Kawaguchi, Tomoji Kishi <span class='highlight'>and</span>
+Takuya Katayama: Synchronized 
+] Robin Milner : Communication <span class='highlight'>and </span>Concurrency,
+Prentice Hall
+Maher Awad, Juha Kuusela <span class='highlight'>and </span>Jurgen Ziegler :
+Object
+: Object-Oriented Modeling <span class='highlight'>and </span>Design,
+Prentice Hall
+Springer,
+Jiageng Chen <span class='highlight'>and </span>Atsuko Miyaji, Lecture Notes 
+Distance
+Jiageng Chen ? <span class='highlight'>and </span>Atsuko Miyaji??
+
+Japan Advanced Institute of Science <span class='highlight'>and </span>Technology, 1-1 
+dierent positions, <span class='highlight'>and </span>the value dierence 
+We analyzed the transition pattern <span class='highlight'>and </span>evaluated the
+probability of 
+found in [1] <span class='highlight'>and </span>[2]. And 
+and [2]. <span class='highlight'>And </span>this
+newly discovered class 
+. Due to its popularity <span class='highlight'>and </span>simplicity, RC4 has
+
+pointed
+out by Grosul <span class='highlight'>and </span>Wallach [1] that 
+In both [1] <span class='highlight'>and </span>[2], the 
+
+from [1] <span class='highlight'>and </span>[2], we 
+er at three positions <span class='highlight'>and </span>the value dierences 
+within this newly found class <span class='highlight'>and </span>also we proposed
+a 
+probability evaluations in Section 5 <span class='highlight'>and </span>nally we describe an 
+colliding key pairs we found <span class='highlight'>and </span>some concrete colliding key
+
+N ??1
+<span class='highlight'>and </span>two indices i; j 
+The index i is determined <span class='highlight'>and </span>known to the
+public
+
+public, while j <span class='highlight'>and </span>permutation S remain secret. 
+Scheduling Algorithm (KSA) <span class='highlight'>and </span>the Pseudo Random Generator Al-
+collisions are [1] <span class='highlight'>and </span>[2]. In 
+similar internal states after KSA <span class='highlight'>and </span>thus may generate
+hundreds 
+be strictly called key collision <span class='highlight'>and </span>their result only works for 
+length was rst explained <span class='highlight'>and </span>a 24-
+byte key 
+i = t)
+<span class='highlight'>and </span>value dierence is 
+scheduling process goes on. <span class='highlight'>And </span>the
+dierence 
+be absorbed
+very quickly <span class='highlight'>and </span>the internal states returns to 
+transition pattern
+3.1 Notations <span class='highlight'>and </span>intuitions
+The following are 
+KSA), example 1 <span class='highlight'>and </span>2 are given to show 
+achieved
+by various d <span class='highlight'>and </span>t. Example 3 shows that 
+pattern in the Table 1,2 <span class='highlight'>and </span>3, which helps in 
+information of i; j;K <span class='highlight'>and </span>S-BOX generated by 
+byte, d = 2 <span class='highlight'>and</span>
+t = 2. 
+1] ?? t <span class='highlight'>and </span>all other parts of the 
+= d(j1;2 = 2) <span class='highlight'>and </span>j2;2 = d + 2(j2;2 
+j1;2 = j1 +2+K1[2] <span class='highlight'>and </span>j2;2 = j1 +4+K2[2] 
+= 256 ?? j1 <span class='highlight'>and </span>K2[2] = 256 ?
+] will not be swapped <span class='highlight'>and </span>S2[d] will be swapped 
+need K1[d + 1] <span class='highlight'>and </span>K2[d + 1] to 
+erence
+between j1 <span class='highlight'>and </span>j2. In this example
+] = X + t <span class='highlight'>and </span>K2[3] = X for
+we need j1;4 = d+t <span class='highlight'>and </span>j2;4 = d,
+
+namely, j1;4 = 4 <span class='highlight'>and </span>j2;4 = 2 so that 
+erence exists only between j1;4 <span class='highlight'>and </span>j2;4. Finally
+when 
+5, then K1[d+t+1](Y) <span class='highlight'>and </span>K2[d+t+1])(Y+2)
+are there 
+dierence between j1;4 <span class='highlight'>and </span>j2;4. For the rest 
+we change the values d <span class='highlight'>and </span>t to demonstrate that parameters
+
+Notice that Examples 1 <span class='highlight'>and </span>2 directly apply to the 
+to be satised <span class='highlight'>and </span>the requirement
+for those 
+in the
+rst appearance <span class='highlight'>and </span>could not be changed from 
+Notice that (5) <span class='highlight'>and </span>(8) will give (
+could easily derive the sucient <span class='highlight'>and </span>necessary conditions
+for our 
+.
+Assume that K1 <span class='highlight'>and </span>K2 form a k byte 
+for some t, d <span class='highlight'>and </span>n. From the previous section
+): Sd+pk[d + pk] <span class='highlight'>and </span>Sd+pk[d + pk + t
+): Sd+pk[d + pk] <span class='highlight'>and </span>Sd+pk[d + pk + t
+Figure 1 shows the experimental <span class='highlight'>and </span>theoretical results with d + 
+be swapped somewhere before i <span class='highlight'>and </span>the chance for it to 
+index t1 between index u <span class='highlight'>and </span>v, and then
+
+index u and v, <span class='highlight'>and </span>then
+when i touches 
+, two-hop
+<span class='highlight'>and </span>three-hop cases here
+with probability 1
+256 <span class='highlight'>and</span>
+remains untouched for v 
+t1 between index
+u <span class='highlight'>and </span>v with probability 1
+
+probability
+1
+256 <span class='highlight'>and </span>then index v
+0
+vary between u + 1 <span class='highlight'>and </span>v ?? 1, 
+have two intermediate indices t1 <span class='highlight'>and </span>t2, and t1 can 
+indices t1 and t2, <span class='highlight'>and </span>t1 can vary
+between 
+between index u + 1 <span class='highlight'>and </span>v ?? 2 and 
+and v ?? 2 <span class='highlight'>and </span>t2 can vary between index 
+between index t1 + 1 <span class='highlight'>and </span>v ?? 1.
+by using the above Lemma <span class='highlight'>and</span>
+partition techniques. Refer 
+be par-
+titioned, <span class='highlight'>and </span>the output is a set 
+t ?? 1] <span class='highlight'>and</span>
+PD = (d 
+] > d + pk <span class='highlight'>and </span>Sd+pk[d + pk] 6=
+
+Sd[d]+  +Sd[d+t??1] <span class='highlight'>and </span>calculate the probability that the 
+(d+pk)+  +(d+pk+t??1) <span class='highlight'>and </span>Sd[d]+  +Sd[d+t??1] is 
+the relation between
+PS <span class='highlight'>and </span>PD. The subset I(X
+using Lemma 3,
+<span class='highlight'>and </span>we have t elements for 
+Figure 3 represents the experimental <span class='highlight'>and </span>theoretical probability of Sd[d] 
+xed k; t <span class='highlight'>and </span>various d.
+Fig. 
+between index d + pk <span class='highlight'>and </span>d + pk + t. 
+not touch d + pk <span class='highlight'>and </span>d + pk + t. 
+1. Assume that K1 <span class='highlight'>and </span>K2 form a k-
+xed t, d <span class='highlight'>and </span>n. Then the probability that 
+Then the probability that K1 <span class='highlight'>and </span>K2
+are a colliding 
+.
+Since parameters d <span class='highlight'>and </span>t are not required to 
+probability should include various d <span class='highlight'>and </span>t. This gives us the 
+1. Assume that K1 <span class='highlight'>and </span>K2 form a k-
+Then the probability that K1 <span class='highlight'>and </span>K2 are a colliding key 
+at the bounds for d <span class='highlight'>and </span>t. First, for every 
+satisfy d+t = k??2, <span class='highlight'>and </span>the smallest value of t 
+, K1[d+1] = K2[d+1]+t <span class='highlight'>and </span>K1[d+t+1] =
+K1[d 
+Event C is time consuming <span class='highlight'>and </span>involves
+exponential time partition 
+, to evaluate all d <span class='highlight'>and </span>t is a time-
+evaluating some xed d <span class='highlight'>and </span>t. We choose d; 
+of colliding key pairs, <span class='highlight'>and </span>also we compare our work 
+the chosen values of d <span class='highlight'>and </span>t.
+5 An Ecient 
+Event B, Event C <span class='highlight'>and </span>Event D. For Event B 
+Event D. For Event B <span class='highlight'>and </span>Event C, we can
+that the values of p <span class='highlight'>and </span>q will be swapped to 
+touched before i touches them <span class='highlight'>and </span>Event A
+occurs.
+more than
+one position <span class='highlight'>and </span>the value dierence 
+of our colliding key pairs <span class='highlight'>and </span>showed the scale of this 
+shorter
+colliding key pairs <span class='highlight'>and </span>more precise probability evaluation as 
+in the RC4 Keystream Generator <span class='highlight'>and </span>an
+Approach to Improve 
+Cipher. Designs, Codes <span class='highlight'>and </span>Cryptography
+48(3), 
+ at  1
+<span class='highlight'>and </span>a1 +    
+?? t + 1 <span class='highlight'>and </span>aj   1 for 1 
+3: [Tweak a1 <span class='highlight'>and </span>a2]. Set a1 
+] Set j   3 <span class='highlight'>and </span>s   a1 + a2 
+  s ?? x <span class='highlight'>and </span>j   j ?? 
+Finally set a1   s <span class='highlight'>and </span>return to 2.
+
+, Pa(n,t) <span class='highlight'>and </span>Pa(n,t-1) to 
+the parti-
+tions, <span class='highlight'>and </span>perform the permutation on each 
+in the parentheses denote d <span class='highlight'>and </span>t. "-" means 
+"
+denotes that K1 <span class='highlight'>and </span>K2 have the same value
+
+under power-limited <span class='highlight'>and </span>interference-limited mobile communication
+2) averaging;
+<span class='highlight'>and </span>3) selection of the 
+consecutive
+unique words, <span class='highlight'>and </span>a beam having the largest 
+(SNR) power ratio <span class='highlight'>and </span>signal-tointerference
+(
+. References [1] <span class='highlight'>and </span>[2] analyze the
+system with adaptive beam forming <span class='highlight'>and </span>discuss a practical
+antenna 
+revised October 11, 1995 <span class='highlight'>and </span>February
+28, 1996
+distance between the desired user <span class='highlight'>and</span>
+interferers, the smaller 
+interferers the array can suppress <span class='highlight'>and </span>the equivalent diversity
+order 
+Both the beam-forming <span class='highlight'>and </span>signal combining antennas
+require 
+envelopes of the
+desired <span class='highlight'>and </span>interference signals vary rapidly due 
+be found between this concept <span class='highlight'>and </span>sectored
+cell configurations. 
+. 1. Propagation scenario <span class='highlight'>and </span>antenna gains.
+The 
+transmitted symbol sequence,
+<span class='highlight'>and </span>the sequence received by the 
+under various mobile propagation scenarios <span class='highlight'>and </span>how
+serious the outcome 
+there is one desired user <span class='highlight'>and </span>one interferer and
+that 
+desired user and one interferer <span class='highlight'>and</span>
+that each of the 
+that each of the desired <span class='highlight'>and </span>interference transmissions has
+two 
+one of the two beams <span class='highlight'>and</span>
+the other goes to 
+power ratio (SNR) <span class='highlight'>and </span>SIR power ratio
+is 
+the power-limited
+<span class='highlight'>and </span>interference-limited environments, 
+
+two desired signal components <span class='highlight'>and </span>two interference signal
+components
+processing for the signal validation <span class='highlight'>and </span>beam selection
+is described
+of desired, interference, <span class='highlight'>and </span>noise components at
+the 
+on the overall
+SNR <span class='highlight'>and </span>SIR enhancements are discussed.
+There is one desired user <span class='highlight'>and </span>one cochannel interferer in
+
+coverage.1 Each of the desired <span class='highlight'>and </span>interference transmissions
+has two 
+
+element’s main beams <span class='highlight'>and </span>the other goes to the 
+. 1, main beams <span class='highlight'>and </span>their side lobes have complex
+beam gains of , where <span class='highlight'>and </span>each take values of one 
+element’s main beam, <span class='highlight'>and </span>expresses each user’s
+
+of
+the multipath channel <span class='highlight'>and </span>antenna system is shown in 
+2.
+Output samples <span class='highlight'>and </span>of the first and second 
+samples and of the first <span class='highlight'>and </span>second elements
+can, 
+
+(1.1)
+<span class='highlight'>and</span>
+(1.2)
+
+
+where , , with <span class='highlight'>and</span>
+being, respectively, 
+the desired user’s first <span class='highlight'>and </span>second paths, ,
+
+, ,
+, with <span class='highlight'>and </span>being, respectively,
+
+with the interferer’s first <span class='highlight'>and</span>
+second paths, and 
+and
+second paths, <span class='highlight'>and </span>is the sampling period. 
+is the sampling period. <span class='highlight'>and</span>
+, with and being
+. and
+, with <span class='highlight'>and </span>being, respectively,
+
+
+the desired user’s <span class='highlight'>and </span>interferer’s waveforms at the 
+to the sampling period . <span class='highlight'>and</span>
+, with and being
+. and
+, with <span class='highlight'>and </span>being, respectively,
+
+be applied to that situation <span class='highlight'>and </span>should result in similarity in
+Block diagram of multipath channel <span class='highlight'>and </span>antenna system.
+B. 
+2) averaging;
+<span class='highlight'>and </span>3) selection of the 
+indexes the element number, <span class='highlight'>and </span>and denote
+transpose and 
+the element number, and <span class='highlight'>and </span>denote
+transpose and complex 
+and and denote
+transpose <span class='highlight'>and </span>complex conjugate, respectively. 
+adjustment, quality checking, <span class='highlight'>and</span>
+equalization.
+substituting 
+
+substituting (1.1) <span class='highlight'>and </span>(1.2) into (
+
+(3.1)
+<span class='highlight'>and</span>
+(3.2)
+
+
+(3.4)
+<span class='highlight'>and</span>
+(3.5)
+
+(3.11)
+, <span class='highlight'>and </span>.
+The best performance 
+cophases the matched filter outputs <span class='highlight'>and</span>
+then sums them up
+b) frame format, <span class='highlight'>and </span>(c) matched filter 
+.
+is equally weighted <span class='highlight'>and </span>summed up3 over several
+
+,
+3The signal validation <span class='highlight'>and </span>noncoherent integration process is analogous
+
+(6.2)
+<span class='highlight'>and</span>
+(6.3)
+
+.
+The desired signal <span class='highlight'>and </span>interference components and
+( 
+desired signal and interference components <span class='highlight'>and</span>
+( ) at the 
+shown in (3.3) <span class='highlight'>and</span>
+(3.4), 
+, respectively. Hence, <span class='highlight'>and </span>become zero-mean
+
+processes with variances of
+<span class='highlight'>and </span>, where
+and are
+
+and , where
+<span class='highlight'>and </span>are, respectively, the 
+with the desired user’s <span class='highlight'>and</span>
+interferer’s th paths
+’s th paths. Let <span class='highlight'>and </span>be denoted by
+...
+
+(7.1)
+<span class='highlight'>and</span>
+...
+. . 
+)
+where for , <span class='highlight'>and</span>
+, with being the 
+of the th propagation path <span class='highlight'>and </span>being the
+average interference 
+] is used,
+<span class='highlight'>and </span>, where and are
+
+,
+and , where <span class='highlight'>and </span>are
+the maximum Doppler 
+frequencies for the desired user <span class='highlight'>and</span>
+interferer, respectively, 
+
+interferer, respectively, <span class='highlight'>and </span>is the zeroth-order 
+function (pdf) of <span class='highlight'>and</span>
+can be calculated as 
+eigenvalues. The probabilities that <span class='highlight'>and</span>
+can then be calculated 
+(15)
+where <span class='highlight'>and </span>are, with , the 
+
+of the desired signal <span class='highlight'>and </span>interference, respectively, in
+
+(6.5)
+<span class='highlight'>and</span>
+(6.6)
+
+
+(16.2)
+<span class='highlight'>and</span>
+...
+...
+
+
+function approach by using <span class='highlight'>and </span>’s autocorrelation matrix
+instead 
+autocorrelation matrix
+instead of <span class='highlight'>and </span>in (10), 
+in this case,
+<span class='highlight'>and </span>), and the desired 
+,
+and ), <span class='highlight'>and </span>the desired user’s second
+’s first
+path ( <span class='highlight'>and </span>). Furthermore, we 
+
+(17.1)
+<span class='highlight'>and</span>
+(17.2)
+
+main beam’s complex gain <span class='highlight'>and</span>
+is the sidelobe beam
+beam’s amplitude gain, <span class='highlight'>and </span>is the sidelobe attenuation
+
+. Unique word
+length <span class='highlight'>and </span>frame length are, respectively
+assumed to be
+4 <span class='highlight'>and </span>256 symbol long. The 
+unique word timing,
+<span class='highlight'>and </span>the interferer transmits a quaternary 
+equally by the
+transmitter <span class='highlight'>and </span>receiver. The overall filter 
+-symbol sampling times , <span class='highlight'>and </span>the power ratio of
+
+insensitive to these factors, <span class='highlight'>and</span>, therefore, in the 
+following
+PIBS calculations, <span class='highlight'>and </span>dB were assumed.
+
+
+from the desired signal <span class='highlight'>and </span>then averaged. This
+
+for other unique word patterns <span class='highlight'>and</span>
+further averaged. It 
+,
+dB, , <span class='highlight'>and </span>.
+A. Power-
+power-limited environments, <span class='highlight'>and </span>.
+The average SNR 
+with the power ratio
+<span class='highlight'>and </span>the desired signal’s maximum 
+for the average SNR dB <span class='highlight'>and</span>
+, the average Prob 
+Prob is very slow, <span class='highlight'>and</span>, hence, averaging is 
+
+omnidirectional antenna, with <span class='highlight'>and </span>the desired and
+interference 
+, with and the desired <span class='highlight'>and</span>
+interference signals’ normalized 
+obtained if is
+large <span class='highlight'>and </span>.
+The average Prob 
+Fig. 8
+for <span class='highlight'>and </span>dB, with as a
+9 shows, for dB <span class='highlight'>and </span>,
+the average Prob 
+variations with the
+desired <span class='highlight'>and </span>interference signal components received by 
+the
+average overall SNR <span class='highlight'>and </span>SIR are investigated.
+
+SNR’s on the first <span class='highlight'>and </span>second element outputs are
+
+second element outputs are
+<span class='highlight'>and </span>,
+respectively. If 
+a parameter for
+dB <span class='highlight'>and </span>dB. and are also plotted
+for
+dB and dB. <span class='highlight'>and </span>are also plotted. It 
+the correct beam increases, <span class='highlight'>and </span>the gain
+on the 
+is between
+7.3 dB <span class='highlight'>and </span>the gain on the correct 
+can be achieved with dB <span class='highlight'>and </span>dB, even if
+
+SIR’s on the first <span class='highlight'>and </span>second element output are
+
+second element output are
+<span class='highlight'>and </span>,
+respectively. If 
+equivalent to , where
+<span class='highlight'>and </span>. Hence, average PIBS 
+
+Fig. 11(a) <span class='highlight'>and </span>(b) shows the 
+a parameter for
+dB <span class='highlight'>and </span>dB. Fig. 11(a) 
+) is for ,
+<span class='highlight'>and </span>Fig. 11(b) is 
+11(b) is for dB. <span class='highlight'>and </span>are
+also plotted versus 
+correct
+beam increases, <span class='highlight'>and </span>the gain on the incorrect 
+achieved for both cases of <span class='highlight'>and</span>
+dB, and the 
+of and
+dB, <span class='highlight'>and </span>the gain for is larger 
+system under power-limited <span class='highlight'>and</span>
+interference-limited mobile 
+several consecutive unique words, <span class='highlight'>and </span>a
+beam having the 
+there is one desired user <span class='highlight'>and </span>one interferer and that each 
+desired user and one interferer <span class='highlight'>and </span>that each of
+(
+U1=U2 ! 1 <span class='highlight'>and </span>(b) gain in 
+0 dB.
+the desired <span class='highlight'>and </span>interference transmissions has two propagation
+of the two beams, <span class='highlight'>and </span>the other goes to
+
+comprised of
+desired interference <span class='highlight'>and </span>noise components at the matched 
+on overall
+average SNR <span class='highlight'>and </span>SIR were then investigated, 
+the
+power-limited <span class='highlight'>and </span>interference-limited environments. 
+achieved by smaller
+PIBS <span class='highlight'>and </span>larger values if the interferer 
+if the
+PIBS (<span class='highlight'>and</span>, hence, the time 
+Paulraj of Stanford
+University <span class='highlight'>and </span>K. Kaczmarek, former Vice 
+, for their helpful comments <span class='highlight'>and </span>suggestions.
+The authors 
+, D. J. Edwards, <span class='highlight'>and </span>J. P. McGeehan, “
+, M. A. Beach, <span class='highlight'>and </span>D. J. Edwards, “
+Naguib, A. Paulraj, <span class='highlight'>and </span>T. Kailath, “Capacity 
+Winters, “Signal acquisition <span class='highlight'>and </span>tracking with adaptive arrays in
+8] R. A. Shade <span class='highlight'>and </span>A. M. Kowalski, “
+Schwarz, W. Bennett, <span class='highlight'>and </span>S. Stein, Communications Systems 
+S. Stein, Communications Systems <span class='highlight'>and</span>
+Techniques. New York
+, Cellular Radio-Analog <span class='highlight'>and </span>Digital Systems. Norwood,
+the B.S., M.S., <span class='highlight'>and </span>Ph.D. degrees in electrical
+
+in 1978, 1980, <span class='highlight'>and </span>1991, respectively.
+
+, he joined Nippon Telegraph <span class='highlight'>and</span>
+Telephone Corporation (NTT
+modulation (TCM), <span class='highlight'>and </span>automatic repeat
+request (
+the development of the facsimile <span class='highlight'>and </span>data communications service units
+
+(MAP)
+algorithm <span class='highlight'>and </span>its reduced complexity version for 
+he moved to NTT America <span class='highlight'>and </span>served as a Senior Technical 
+
+joint project with NTT <span class='highlight'>and </span>NEXTEL Communications. In March 
+Electronics, Information,
+<span class='highlight'>and </span>Communication Engineers of Japan.
+, he joined Nippon Telegraph <span class='highlight'>and</span>
+Telephone Corporation (NTT
+in the development of operations <span class='highlight'>and</span>
+maintenance equipment for that 
+joint
+project with NTT <span class='highlight'>and </span>NEXTEL as a Technical Advisor
+project: audio transmission quality <span class='highlight'>and</span>
+RF distribution technique. 
+of Electronics, Information, <span class='highlight'>and</span>
+Communication Engineers of Japan
+) received the B.S.
+<span class='highlight'>and </span>M.S. degrees in electrical engineering 
+, Reno, in 1990 <span class='highlight'>and </span>1993,
+respectively.
+in areas of communication
+<span class='highlight'>and </span>radar systems. From 1989 
+Associate Professor of Electronics
+<span class='highlight'>and </span>Computer Technology. Currently, 
+
+communications systems design deployment <span class='highlight'>and </span>testing, fiber-optics
+, fiber-optics, <span class='highlight'>and</span>
+radar-guided vehicles
+articulation points of
+vowels <span class='highlight'>and </span>consonants revealed that speakers might 
+the effects of the left <span class='highlight'>and</span>
+right phonemes on the 
+vowels
+(V) <span class='highlight'>and </span>ten apical and two palatal 
+V) and ten apical <span class='highlight'>and </span>two palatal consonants (C
+were extracted from read sentences <span class='highlight'>and </span>used in this
+analysis
+VCV sequences, the open <span class='highlight'>and </span>closed vowels showed different behaviors
+in human
+speech, <span class='highlight'>and </span>is affected both at the 
+of the speech organs, <span class='highlight'>and </span>in the motor
+planning 
+natural sounding
+speech, <span class='highlight'>and </span>at the same time introduces 
+in both speech
+synthesis <span class='highlight'>and </span>speech recognition to deal with 
+(LR, carryover) <span class='highlight'>and </span>right-to-left 
+the tongue, mandible, <span class='highlight'>and</span>
+lips move from the 
+look ahead’’ in time <span class='highlight'>and</span>
+anticipate oncoming sounds. 
+
+consonants (C) <span class='highlight'>and </span>five vowels (V) 
+X-ray microbeam system <span class='highlight'>and </span>investigated
+coarticulation in VCV 
+investigated
+coarticulation in VCV <span class='highlight'>and </span>CVC sequences within a carry
+al. employed electropalatographic data <span class='highlight'>and </span>the trajectory
+of the 
+second formant to investigate anticipatory <span class='highlight'>and</span>
+carryover effects within VCV 
+consisting of
+seven consonants <span class='highlight'>and </span>two vowels /a/ and /i/ 
+consonants and two vowels /a/ <span class='highlight'>and </span>/i/ [5]. 
+coarticulation between the consonants
+<span class='highlight'>and </span>vowels using the DAC.
+ray microbeam
+system, <span class='highlight'>and </span>electromagnetic sensing systems, in
+
+order to systematically analyze <span class='highlight'>and </span>model speech production
+mechanisms
+production
+mechanisms. Shirai <span class='highlight'>and </span>Honda, for example, 
+five Japanese male speakers, <span class='highlight'>and</span>
+built a statistical model 
+, including the
+jaw <span class='highlight'>and </span>tongue [6]. 
+a French female
+speaker <span class='highlight'>and </span>constructed a statistical articulatory model
+[7]. Dang <span class='highlight'>and </span>Honda have developed
+a 
+
+on volumetric MR images <span class='highlight'>and </span>anatomic data, and is 
+images and anatomic data, <span class='highlight'>and </span>is driven
+by physiological 
+, we attempt to clarify <span class='highlight'>and </span>quantify the
+coarticulation involved 
+
+first investigated for vowels <span class='highlight'>and </span>consonants, to obtain a
+the anticipatory (RL) <span class='highlight'>and </span>carryover (LR) effects 
+that resulted from the left <span class='highlight'>and </span>right
+phonemes.
+
+
+2. ARTICULATORY DATA <span class='highlight'>AND </span>LABELING
+The articulatory data 
+
+T1 through T4, <span class='highlight'>and </span>one coil each was placed 
+lip, maxillary incisor, <span class='highlight'>and </span>mandible incisor (LJ)
+for the articulatory channels
+<span class='highlight'>and </span>16 kHz for the acoustic 
+. The acoustic
+data <span class='highlight'>and </span>the articulatory data were recorded 
+for labeling apical consonants, <span class='highlight'>and </span>T3
+for the others 
+tip (T1), <span class='highlight'>and </span>tongue dorsum (T3)
+electromagnetic
+articulographic experiment, <span class='highlight'>and </span>the coordinate
+system used 
+. Articulatory Coordinate for Vowels <span class='highlight'>and </span>Consonants
+Among the above 
+consonants (including alveolar
+<span class='highlight'>and </span>post-alveolar consonants)
+-alveolar consonants), <span class='highlight'>and </span>T3 is used for vowels
+is used for vowels
+<span class='highlight'>and </span>the palatal consonants /k/ and 
+and the palatal consonants /k/ <span class='highlight'>and </span>/g/. The bilabial and
+
+/k/ and /g/. The bilabial <span class='highlight'>and</span>
+nasal consonants are not 
+, 800 for /e/
+<span class='highlight'>and </span>1,200 for /o/. The phoneme 
+) in the upper panels <span class='highlight'>and </span>for the apical CP (
+of the CP for vowels <span class='highlight'>and </span>consonants,
+which is 
+mean CPs for both vowels <span class='highlight'>and</span>
+consonants have a roughly 
+than
+the others, <span class='highlight'>and </span>the scattering of the apical 
+movements of the tongue tip <span class='highlight'>and </span>the dorsum. The lines
+lines
+of the consonantal <span class='highlight'>and </span>vocalic movements have an
+
+
+directions of the consonantal <span class='highlight'>and </span>vocalic movements are
+consistent 
+2 Articulatory coordinates of vowels <span class='highlight'>and </span>consonants. The upper panels 
+were 61, 67, <span class='highlight'>and </span>68 degrees, respectively. 
+correlation
+of the vertical <span class='highlight'>and </span>horizontal directions. In contrast
+for
+both the vocalic <span class='highlight'>and </span>consonantal movements, as shown 
+, ‘‘horizontal’’ <span class='highlight'>and</span>
+‘‘X’’ 
+to describe the spatial relationship <span class='highlight'>and </span>the latter
+mainly for 
+for ‘‘vertical’’ <span class='highlight'>and </span>‘‘Y.’’
+
+3.2. Variation of Articulation <span class='highlight'>and </span>Acoustics
+Because of coarticulation
+coarticulation, both the left <span class='highlight'>and </span>right
+phonemes affect movements 
+larger
+variations in articulatory <span class='highlight'>and </span>acoustic characteristics than
+in 
+the variations in
+articulatory <span class='highlight'>and </span>acoustic characteristics of the vowels
+examine the relationship between articulatory <span class='highlight'>and</span>
+acoustic characteristics, the 
+number for the vowels, <span class='highlight'>and </span>shown
+in the right 
+the highest appearance frequency, <span class='highlight'>and </span>the white
+arrows denote 
+of
+mouth opening, <span class='highlight'>and </span>F2 heavily depends on the 
+effects of vowels on consonants <span class='highlight'>and </span>of
+consonants on vowels 
+immediately adjacent
+(preceding <span class='highlight'>and </span>following) phonemes. Accordingly
+. Accordingly, VCV
+<span class='highlight'>and </span>CVC sequences were adopted in 
+CPs: the apical consonants <span class='highlight'>and </span>palatal consonants.
+4.1
+view, the tongue tip <span class='highlight'>and</span>
+dorsum can be considered 
+independent CPs for
+consonants <span class='highlight'>and </span>vowels, respectively. In 
+connection between the tongue tip <span class='highlight'>and </span>the dorsum
+cannot 
+high correlation between the jaw <span class='highlight'>and</span>
+tongue, and between 
+jaw and
+tongue, <span class='highlight'>and </span>between the tongue tip and 
+and between the tongue tip <span class='highlight'>and </span>dorsum, one
+observation 
+of the other factors, <span class='highlight'>and </span>the multiple
+regression method 
+. Formulas (1) <span class='highlight'>and </span>(2) describe the 
+2) describe the X- <span class='highlight'>and </span>Ycomponents
+of the CP 
+Y-components,
+<span class='highlight'>and </span>c is a constant term
+subscripts j, t, <span class='highlight'>and </span>d denote
+the coefficients 
+jaw, tongue tip, <span class='highlight'>and </span>tongue dorsum,
+respectively
+
+the same dimension, <span class='highlight'>and </span>the second line is the 
+3) is for T1x <span class='highlight'>and </span>(4) for T1y
+
+starts with all factors <span class='highlight'>and </span>removes the least significant
+
+-phoneme sequences of VCV <span class='highlight'>and </span>CVC were
+segmented from 
+palatal (CVC), <span class='highlight'>and</span>
+vowel-palatal-
+VCV). The preceding <span class='highlight'>and </span>following
+consonants in CVC 
+phrase boundaries were
+marked <span class='highlight'>and </span>excluded from the VCV and 
+and excluded from the VCV <span class='highlight'>and </span>CVC sequences.
+The 
+for the combinations of vowels <span class='highlight'>and</span>
+apical consonants, and 
+and
+apical consonants, <span class='highlight'>and </span>about 90 for the combinations 
+the combinations of
+vowels <span class='highlight'>and </span>palatal consonants. The analysis 
+To increase data
+size <span class='highlight'>and </span>obtain reliable results, the 
+consistent speakers were put together <span class='highlight'>and </span>used in the
+following 
+Eqs. (1) <span class='highlight'>and </span>(2). The 
+) was 0.988 for T3x <span class='highlight'>and </span>0.956
+for T3y, 
+0.956
+for T3y, <span class='highlight'>and </span>the average prediction errors were 
+errors were 0.069 cm
+<span class='highlight'>and </span>0.141 cm, respectively. 
+in a pale color, <span class='highlight'>and </span>the last one shows the
+
+‘‘p’’ <span class='highlight'>and </span>‘‘f’’ denote 
+the components of the preceding <span class='highlight'>and</span>
+the following phonemes, 
+following phonemes, respectively, <span class='highlight'>and </span>the others show
+the 
+,
+the tongue tip <span class='highlight'>and </span>jaw shows large positive
+
+the central vowel, T1 <span class='highlight'>and </span>T3
+have a higher 
+directions during the vocalic gesture <span class='highlight'>and </span>the consonantal
+gesture.
+.
+Both the preceding <span class='highlight'>and </span>following T3s of the apicals
+Eqs. (3) <span class='highlight'>and </span>(4).
+
+MCC was 0.990 for T1x <span class='highlight'>and </span>0.961 for T1y, and 
+and 0.961 for T1y, <span class='highlight'>and </span>the
+prediction errors were 
+prediction errors were 0.064 cm <span class='highlight'>and </span>0.066 cm, respectively.
+.
+During both preceding <span class='highlight'>and </span>following vowels, the jaw
+target T3x (upper) <span class='highlight'>and </span>T3y
+(lower) 
+gesture since both the X- <span class='highlight'>and </span>Y-dimensions of
+
+
+In addition, pT1x <span class='highlight'>and </span>f T1x contribute positively to 
+apical consonants, while pT3x <span class='highlight'>and </span>f T3x contribute
+negatively
+This is why the pT3x <span class='highlight'>and </span>f T3x contribute
+negatively 
+Eqs. (1) <span class='highlight'>and </span>(2). The 
+was 0.990
+for T3x <span class='highlight'>and </span>0.942 for T3y, and 
+and 0.942 for T3y, <span class='highlight'>and </span>the prediction errors were
+
+errors were
+0.077 cm <span class='highlight'>and </span>0.109 cm, respectively.
+In this combination, vowels <span class='highlight'>and </span>consonants have the
+same 
+T3 in both the X- <span class='highlight'>and </span>Ydimensions.
+As seen 
+components do. The preceding <span class='highlight'>and </span>following
+phonemes did not 
+since the tongue
+tip <span class='highlight'>and </span>the dorsum drop during the 
+was 0.989 for
+T3x <span class='highlight'>and </span>0.921 for T3y, and 
+and 0.921 for T3y, <span class='highlight'>and </span>the prediction errors were
+
+errors were
+0.076 cm <span class='highlight'>and </span>0.100 cm, respectively. 
+the dorsum in both X- <span class='highlight'>and </span>YFig.
+7 PRCs 
+target T3x (upper) <span class='highlight'>and </span>T3y
+(lower) 
+target T1x (upper) <span class='highlight'>and </span>T1y
+(lower) 
+retracts backward during the palatals <span class='highlight'>and</span>
+extends forward during the 
+this combination, the jaw <span class='highlight'>and </span>tongue tip work
+together 
+5. EVALUATION OF LR <span class='highlight'>AND </span>RL EFFECTS
+To realize 
+right (LR) effect <span class='highlight'>and </span>the right-to-
+
+(carryover) effect <span class='highlight'>and </span>RL (anticipatory) effect 
+relative influences of the preceding <span class='highlight'>and</span>
+following phonemes on the 
+on the central phoneme, <span class='highlight'>and </span>then make a
+comparison 
+
+three-phoneme sequences <span class='highlight'>and </span>change the phonemes on the
+side by switching the sides <span class='highlight'>and</span>
+fixing the same selected 
+example, we fix C2 <span class='highlight'>and </span>then replace
+C1 by 
+
+Similarly, fixing C1 <span class='highlight'>and </span>replacing C2 by all the 
+the following
+one, <span class='highlight'>and </span>vice versa. Note that 
+sequences, where the palatal <span class='highlight'>and </span>apical consonants were
+treated 
+value obtained by fixing C2 <span class='highlight'>and </span>altering C1, and
+
+C2 and altering C1, <span class='highlight'>and</span>
+Std2 is the value 
+target T3x (upper) <span class='highlight'>and </span>T3y
+(lower) 
+shows the STD (Std1 <span class='highlight'>and </span>Std2) of tongue
+
+; both the
+preceding <span class='highlight'>and </span>following vowels show about the 
+vowels /i/, /u/, <span class='highlight'>and </span>/e/, the
+following 
+one, while for /a/ <span class='highlight'>and </span>/o/ the preceding
+vowel 
+be attributed to closed vowels <span class='highlight'>and </span>open vowels. As
+
+the open vowels of /a/ <span class='highlight'>and </span>/o/, and is strict 
+of /a/ and /o/, <span class='highlight'>and </span>is strict for
+the 
+for both the
+vowels <span class='highlight'>and </span>the palatals are on the 
+are on the dorsum, <span class='highlight'>and </span>they affect
+each other 
+the
+phonemes (vowels <span class='highlight'>and </span>consonants) with a strict 
+.
+6. DISCUSSION <span class='highlight'>AND </span>CONCLUSION
+In this study
+sentences,
+where pauses <span class='highlight'>and </span>phrase boundaries were excluded. 
+jaw, tongue tip, <span class='highlight'>and </span>tongue dorsum. In
+
+(the tongue dorsum) <span class='highlight'>and </span>the apical
+consonants (
+articulatory coordinate for
+vowels <span class='highlight'>and </span>consonants, which was consistent 
+value obtained by fixing V2 <span class='highlight'>and </span>replacing V1 using all
+
+all
+the vowels, <span class='highlight'>and </span>Std2 is the value for 
+value obtained by fixing C2 <span class='highlight'>and</span>
+replacing C1 by all 
+by all the consonants, <span class='highlight'>and </span>Std2 is the
+value 
+carried out for the palatal <span class='highlight'>and </span>apical
+consonants separately.
+
+angle between the vocalic <span class='highlight'>and </span>consonantal distributions, it
+
+.
+6.1. Coarticulation <span class='highlight'>and </span>Context
+Four combinations of 
+, apical
+consonants, <span class='highlight'>and </span>palatal consonants. The CP 
+0.99 for the Xdimension
+<span class='highlight'>and </span>0.92 for the Y-
+the Y-dimension, <span class='highlight'>and </span>the prediction
+errors were 
+for the X-dimension <span class='highlight'>and </span>about
+0.1 cm for 
+of the high correlations
+<span class='highlight'>and </span>small prediction errors, we 
+dominant contributions to both X- <span class='highlight'>and </span>Y-components of the
+
+behaviors of the preceding <span class='highlight'>and </span>following phonemes in
+CVC 
+, T1x of both preceding <span class='highlight'>and</span>
+following vowels contributes positively 
+during the vocalic
+gesture <span class='highlight'>and </span>consonantal gesture. The opposite 
+.
+The tongue tip <span class='highlight'>and </span>the dorsum have a high 
+the
+conventional wisdom, <span class='highlight'>and </span>might imply that the translation
+during the palatal consonants, <span class='highlight'>and </span>the jaw and tongue tip
+consonants, and the jaw <span class='highlight'>and </span>tongue tip
+work together 
+
+6.2. LR Effect <span class='highlight'>and </span>RL Effects
+We used 
+the phonemes on the left <span class='highlight'>and </span>right sides. The deviation 
+phoneme on a given side <span class='highlight'>and</span>
+varying the phonemes on 
+by the regression analysis, <span class='highlight'>and </span>is also consistent with the
+the effects of the preceding <span class='highlight'>and </span>the following vowels on
+
+al. investigated the LR <span class='highlight'>and </span>RL
+effects by examining 
+transition between the consonant
+<span class='highlight'>and </span>vowel when fixing a phoneme 
+coarticulations were vowel-dependent <span class='highlight'>and </span>others
+were consonant-
+
+shown in both CVC <span class='highlight'>and </span>VCV. For CVC sequences
+
+[2], <span class='highlight'>and </span>the DAC plays an important 
+
+the left vowels, <span class='highlight'>and </span>the extent of the effects 
+the difference between the left <span class='highlight'>and </span>right vowels gets
+smaller
+has a higher DAC, <span class='highlight'>and </span>thus the difference between the
+difference between the
+left <span class='highlight'>and </span>right vowels is larger than 
+the difference between the left <span class='highlight'>and </span>right vowels
+becomes smaller
+the look-ahead mechanism <span class='highlight'>and </span>the DAC.
+It 
+switch between the tongue tip <span class='highlight'>and</span>
+the dorsum, but 
+targets for the tongue tip <span class='highlight'>and</span>
+dorsum can overlap temporally
+CREST of
+Japan Science <span class='highlight'>and </span>Technology. The authors would 
+
+to thank Pascal Perrier <span class='highlight'>and </span>Donna Erickson for their
+
+, The Physiology of Speech <span class='highlight'>and </span>Hearing (Prentice-
+Hall
+‘Perturbation of the consonant <span class='highlight'>and </span>vowel
+articulation by a 
+D. Recasens, M. Pallares <span class='highlight'>and </span>J. Fontdevila, ‘‘
+[6] K. Shirai <span class='highlight'>and </span>M. Honda, ‘‘
+,’’ in Speech Production <span class='highlight'>and </span>Speech Modelling, W. J.
+, W. J.
+Hardcastle <span class='highlight'>and </span>A. Marchal, Eds. 
+[8] J. Dang <span class='highlight'>and </span>K. Honda, ‘‘
+[9] J. Dang <span class='highlight'>and </span>K. Honda, ‘‘ 
+[10] J. Dang <span class='highlight'>and </span>K. Honda, ‘‘
+Honda, ‘‘Construction <span class='highlight'>and </span>control of a
+physiological 
+[11] T. Okadome <span class='highlight'>and </span>M. Honda, ‘‘
+[13] K. Moll <span class='highlight'>and </span>R. Daniloff, ‘‘
+[14] N. Draper <span class='highlight'>and </span>H. Smith, Applied Regression 
+
+Joint Decorrelating Multiuser Detection <span class='highlight'>and</span>
+Channel Estimation in Asynchronous 
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators, 
+fading multipath propagation environments, <span class='highlight'>and </span>based upon the
+analytical 
+a new joint multiuser detection <span class='highlight'>and </span>channel
+estimation scheme is 
+The proposed joint multiuser detection <span class='highlight'>and </span>channel estimation
+scheme uses 
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators.
+information pathby-
+path, <span class='highlight'>and </span>decisions are made on the 
+the
+channel estimator, <span class='highlight'>and </span>used as the reference signals
+both in non-fading <span class='highlight'>and</span>
+fading multipath propagation environments
+for this
+problem, <span class='highlight'>and </span>recently several algorithm have been 
+matched filter output vector
+<span class='highlight'>and </span>each of the candidate vectors 
+distances are then compared, <span class='highlight'>and </span>the vector
+considered most 
+The decorrelator proposed by Lupas <span class='highlight'>and </span>Verdu [7], 
+
+suboptimum multiuser detector, <span class='highlight'>and </span>its complexity increases
+only 
+interferer's received energies, <span class='highlight'>and </span>hence is near-far 
+asymptotic efficiencies of the optimum <span class='highlight'>and </span>various suboptimum
+multiuser detection 
+delays between the
+transmitter <span class='highlight'>and </span>receiver, the transmitted signal 
+Rician
+fading environments, <span class='highlight'>and </span>analyzed the effects of the 
+0 1995 IEEE
+KAWAHARA <span class='highlight'>AND </span>MATSUMOTO JOINT DECORRELATING MULTIUSER DETFXTION 
+only one propagation path
+<span class='highlight'>and </span>there are L times the 
+corresponding user’s spreading sequences <span class='highlight'>and </span>channel impulse
+responses (
+a new joint multiuser detection <span class='highlight'>and </span>channel
+estimation scheme for 
+path-by-path <span class='highlight'>and </span>channel-matched
+decorrelators 
+to the channel estimator, <span class='highlight'>and </span>used as the reference
+
+by the channel estimator, <span class='highlight'>and </span>then input to
+the 
+
+is first described, <span class='highlight'>and </span>the matrix transfer functions of 
+of the pathby-
+path <span class='highlight'>and </span>channel-matched decorrelators are 
+the proposed joint multiuser detection <span class='highlight'>and </span>channel estimation
+scheme, 
+power spectral density u2, <span class='highlight'>and</span>
+. S k ( 
+the normalized spreading sequence, <span class='highlight'>and </span>is zero
+outside the 
+the information
+symbol vector <span class='highlight'>and </span>i E { -00, 
+the
+kth user, <span class='highlight'>and </span>W k ( i ) 
+loss of generality,
+<span class='highlight'>and </span>others lie within the range 
+,T],’ <span class='highlight'>and </span>that the chip
+duration 
+)
+where R(O) <span class='highlight'>and </span>R(1) are the partial 
+partial correlation matrices,
+<span class='highlight'>and </span>RH(m) with m = 
+3. AUGUST 1995
+<span class='highlight'>and</span>
+m=l
+
+1 5 k 5 K <span class='highlight'>and </span>1 5 IC’ 5 
+
+users’ spreading sequences <span class='highlight'>and </span>channel impulse
+responses (
+G p ( z ) <span class='highlight'>and </span>Gc(z), respectively,
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators,
+=
+R(O), <span class='highlight'>and </span>A-1 = R(l), 
+A-1 = R(l), <span class='highlight'>and </span>for the channel-matched 
+
+the matrix
+KAWAHARA <span class='highlight'>AND </span>MATSUMOTO: JOINT DECORRELATING MULTIUSER 
+path-by-path <span class='highlight'>and</span>
+channel-matched decorrelators
+user's asymptotic efficiencies T$ <span class='highlight'>and </span>vi, of the
+
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators, 
+
+m=l
+<span class='highlight'>and </span>let dck(0) denote the 
+which ip(i) = 0 <span class='highlight'>and </span>ic(i) = 0 for 
+# 0. dpk,1(O) <span class='highlight'>and</span>
+d,k(O) 
+input vectors of ip(i) <span class='highlight'>and</span>
+ic( i ) 
+at time l c ~T.$ <span class='highlight'>and </span>are calculated below.
+
+wkh,er e
+<span class='highlight'>and </span>the kth user's asymptotic 
+3, AUGUST 1995
+<span class='highlight'>and </span>the kth user’s asymptotic 
+
+asymptotic efficiencies 7: <span class='highlight'>and </span>vi, respectively, of 
+of the pathby-
+path <span class='highlight'>and </span>of the channel-matched 
+calculations, the 7; <span class='highlight'>and </span>77; values were evaluated
+zk,l(z)’s <span class='highlight'>and </span>Tk,l’s. 
+The calculated 7;’s <span class='highlight'>and </span>7;’s
+were 
+( i ) ’ s <span class='highlight'>and </span>r k , l ’ 
+, l ’ s , <span class='highlight'>and </span>among the users. Tk
+asymptotic efficiencies (qp) <span class='highlight'>and </span>(7‘) versus 
+is only one propagation path <span class='highlight'>and </span>there are L times as 
+as K
+increases, <span class='highlight'>and </span>is equivalent to the path
+of joint multiuser
+detection <span class='highlight'>and </span>channel estimation using decorrelators is 
+-by-path, <span class='highlight'>and </span>to use
+the channel
+the proposed joint multiuser detection <span class='highlight'>and</span>
+channel estimation system is 
+signal components are sampled, <span class='highlight'>and</span>
+input to both the 
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators.
+, 0 =
+PHR(0)P <span class='highlight'>and </span>A-1 = PHR(l)P.
+As 
+in Fig. 3(a) <span class='highlight'>and</span>
+(c) are 
+by-path decorrelator outputs <span class='highlight'>and </span>the reference signals.
+
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators.
+z p ( i ) <span class='highlight'>and </span>the reference signal vector are
+through computer
+simulations, <span class='highlight'>and </span>the results are presented in 
+described below.
+KAWAHARA <span class='highlight'>AND </span>MATSUMOTO JOINT DECORRELATING MULTIUSER DETECTION 
+of proposed joint multiuser detection <span class='highlight'>and </span>channel estimation system. (
+over the relative
+delays <span class='highlight'>and </span>among the users. Binary 
+the number of users K <span class='highlight'>and </span>truncation length kT. It is 
+. If k~ = 4 <span class='highlight'>and </span>K = 5, the 
+dB. If k~ = 4 <span class='highlight'>and </span>K = 10, power 
+path-by-path <span class='highlight'>and </span>channelmatched
+decorrelators, averaged 
+s satisfying (3) <span class='highlight'>and </span>among users, versus
+
+despreading in one-path <span class='highlight'>and </span>equal energy twopath
+propagation 
+environments for K = 5 <span class='highlight'>and </span>K = 10
+(
+for
+K = 5 <span class='highlight'>and </span>10 in two-path 
+that for K = 5 <span class='highlight'>and </span>to that for K =
+by-path decorrelator output <span class='highlight'>and </span>the
+results of the 
+channel-matched decorrelator
+<span class='highlight'>and </span>the actual channel gains Z 
+the
+channel variation, <span class='highlight'>and </span>2) insufficient tracking performance 
+0.69 + j0.44
+KAWAHARA <span class='highlight'>AND </span>MATSUMOTO: JOINT DECORRELATING MULTIUSER 
+
+the MRC combiner, <span class='highlight'>and </span>the decisions are made using 
+using its
+output; <span class='highlight'>and </span>c) the matched filter 
+the
+MRC combiner, <span class='highlight'>and </span>the decisions are made using 
+path propagation environment is assumed <span class='highlight'>and</span>
+the matrix P's 
+, (b), <span class='highlight'>and</span>
+(c), 
+sequences were picked up
+<span class='highlight'>and </span>used as training sequences for 
+sequences for the users, <span class='highlight'>and </span>the results
+were averaged 
+system (a), <span class='highlight'>and</span>
+is almost equivalent to 
+of 32, 64, <span class='highlight'>and </span>128, the
+average 
+'s of the proposed system <span class='highlight'>and </span>system (a) versus
+foT becomes
+larger, <span class='highlight'>and </span>the BER degradation is more 
+in the
+approximated decorrelator <span class='highlight'>and </span>the update of the matrix 
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators in
+the multipath propagation environment, <span class='highlight'>and </span>proposed a new
+joint 
+new
+joint multiuser detection <span class='highlight'>and </span>channel estimation scheme for
+
+only one propagation path
+<span class='highlight'>and </span>L times as many users
+the proposed joint multiuser detection <span class='highlight'>and </span>channel estimation
+scheme, 
+path-by-path <span class='highlight'>and </span>channel-matched decorrelators
+
+to the channel estimator, <span class='highlight'>and </span>used as the reference signals
+the RLS algorithm,
+<span class='highlight'>and </span>then input to the channel
+by-path decorrelator output <span class='highlight'>and </span>the reference vector are
+
+the proposed
+scheme, <span class='highlight'>and </span>examine what factor of the 
+
+the non-fading <span class='highlight'>and </span>fading environments. It was 
+joint decorrelating
+multiuser detection <span class='highlight'>and </span>channel estimation scheme.
+
+for their helpful
+criticism <span class='highlight'>and </span>comments which greatly improved this 
+l] G. R. Cooper <span class='highlight'>and </span>R. W. Nettleton, “
+, C. K. Rushforth, <span class='highlight'>and </span>R. T. Short, “
+[7] R. Lupas <span class='highlight'>and </span>S. Verdu, “Linear 
+[lo] A. Klein <span class='highlight'>and </span>P. W. Baier, “
+, R. T. Short, <span class='highlight'>and </span>C. K. Rushforth, “
+, J. P. McGeehan, <span class='highlight'>and </span>G.H. Norton, “RAKE
+, W. R. Bennett, <span class='highlight'>and </span>S. Stein, Communication Systems 
+S. Stein, Communication Systems <span class='highlight'>and</span>
+Techniques.
+161 
+.
+161 S. Vasudevan <span class='highlight'>and </span>M. K. Varanasi, “
+.
+171 Z. Zvonar <span class='highlight'>and </span>D. Brady, “Coherent 
+D. Brady, “Coherent <span class='highlight'>and </span>differentially coherent multiuser
+detectors 
+. Con$ on Information Sciences <span class='highlight'>and</span>
+Systems, Princeton University
+received the B.S. degree
+<span class='highlight'>and </span>the M.S. degree in electronics 
+, Japan, in 1989 <span class='highlight'>and </span>1991, respectively.
+
+, he joined Nippon Telegraph <span class='highlight'>and </span>Telephone
+Corporation (NlT
+
+Sequence (DS) <span class='highlight'>and </span>Frequency Hopping (FH) 
+been researching
+combined source <span class='highlight'>and </span>channel coding algonthm for mobile 
+interest covers CDMA technologies
+<span class='highlight'>and </span>sourcekhannel coding schemes for multimedia 
+communications
+applications
+KAWAHARA <span class='highlight'>AND </span>MATSUMOTO: JOINT DECORRELATING MULTIUSER 
+, the M.S. degree, <span class='highlight'>and </span>the Doctorate degree
+in 
+in 1978, 1980, <span class='highlight'>and </span>1991,
+respectively.
+
+He joined Nippon Telegraph <span class='highlight'>and </span>Telephone
+Corporation (NTT
+Modulation (TCM), <span class='highlight'>and </span>Automatic Repeat Request (ARQ
+development
+of the facsirmle <span class='highlight'>and </span>data communications service units for 
+Probability (MAP) algonthm <span class='highlight'>and </span>its reduced
+complexity version 
+moved to N?T Amenca, <span class='highlight'>and</span>
+since then he has 
+joint
+project with NTT <span class='highlight'>and </span>NEXTEL Communications
+Dr Matsumoto 
+Electronics, Information,
+<span class='highlight'>and </span>Communication Engineers of Japan.
+cycle walking, running, <span class='highlight'>and </span>skipping of
+telescopic-
+This paper investigates the efficiency <span class='highlight'>and </span>properties of limit
+cycle 
+cycle walking, running, <span class='highlight'>and </span>skipping of a planar, 
+robot
+equations of motion <span class='highlight'>and </span>design an output following control
+of the control period, <span class='highlight'>and </span>compare the
+properties of 
+skipping gaits are inherently stable <span class='highlight'>and </span>are less
+efficient than 
+“limitcycle
+walkers” <span class='highlight'>and </span>are believed to be the 
+achieving natural, efficient, <span class='highlight'>and </span>human-like legged
+
+setting suitable system
+parameters <span class='highlight'>and </span>initial conditions. This is 
+, however, still unclear <span class='highlight'>and </span>is expected to be
+
+in the limit cycle, <span class='highlight'>and </span>generating stable running gaits
+
+desire to achieve more efficient <span class='highlight'>and</span>
+more high-speed 
+-speed legged locomotion, <span class='highlight'>and </span>by the policy
+that 
+
+walkers have been proposed <span class='highlight'>and </span>have successfully been
+applied.9 
+has already been shown theoretically <span class='highlight'>and </span>experimentally
+that achieving efficient 
+the next impact posture, <span class='highlight'>and </span>the mechanical energy
+is 
+robot equations of
+motion <span class='highlight'>and </span>outline the walking gait generation 
+gait is inherently unstable, <span class='highlight'>and </span>that a feedback
+control 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+terms of the walking speed <span class='highlight'>and </span>specific resistance, and
+
+speed and specific resistance, <span class='highlight'>and</span>
+compare the efficiency with 
+domain of the walking gait <span class='highlight'>and </span>that of the running
+
+a combination
+of walking <span class='highlight'>and </span>jumping. The properties and 
+and jumping. The properties <span class='highlight'>and </span>mechanisms of
+skipping have 
+legs’
+action, <span class='highlight'>and </span>compare the properties of the 
+three gaits from the efficiency <span class='highlight'>and</span>
+inherent stability points of 
+-legged rimless
+wheel <span class='highlight'>and </span>design an output following control 
+the desired settling time, <span class='highlight'>and</span>
+compare the properties of 
+any additional control laws, <span class='highlight'>and </span>compare the
+properties of 
+Section 5 concludes this paper <span class='highlight'>and </span>describes
+future research directions
+.
+2. Modeling <span class='highlight'>and </span>Control
+This section describes 
+
+2.1. Robot model <span class='highlight'>and </span>its equations of motion
+
+m [kg], <span class='highlight'>and </span>has a
+“hip
+the stance-leg
+<span class='highlight'>and </span>u2 of the previous one
+one, are available, <span class='highlight'>and </span>that other six
+legs 
+with respect to vertical, <span class='highlight'>and</span>
+L1 [m] 
+
+L1 [m] <span class='highlight'>and </span>L2 [m] are 
+the lengths of the stance <span class='highlight'>and </span>previousstance
+legs. We 
+robot can generate a stable <span class='highlight'>and </span>high-speed
+walking 
+except those of the stance <span class='highlight'>and </span>previousstance
+legs are maintained 
+undetermined multiplier
+vector, <span class='highlight'>and </span>Su ∈ R5 is the 
+?z = 0, <span class='highlight'>and </span>these are then summarized as
+Eqs. (2) <span class='highlight'>and </span>(4) for λ 
+horizontal ground
+reaction force <span class='highlight'>and </span>the second the vertical ground 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+
+constraint force becomes zero <span class='highlight'>and </span>the dynamic equation
+becomes 
+
+before next collision, <span class='highlight'>and </span>that the next stance-
+
+leg just after impact <span class='highlight'>and </span>its time derivatives must be 
+is the desired terminal length <span class='highlight'>and </span>Le > Ls .
+
+
++) = 0 <span class='highlight'>and </span>?z
++ = 
+Eqs. (6) <span class='highlight'>and </span>(7) for ?
+we must replace the first <span class='highlight'>and </span>the second elements
+of 
+because ?x
++ <span class='highlight'>and </span>?z
++ are 
+of the previous stance leg <span class='highlight'>and </span>are not zeros as previously
+motion
+We choose L1 <span class='highlight'>and </span>L2 as the control outputs 
+Eq. (18) <span class='highlight'>and </span>arranging it, we obtain
+
+where KP ∈ R2×2 <span class='highlight'>and </span>KD ∈ R2×2 are the 
+PD-gain matrices
+<span class='highlight'>and </span>are positive diagonal matrices. 
+. A(q) ∈ R2×2 <span class='highlight'>and</span>
+992 Limit cycle walking
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+basic parameters, terms, <span class='highlight'>and </span>their
+notations used for 
+the stance-leg exchange <span class='highlight'>and </span>is nonnegative.
+Definition 
+is the 1st collision, <span class='highlight'>and </span>the
+motion between the 
+
+motion between the 0th <span class='highlight'>and </span>1st collisions is called the 
+.” The subsequent collisions <span class='highlight'>and </span>steps are contextually
+counted
+) = 0,
+<span class='highlight'>and </span>¨L1d(Tset) = 0. 
+a5, a4, a3 <span class='highlight'>and </span>a0 are then
+determined 
+) the angular position, <span class='highlight'>and </span>(c) the vertical
+reaction force. The physical <span class='highlight'>and </span>control parameters
+were chosen 
+2500I2
+steady steps, <span class='highlight'>and </span>we can confirm that the 
+
++, is negative <span class='highlight'>and</span>
+the potential barrier thus 
+the excessive
+forward acceleration <span class='highlight'>and </span>functions as a brake. 
+Tset [s], <span class='highlight'>and </span>the robot begins
+to 
+the generated
+walking gait <span class='highlight'>and </span>the effects of forefeet on 
+robot begins to jump, <span class='highlight'>and </span>that the
+time margin 
+asymmetrizing the impact posture, <span class='highlight'>and </span>the
+efficiency of the 
+return for the braking, <span class='highlight'>and </span>a tiptoe motion
+(
+
+parameters, we chose <span class='highlight'>and </span>fixed the main parameters as 
+the
+step number, <span class='highlight'>and </span>consider the following control:
+is the feedback gain, <span class='highlight'>and </span>T
+?
+set 
+
+set [s] <span class='highlight'>and </span>T
+?
+[
+the target values of Tset <span class='highlight'>and </span>T . This control is 
+T
+?
+set <span class='highlight'>and </span>decreases from T
+? 
+. Although Tset[i]
+<span class='highlight'>and </span>T [i] do 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+. (25), <span class='highlight'>and </span>they
+are recalculated at 
+) the step period, <span class='highlight'>and </span>(c) the running 
+listed in Table I, <span class='highlight'>and </span>the parameters for adjustment of 
+
+? = 0.320 s <span class='highlight'>and </span>T
+?
+set
+the stance leg,
+<span class='highlight'>and </span>(c) the vertical 
+) during the
+stance <span class='highlight'>and </span>flight phases. The angular 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+after impact is negative, <span class='highlight'>and </span>this implies that the
+
+is common to the walking <span class='highlight'>and </span>running
+gaits generated by 
+stick diagram of the stance <span class='highlight'>and </span>next stance
+legs.
+that the flight phases emerge <span class='highlight'>and </span>the impact
+postures are 
+is the target value ofLe <span class='highlight'>and </span>is constant. This control
+L
+?
+e <span class='highlight'>and </span>increases from T
+? 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+= Le[i ? 1] <span class='highlight'>and </span>it is then smoothly
+
+, a4, a3, <span class='highlight'>and </span>a0, are accordingly
+
+) the step period, <span class='highlight'>and </span>(c) the running 
+? = 0.340 s, <span class='highlight'>and </span>L
+?
+e
+the walking, running, <span class='highlight'>and </span>skipping gaits under
+the 
+
+3.2.1. Walking speed <span class='highlight'>and </span>specific resistance. We analyze
+generated gaits is very fast <span class='highlight'>and </span>almost monotonically
+increases with 
+the robot’s total mass <span class='highlight'>and </span>p
+[J/
+consumed energy per unit mass <span class='highlight'>and</span>
+per unit length traveled
+per unit length traveled, <span class='highlight'>and </span>is a dimensionless quantity. 
+six
+legs aremechanically locked <span class='highlight'>and </span>they do not need any 
+between the moving
+speed <span class='highlight'>and </span>specific resistance. It should 
+by using the same model <span class='highlight'>and </span>parameters by changing Tset.
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+between the running domain
+<span class='highlight'>and </span>the walking one. There 
+This section investigates the potentiality <span class='highlight'>and </span>properties of
+limit-
+using the same robot model <span class='highlight'>and</span>
+control law.
+
+Eqs. (2) <span class='highlight'>and </span>(4).
+
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+
+1
+= 0 <span class='highlight'>and </span>?L
++
+
+0 are then added, <span class='highlight'>and</span>
+Js in Eq. 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+
+telescopic legs keep driving <span class='highlight'>and </span>are not mechanically
+locked
+are controlled to Le
+<span class='highlight'>and </span>Ls again for a short 
+Eqs. (6) <span class='highlight'>and </span>(7).
+
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+) the angular position, <span class='highlight'>and </span>(c) the vertical
+
+legs are mechanically locked <span class='highlight'>and </span>the robot lands on the
+in (a), <span class='highlight'>and </span>(c) the vertical 
+i.e. Ts < Tset, <span class='highlight'>and </span>the telescopic
+legs are 
+of the walking speed
+<span class='highlight'>and </span>SR. Figure 17 plots 
+of the walking gaits, <span class='highlight'>and </span>that the
+moving speed 
+SR in the walking
+<span class='highlight'>and </span>skipping gaits monotonically increases with 
+the decrease
+of Tset <span class='highlight'>and </span>worsens more rapidly after the 
+. Homogeneity of the walking <span class='highlight'>and </span>skipping gaits,
+however
+.
+5. Conclusion <span class='highlight'>and </span>Future Work
+In this 
+walking,
+running, <span class='highlight'>and </span>skipping gaits of the telescopic
+Limit cycle walking, running <span class='highlight'>and </span>skipping of telescopic-legged 
+that the
+generated walking <span class='highlight'>and </span>skipping gaits are inherently stable
+terms of the moving speed <span class='highlight'>and</span>
+SR.
+It 
+be expected that more various <span class='highlight'>and </span>adaptive gaits
+are generated 
+
+between the running gait <span class='highlight'>and </span>the other two gaits. 
+the running gait inherently stable <span class='highlight'>and </span>more energy-efficient
+
+the robot’s body shape <span class='highlight'>and</span>
+mechanisms. Incorporating springs 
+
+using passive compliance mechanisms <span class='highlight'>and </span>the effect on the
+
+
+4. M. Ahmadi <span class='highlight'>and </span>M. Buehler, “Stable 
+legged running robot with hip <span class='highlight'>and </span>leg compliance,” IEEE
+F. Iida, J. Rummel <span class='highlight'>and </span>A. Seyfarth, “Bipedal 
+Seyfarth, “Bipedal Walking <span class='highlight'>and</span>
+Running with Compliant Legs
+
+International Conference on Robotics <span class='highlight'>and </span>Automation (Apr.
+2007
+
+7. F. Asano <span class='highlight'>and </span>M. Suguro, “High
+Posture Using
+Telescopic Legs <span class='highlight'>and </span>Forefeet,” Proceedings of 
+
+International Conference on Climbing <span class='highlight'>and </span>Walking Robots
+and the 
+Climbing and Walking Robots
+<span class='highlight'>and </span>the Support Technologies for Mobile 
+Conference on
+Intelligent Robots <span class='highlight'>and </span>Systems, Taipei, Taiwan 
+A. Ruina, R. Tedrake <span class='highlight'>and </span>M. Wisse, “Efficient
+
+12. F. Asano <span class='highlight'>and </span>Z.-W. Luo, “On 
+“On Energy-Efficient <span class='highlight'>and </span>High-
+Speed Dynamic Biped 
+Conference on
+Intelligent Robots <span class='highlight'>and </span>Systems, Beijing, China 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search word</title>
+</head>
+<body>
+    <input type="text" id="searchBox" placeholder="ファイル名を入力">
+    <ul id="suggestions" style="list-style-type: none;"></ul>
+    <script>
+        document.getElementById('searchBox').addEventListener('input', function(){
+            var searchQuery = this.value;
+            if(searchQuery.length > 1){
+                fetch(`/search/file?query=${encodeURIComponent(searchQuery)}`)
+                .then(response => response.json())
+                .then(data =>{
+
+                    var suggestions = document.getElementById('suggestions');
+                    suggestions.innerHTML = '';
+                    data.forEach(item => {
+                        var li = document.createElement('li');
+                        var a = document.createElement('a');
+                        a.textContent=item;
+                        a.href=`/file?filename=${encodeURIComponent(item)}`;
+                        a.target='_blank';
+                        li.appendChild(a);
+                        suggestions.appendChild(li);
+                    });
+                });
+            } else {
+                document.getElementById('suggestions').innerHTML = '';
+            }
+        })
+    </script>
+</body>
+</html>
