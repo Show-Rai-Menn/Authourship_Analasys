@@ -1,0 +1,31 @@
+<h2>Comparison Result</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Top {{ token_num }} words</th>
+            {% if Qresults %}
+                {% for filename in Qresults.keys() %}
+                    <th>{{ filename }}</th>
+                {% endfor %}
+            {% endif %}
+            {% if Kresults %}
+                {% for filename in Kresults.keys() %}
+                    <th>{{ filename }}</th>
+                {% endfor %}
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(token_num) %}
+            <tr>
+                <td>{{ i+1 }}</td>
+                {% for filename, tokens in Qresults.items() %}
+                    <td>{{ tokens[i][0] if i < tokens|length else '' }} ({{ tokens[i][1] if i < tokens|length else '' }})</td>
+                {% endfor %}
+                {% for filename, tokens in Kresults.items() %}
+                    <td>{{ tokens[i][0] if i < tokens|length else '' }} ({{ tokens[i][1] if i < tokens|length else '' }})</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
