@@ -12,17 +12,27 @@
     <input type=submit name="kind" value="upload as K">
 </form>
 
+</br>
+
 <div>
     {% if Q_file%}
         {% for Q in Q_file %}
-        <li>{{ Q[0] }}  ({{ Q[1] }})</li>
+        <div class="file-item">
+            <li>{{ Q[0] }} ({{ Q[1] }})</li>
+            <button>Delete</button>
+            <button>Update</button>
+        </div>
         {% endfor %}
     {% else %}
         <p>No Q files found.</p>
     {% endif %}
     {% if K_files %}
         {% for K in K_files %}
-            <li>{{ K[0] }}  ({{ K[1] }})</li>
+        <div class="file-item">
+            <li>{{ K[0] }} ({{ K[1] }})</li>
+            <button>Delete</button>
+            <button>Update</button>
+        </div>
         {% else %}
             <p>No K files found.</p>
         {% endfor %}
