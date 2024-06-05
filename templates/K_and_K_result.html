@@ -3,37 +3,34 @@
 {% block title %}Home - My Web App{% endblock %}
 
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page of our web application.</p>
-{% if result %}
+
+
+
+<h1>K and K Result</h1>
+
 <table border="1">
-    <tr>
-        <th>Token</th>
-        <th>Sum</th>
-        {% if result|length > 0 %}
-            {% set first_item = result.values() | first %}
-            {% for filename in first_item.keys() %}
-                {% if filename != 'sum' %}
-                    <th>{{ filename }}</th>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </tr>
-    {% for token, counts in result.items() %}
+    <thead>
         <tr>
-            <td>{{ token }}</td>
-            <td>{{ counts['sum'] }}</td>
-            {% for filename, count in counts.items() %}
-                {% if filename != 'sum' %}
-                    <td>{{ count }}</td>
-                {% endif %}
+            <th>Token</th>
+            <th>Sum</th>
+            {% for filename in filenames %}
+                <th>{{ filename }}</th>
             {% endfor %}
         </tr>
-    {% endfor %}
+    </thead>
+    <tbody>
+        {% for token, counts in result.items() %}
+            <tr>
+                <td>{{ token }}</td>
+                <td>{{ counts['sum'] }}</td>
+                {% for filename in filenames %}
+                    <td>{{ counts[filename] if filename in counts else 0 }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
 </table>
-{% else %}
-<p>No results to display.</p>
-{% endif %}
+
 
 
 {% endblock %}
