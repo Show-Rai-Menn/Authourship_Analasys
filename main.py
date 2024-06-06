@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import os
 from werkzeug.utils import secure_filename
 import db
 import analysis
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from multiprocessing import Process
+from collections import Counter
 app = Flask(__name__)
 
 UPLOAD_FOLDER='uploads'
@@ -23,7 +24,6 @@ def file():
     
     Q_file=db.search_allQ()
     K_files=db.search_allK()
-    
     return render_template('file.html', Q_file=Q_file, K_files=K_files)
 
 @app.route('/exploratory')
@@ -47,21 +47,76 @@ def upload_file():
         if file.filename == '':
             return render_template('file.html', message='No selected file')#ファイル選択画面を開いたが何も選択していない場合
         
-        
+        content = file.read().decode('shift_jis')  # テキストファイルの場合
+       
         
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join('uploads', filename))
+            
             if kind=="upload as Q":
-                db.upload(filename, 'Q', app.config['UPLOAD_FOLDER'])
+                db.upload(filename, 'Q', content)
             elif kind=="upload as K":
-                db.upload(filename, 'K', app.config['UPLOAD_FOLDER'])
+                db.upload(filename, 'K', content)
             
 
         else:
             return render_template('file.html', message='file extension is wrong')#拡張子が違うとき
 
     return render_template('file.html', message='file upload successfully and please reload')#正常なとき
+
+
+@app.route('/K_and_K')
+def K_and_K():
+    K_files=db.search_allK()
+    
+    return render_template('K_and_K.html',  K_files=K_files)
+    
+@app.route('/K_and_K/result', methods=['POST'])
+def Kresult():
+    Kfilename=request.form.getlist('K')
+    null, Kfiles=db.get_content(None, Kfilename)
+    
+    result=analysis.K_and_K(Kfilename, Kfiles)
+    print(type(result))
+    return render_template('K_and_K_result.html', result=result, filenames=Kfilename)
+
+@app.route('/comparison')
+def comparison():
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('comparison.html', Q_file=Q_file, K_files=K_files)
+
+@app.route('/comparison/result', methods=['POST'])
+def comparison_Result():
+    data = request.get_json()
+    Qfilenames = data.get('Q', [])
+    Kfilenames = data.get('K', [])
+    count = data.get('count')
+    print(Qfilenames)
+    print(Kfilenames)
+    
+    Qcontents, Kcontents = db.get_content(Qfilenames, Kfilenames)
+    token_num = count * 20
+    Qresults = {}  # ファイルごとのトークントップリストを格納する辞書
+    Kresults = {}
+
+    if Qcontents:
+        for content, filename in zip(Qcontents, Qfilenames):
+            Qresults[filename] = analysis.token_frequency(content, token_num)
+            
+    if Kcontents:
+        for content, filename in zip(Kcontents, Kfilenames):
+            Kresults[filename] = analysis.token_frequency(content, token_num)
+            print(type(Kresults[filename]))
+            print(type(Kresults))
+    
+    # HTMLのレンダリング
+    rendered_html = render_template(
+        'comparison_result.html',
+        Qresults=Qresults, Kresults=Kresults, token_num=token_num
+    )
+    return jsonify(html=rendered_html)
+            
     
 
 
@@ -91,56 +146,10 @@ def delete():
 
     return redirect(url_for('index'))
 
-@app.route('/update')
-def update():
-    return render_template('file.html', method='Update')
 
-@app.route('/select')
-def select_file():
-    filename=db.search_all()
-    
-    return render_template('select.html', namelist=filename)
+ 
 
-@app.route('/token', methods=['POST'])
-def token_frequency():#ここでは選択されたファイルを受け取ってtoken frequencyの処理をしている
-    try:
-        print("success access /token")
-        selected=request.form.getlist("option")
-        counter=int(request.form.get('counter'))
-        token_num = counter * 20
 
-        # 選択されたファイルのパスを生成
-        file_paths = [os.path.join("uploads", filename) for filename in selected]
-        
-        # ファイルを処理する関数
-        def process_file(filepath):
-            tokenlist = analysis.token_frequency(filepath, token_num)
-            if tokenlist is None:
-                tokenlist = []  # listの初期化
-                print("tokenlist is none")
-            filename = os.path.basename(filepath)
-            return filename, tokenlist
-        
-        filelist = []
-        
-        # ThreadPoolExecutorを使用して非同期にファイルを処理
-        with ThreadPoolExecutor() as executor:
-            future_to_file = {executor.submit(process_file, path): path for path in file_paths}
-            for future in as_completed(future_to_file):
-                try:
-                    filename, tokenlist = future.result()
-                    filelist.append([filename, tokenlist])
-                except Exception as e:
-                    print(f"An error occurred while processing a file: {e}")
-        
-        print("get filelist")
-        print(filelist)
-        
-        # 結果をレンダリング
-        return render_template('token.html', filelist=filelist, analysis_method="search frequency token", token_num=token_num)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return "An error occurred", 500
     
 
 @app.route('/display/search', methods=['POST'])
@@ -172,9 +181,6 @@ def token_search():
         return "An error occurred", 500
 
 
-    
 
-if not os.path.exists('uploads'):
-    os.makedirs('uploads')
 if __name__ == '__main__':
     app.run(debug=True)

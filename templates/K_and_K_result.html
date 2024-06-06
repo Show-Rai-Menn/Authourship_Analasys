@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Web App{% endblock %}
+
+{% block content %}
+
+
+
+<h1>K and K Result</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Token</th>
+            <th>Sum</th>
+            {% for filename in filenames %}
+                <th>{{ filename }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for token, counts in result.items() %}
+            <tr>
+                <td>{{ token }}</td>
+                <td>{{ counts['sum'] }}</td>
+                {% for filename in filenames %}
+                    <td>{{ counts[filename] if filename in counts else 0 }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock %}

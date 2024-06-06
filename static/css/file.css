@@ -19,3 +19,7 @@
 .file-buttons button {
     margin-bottom: 5px;
 }
+
+.spacer {
+    height: 100px; /* 空の要素に高さを設定 */
+}

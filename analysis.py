@@ -1,5 +1,5 @@
 import spacy
-from collections import Counter
+from collections import Counter, defaultdict
 import os
 import heapq
 
@@ -14,28 +14,18 @@ You can replace this text with any other text you want to analyze.
 """
 
 #token_numで何単語出力するのかを決める
-def token_frequency(file_path, token_num):
-    try:
-        with open(file_path, 'r') as f:
-            content=f.read()
-        
+def token_frequency(content, token_num):
+    print('start token search')
+    print(f'token_num = {token_num}')
+    doc=nlp(content)
 
-        doc=nlp(content)
 
-        words=(token.text.lower() for token in doc if not token.is_punct)
+    word_freq = Counter(token.text.lower() for token in doc if token.is_alpha)
 
-        word_freq = Counter(words)
-
-        top_words=heapq.nlargest(token_num, word_freq.items(), key=lambda x:x[1])
-
-        return top_words
+    top_words=word_freq.most_common(token_num)
+    
+    return top_words
     #返り値はtokenのlist(string)
-    except FileNotFoundError:
-        print("Error file not found ", file_path)
-        return
-    except :
-        print("Error")
-        return
 
 def load_files(file_path):
 
@@ -69,3 +59,45 @@ def token_search(keyword, filepath, context_size=5):
             result = "".join(context_tokens)  # join関数を使用してリスト内の文字列を結合する
             results.append(result)
     return results
+
+
+def K_and_K(filenames, contents):
+    
+    counter=create_Counter(contents, filenames)
+    
+    newcounter=sort_counter(counter)
+    
+    return newcounter
+    
+
+
+
+
+
+
+def create_Counter(contents, filenames):
+    
+    counter = defaultdict(Counter)
+    for content, filename in zip(contents, filenames):
+        print(type(content))
+        print(filename)
+        doc = nlp(content)  # contentを文字列として渡す
+        seen_tokens = set()
+        for token in doc:
+            if token.text.lower().isalpha():
+                token_text=token.text.lower()
+                counter[token_text][filename]+=1
+                if token_text not in seen_tokens:
+                    counter[token_text]['sum'] += 1
+                    seen_tokens.add(token_text)
+            
+    return counter
+
+def sort_counter(counter):
+    sort_item= sorted(counter.items(), key=lambda item: item[1]['sum'], reverse=True)
+
+    sorted_item=defaultdict(Counter, sort_item)
+    return sorted_item
+        
+
+    
