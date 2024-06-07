@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}Home - My Web App{% endblock %}
-
+{% block head %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/file.css') }}">
+{% endblock%}
 {% block content %}
 <h1>Welcome to the Home Page</h1>
 <p>This is the home page of our web application.</p>
@@ -12,17 +14,27 @@
     <input type=submit name="kind" value="upload as K">
 </form>
 
+</br>
+
 <div>
     {% if Q_file%}
         {% for Q in Q_file %}
-        <li>{{ Q[0] }}  ({{ Q[1] }})</li>
+        <div class="file-item">
+            <li>{{ Q[0] }} ({{ Q[1] }})</li>
+            <button>Delete</button>
+            <button>Update</button>
+        </div>
         {% endfor %}
     {% else %}
         <p>No Q files found.</p>
     {% endif %}
     {% if K_files %}
         {% for K in K_files %}
-            <li>{{ K[0] }}  ({{ K[1] }})</li>
+        <div class="file-item">
+            <li>{{ K[0] }} ({{ K[1] }})</li>
+            <button>Delete</button>
+            <button>Update</button>
+        </div>
         {% else %}
             <p>No K files found.</p>
         {% endfor %}
@@ -31,6 +43,9 @@
     {% endif %}
 </div>
     
+
+<!-- 空の要素を追加してスクロール範囲を増やす -->
+<div class="spacer"></div>
 
 
 {%if message%}

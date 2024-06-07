@@ -24,7 +24,6 @@ def file():
     
     Q_file=db.search_allQ()
     K_files=db.search_allK()
-    
     return render_template('file.html', Q_file=Q_file, K_files=K_files)
 
 @app.route('/exploratory')

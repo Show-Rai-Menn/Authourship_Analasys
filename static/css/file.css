@@ -1,0 +1,25 @@
+.file-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 10px; /* 各項目間にスペースを追加 */
+}
+.file-item li {
+    margin-right: 10px;
+    list-style: none;
+}
+
+.file-name {
+    margin-right: 10px;
+}
+
+.file-item button {
+    margin-left: 5px;
+}
+.file-buttons button {
+    margin-bottom: 5px;
+}
+
+.spacer {
+    height: 100px; /* 空の要素に高さを設定 */
+}
