@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>{% block title %}My Web App{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    {% block head %}{% endblock %}
+    {% block head %}{% endblock%}
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('file') }}">filemanage</a></li>
-                <li><a href="{{ url_for('exploratory') }}">exploratory search tab</a></li>
+                <li><a href="{{ url_for('file') }}">Filemanage</a></li>
+                <li><a href="{{ url_for('exploratoryf') }}">Exploratory Search Tab</a></li>
+                <li><a href="{{ url_for('comparison') }}">Comparison Tab</a></li>
                 <li><a href="{{ url_for('K_and_K') }}">K and K Tab</a></li>
             </ul>
         </nav>

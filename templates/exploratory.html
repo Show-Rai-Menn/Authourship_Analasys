@@ -11,18 +11,18 @@
 <div class="container">
     <div class="search-section">
         <h2>Exploratory Search</h2>
-        <form id="searchForm" method="post" action="/exploratory/result">
-            <button type="submit">送信</button>
+        <form id="form">
+            
             {% if Q_file %}
             {% for Q in Q_file %}
-            <li><input type="checkbox" class="file-checkbox" data-type="Q" value="{{ Q[0] }}">{{ Q[0] }} ({{ Q[1] }})</li>
+            <li><input type="checkbox" class="file-checkbox" name="Q" value="{{ Q[0] }}">{{ Q[0] }} ({{ Q[1] }})</li>
             {% endfor %}
             {% else %}
             <p>No Q files found.</p>
             {% endif %}
             {% if K_files %}
             {% for K in K_files %}
-            <li><input type="checkbox" class="file-checkbox" data-type="K" value="{{ K[0] }}">{{ K[0] }} ({{ K[1] }})</li>
+            <li><input type="checkbox" class="file-checkbox" name="K" value="{{ K[0] }}">{{ K[0] }} ({{ K[1] }})</li>
             {% endfor %}
             {% else %}
             <p>No K files found.</p>

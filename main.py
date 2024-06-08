@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import os
 from werkzeug.utils import secure_filename
 import db
 import analysis
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from multiprocessing import Process
+from collections import Counter
 import exploratory
 
 app = Flask(__name__)
@@ -27,41 +28,6 @@ def file():
     K_files=db.search_allK()
     
     return render_template('file.html', Q_file=Q_file, K_files=K_files)
-
-@app.route('/exploratory')
-def exploratory():
-    Q_file=db.search_allQ()
-    K_files=db.search_allK()
-    return render_template('exploratory.html', Q_file=Q_file, K_files=K_files)
-
-@app.route('/explonatory/search', methods=['POST'])
-def search():
-    data = request.get_json()
-    search_type = data['searchType']
-    search_term = data['searchTerm']
-    directory = './AA dataset'
-    try:
-        texts = load_files_from_directory(directory)
-    except FileNotFoundError as e:
-        return jsonify({"error": str(e)}), 400
-
-    context_size = 5
-
-    if search_type == 'wordToken':
-        results = search_word_token(texts, search_term, context_size)
-    elif search_type == 'lemma':
-        results = search_lemma(texts, search_term, context_size)
-    elif search_type == 'pos':
-        results = search_pos(texts, search_term, context_size)
-    elif search_type == 'ngram':
-        n = 3  # Default value for n-gram, can be adjusted as needed
-        results = search_ngram(texts, search_term, n, context_size)
-    elif search_type == 'regex':
-        results = search_regex(texts, search_term, context_size)
-    else:
-        results = []
-
-    return jsonify(results)
 
 
 
@@ -98,6 +64,43 @@ def upload_file():
     return render_template('file.html', message='file upload successfully and please reload')#正常なとき
 
 
+@app.route('/exploratory')
+def exploratoryf():
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('exploratory.html', Q_file=Q_file, K_files=K_files)
+
+@app.route('/exploratory/search', methods=['POST'])
+def explonatory_search():
+    data = request.get_json()
+    search_type = data['searchType']
+    search_term = data['searchTerm']
+    Qfilenames = data.get('Q', [])
+    Kfilenames = data.get('K', [])
+    print(Qfilenames)
+    context_size = 10
+    Qcontents, Kcontents=db.get_content(Qfilenames, Kfilenames)
+
+    if search_type == 'wordToken':
+        Qresults, Kresults = exploratory.search_word_token(Qfilenames, Qcontents, Kfilenames, Kcontents, search_term, context_size)
+    elif search_type == 'lemma':
+        Qresults, Kresults = exploratory.search_lemma(Qfilenames, Qcontents, Kfilenames, Kcontents, search_term, context_size)
+    elif search_type == 'pos':
+        Qresults, Kresults = exploratory.search_pos(Qfilenames, Qcontents, Kfilenames, Kcontents, search_term, context_size)
+    elif search_type == 'ngram':
+        n = 3  # Default value for n-gram, can be adjusted as needed
+        results = search_ngram(texts, search_term, n, context_size)
+    elif search_type == 'regex':
+        results = search_regex(texts, search_term, context_size)
+    else:
+        results = []
+    
+    rendered_html = render_template(
+        'exploratory_result.html',
+        Qresults=Qresults, Kresults=Kresults
+    )
+    return jsonify(html=rendered_html)
+
 @app.route('/K_and_K')
 def K_and_K():
     K_files=db.search_allK()
@@ -110,7 +113,48 @@ def Kresult():
     null, Kfiles=db.get_content(None, Kfilename)
     
     result=analysis.K_and_K(Kfilename, Kfiles)
-    return render_template('K_and_K_result.html', result=result)
+    print(type(result))
+    return render_template('K_and_K_result.html', result=result, filenames=Kfilename)
+
+@app.route('/comparison')
+def comparison():
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('comparison.html', Q_file=Q_file, K_files=K_files)
+
+@app.route('/comparison/result', methods=['POST'])
+def comparison_Result():
+    data = request.get_json()
+    Qfilenames = data.get('Q', [])
+    Kfilenames = data.get('K', [])
+    count = data.get('count')
+    print(Qfilenames)
+    print(Kfilenames)
+    
+    Qcontents, Kcontents = db.get_content(Qfilenames, Kfilenames)
+    token_num = count * 20
+    Qresults = {}  # ファイルごとのトークントップリストを格納する辞書
+    Kresults = {}
+
+    if Qcontents:
+        for content, filename in zip(Qcontents, Qfilenames):
+            Qresults[filename] = analysis.token_frequency(content, token_num)
+            
+    if Kcontents:
+        for content, filename in zip(Kcontents, Kfilenames):
+            Kresults[filename] = analysis.token_frequency(content, token_num)
+            print(type(Kresults[filename]))
+            print(type(Kresults))
+    
+    # HTMLのレンダリング
+    rendered_html = render_template(
+        'comparison_result.html',
+        Qresults=Qresults, Kresults=Kresults, token_num=token_num
+    )
+    return jsonify(html=rendered_html)
+            
+    
+
 
 @app.route('/search/file')
 def search():
@@ -138,56 +182,10 @@ def delete():
 
     return redirect(url_for('index'))
 
-@app.route('/update')
-def update():
-    return render_template('file.html', method='Update')
 
-@app.route('/select')
-def select_file():
-    filename=db.search_all()
-    
-    return render_template('select.html', namelist=filename)
+ 
 
-@app.route('/token', methods=['POST'])
-def token_frequency():#ここでは選択されたファイルを受け取ってtoken frequencyの処理をしている
-    try:
-        print("success access /token")
-        selected=request.form.getlist("option")
-        counter=int(request.form.get('counter'))
-        token_num = counter * 20
 
-        # 選択されたファイルのパスを生成
-        file_paths = [os.path.join("uploads", filename) for filename in selected]
-        
-        # ファイルを処理する関数
-        def process_file(filepath):
-            tokenlist = analysis.token_frequency(filepath, token_num)
-            if tokenlist is None:
-                tokenlist = []  # listの初期化
-                print("tokenlist is none")
-            filename = os.path.basename(filepath)
-            return filename, tokenlist
-        
-        filelist = []
-        
-        # ThreadPoolExecutorを使用して非同期にファイルを処理
-        with ThreadPoolExecutor() as executor:
-            future_to_file = {executor.submit(process_file, path): path for path in file_paths}
-            for future in as_completed(future_to_file):
-                try:
-                    filename, tokenlist = future.result()
-                    filelist.append([filename, tokenlist])
-                except Exception as e:
-                    print(f"An error occurred while processing a file: {e}")
-        
-        print("get filelist")
-        print(filelist)
-        
-        # 結果をレンダリング
-        return render_template('token.html', filelist=filelist, analysis_method="search frequency token", token_num=token_num)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return "An error occurred", 500
     
 
 @app.route('/display/search', methods=['POST'])
@@ -218,8 +216,6 @@ def token_search():
         print(f"An error occurred: {e}")
         return "An error occurred", 500
 
-
-    
 
 
 if __name__ == '__main__':

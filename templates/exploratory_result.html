@@ -1,0 +1,19 @@
+{% if Qresults %}
+    <h2>Qresults</h2>
+    {% for filename, results in Qresults.items() %}
+        <div class="filename">{{ filename }}</div>
+        {% for result in results %}
+            <div class="result">{{ result|safe }}</div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% if Kresults %}
+    <h2>Kresults</h2>
+    {% for filename, results in Kresults.items() %}
+        <div class="filename">{{ filename }}</div>
+        {% for result in results %}
+            <div class="result">{{ result|safe }}</div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}

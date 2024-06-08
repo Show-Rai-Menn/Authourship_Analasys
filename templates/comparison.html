@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Web App{% endblock %}
+{% block head %}
+<script src="{{ url_for('static', filename='javascript/comparison.js') }}"></script>
+{% endblock%}
+{% block content %}
+<h1>Welcome to the Home Page</h1>
+<p>This is the home page of our web application.</p>
+
+
+
+
+<div>
+    <button id="submit" onclick="comparison()">送信</button>
+    <form id="form">
+        {% if Q_file %}
+            {% for Q in Q_file %}
+                <li><input type="checkbox" name="Q" value="{{ Q[0] }}">{{ Q[0] }} ({{ Q[1] }})</li>
+            {% endfor %}
+        {% else %}
+            <p>No Q files found.</p>
+        {% endif %}
+
+        {% if K_files %}
+            {% for K in K_files %}
+                <li><input type="checkbox" name="K" value="{{ K[0] }}">{{ K[0] }} ({{ K[1] }})</li>
+            {% endfor %}
+        {% else %}
+            <p>No K files found.</p>
+        {% endif %}
+    </form>
+    
+</div>
+<div id="result"></div>
+
+
+
+
+
+{% endblock %}
