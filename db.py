@@ -35,19 +35,48 @@ def upload(filename, kind, content):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
-def search(query):
-    cursor.execute("SELECT original_name FROM files WHERE original_name LIKE ?", ('%' + query + '%',))
-    file_data=cursor.fetchall()
-    print(file_data)
-    return file_data
 
-def delete_file(filename):
 
-    
-    cursor.execute("DELETE FROM files WHERE original_name = ?", (filename,))
-    conn.commit()  # Commit changes to the database
+def delete(filename, filetype):
+    try:
+        if filetype is 'Q':
+            cursor.execute("DELETE FROM Q_files WHERE original_name = ?", (filename,))
+        elif filetype is 'K':
+            cursor.execute("DELETE FROM K_files WHERE original_name = ?", (filename,))
+        conn.commit()  # Commit changes to the database
+        message='file delete successful'
+    except Exception as e:
+        message=e
 
-    print(f"File '{filename}' deleted.")
+    return message
+
+def getone(filename, filetype):
+    try:
+        if filetype is 'Q':
+            cursor.execute("SELECT content FROM Q_files WHERE original_name = ?", (filename,))
+        elif filetype is 'K':
+            cursor.execute("SELECT content FROM K_files WHERE original_name = ?", (filename,))
+        result=cursor.fetchone()  # Commit changes to the database
+        content=result[0]
+        print(type(content))
+    except Exception as e:
+        print(e)
+
+    return content
+
+def update(filename, content, filetype):
+    try:
+        if filetype is 'Q':
+            cursor.execute("UPDATE Q_files SET content = ? WHERE original_name = ?", (content, filename,))
+        elif filetype is 'K':
+            cursor.execute("UPDATE K_files SET content = ? WHERE original_name = ?", (content, filename,))
+        
+        
+        message='file update is successfully'
+    except Exception as e:
+        print(e)
+        message=e
+    return message
 
 
 def search_allQ():  #すべてのQファイルを取り出す関数
@@ -76,15 +105,16 @@ def search_allK():
 
 
 def get_content(filenameQ, filenameK):
+    Qdata=[]
     if filenameQ:
-        Qdata=[]
         for filename in filenameQ:
             cursor.execute("SELECT content FROM Q_files WHERE original_name = ?", (filename,))
             fetched_data = cursor.fetchall()
             Qdata.extend([row[0] for row in fetched_data])
     
+    Kdata=[]
     if filenameK:
-        Kdata=[]
+        
         for filename in filenameK:
             cursor.execute("SELECT content FROM K_files WHERE original_name = ?", (filename,))
             fetched_data = cursor.fetchall()

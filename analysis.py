@@ -27,38 +27,9 @@ def token_frequency(content, token_num):
     return top_words
     #返り値はtokenのlist(string)
 
-def load_files(file_path):
 
-    try:
-        with open(file_path, 'r') as file:  # 念の為utf-8で読み込む。
-            data=file.read()
-        
-    except FileNotFoundError:
-        print(f"File not found: {file_path}")
-    return data
 
-def token_search(keyword, filepath, context_size=5):
-    ### ワード検索の関数 ###
-    text=load_files(filepath)
-    results = []
-    
-    doc = nlp(text) # docはトークン化された単語などを含むドキュメントオブジェクト
-    for token in doc:
-        if token.text.lower() == keyword.lower(): #　小文字で比較　→　大文字小文字区別無くす
-            start = max(0, token.i - context_size)  # 出力開始位置を求める # token.iはトークンのインデックス
-            end = min(len(doc), token.i + context_size + 1)  #出力の終わりの位置　
-                
-            context = doc[start:end]  #キーワード含めて取得
-            context_tokens = [tok.text_with_ws for tok in context]
-            
-                
-                # キーワードを赤色にする
-            keyword_index = token.i - start
-            context_tokens[keyword_index] = f"<span style='color:red;'>{context_tokens[keyword_index]}</span>"#直接htmlを書いておく
-                
-            result = "".join(context_tokens)  # join関数を使用してリスト内の文字列を結合する
-            results.append(result)
-    return results
+
 
 
 def K_and_K(filenames, contents):
