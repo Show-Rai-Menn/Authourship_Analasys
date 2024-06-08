@@ -1,0 +1,720 @@
+
+Title
+Beam-Selection Performance Analysis of a Switched
+Multibeam Antenna System in Mobile Communications
+Environments
+
+Issue Date 1997-02
+
+Abstract?The probability of incorrect beam selection (PIBS)
+with a switched multibeam antenna system is theoretically analyzed
+under power-limited and interference-limited mobile communication
+environments. Periodic transmission of unique word
+sequence followed by information symbol sequence is assumed.
+The model of beam selection used in this paper is based upon a
+simple three-stage mechanism: 1) signal validation; 2) averaging;
+and 3) selection of the largest output. Complex correlation peaks
+corresponding to the unique words, detected by the matched filter
+for the signal validation, are averaged over several consecutive
+unique words, and a beam having the largest output is selected.
+Equally weighted noncoherent integration is assumed for the
+averaging process. The beam selection takes place frame-byframe.
+The first half of this paper is devoted to the PIBS derivation
+for a simple switched two-beam antenna system. Numerical
+calculation results are then presented. The latter half of this
+paper investigates the impact of the incorrect beam selection on
+overall average signal-to-noise (SNR) power ratio and signal-tointerference
+(SIR) power ratio. The amount of the overall SNR
+(or SIR) improvement over the omnidirectional antenna depends
+on the propagation conditions. In general, larger improvements
+can be achieved by smaller values of PIBS.
+Index Terms?Digital cellular system, switched multibeam antenna,
+TDMA, time diversity, unique word detection.
+I. INTRODUCTION
+THE ARRAY antenna with adaptive beam forming has
+been recognized as being effective in suppressing cochannel
+interference by steering nulls to interferers, thereby improving
+the signal-to-interference (SIR) power ratio on the
+desired signal component. In cellular configurations, this allows
+cochannel interferers to be located in cells closer to
+the reference cell than those with omnidirectional antennas,
+or even in the same cell. References [1] and [2] analyze the
+capacity enhancement achieved by a base-station array antenna
+system with adaptive beam forming and discuss a practical
+antenna configuration. Reference [3] analyzes the capacity
+Manuscript received April 21, 1995; revised October 11, 1995 and February
+28, 1996.
+T. Matsumoto was with NTT America, Inc., Lafayette, CA 94549 USA.
+He is now with NTT Mobile Communications Network, Inc., Yokosuka,
+Kanagawa 239, Japan.
+S. Nishioka was with NTT America, Inc., Lafayette, CA 94549 USA. He
+is now with NTT America, New York, NY 10178 USA.
+D. Hodder is with Telecommunications Group, Inc., Houston, TX 77004
+USA.
+Publisher Item Identifier S 0018-9545(97)01308-X.
+improvement with a base-station antenna array for a code
+division multiple access (CDMA) mobile communications
+system.
+One major drawback of the adaptive beam-forming array
+antenna is that given the number of array elements, the beam
+gains are subject to the usersÅf geographical locations: the
+shorter the geographical distance between the desired user and
+interferers, the smaller the beam gain. This problem can be
+eliminated by adaptive signal combining [4]?[6] rather than
+beam forming. The array antenna system with adaptive signal
+combining does not require the antenna elements to be located
+close enough to achieve beam directivity, but it requires them
+to be separated in space so that fading variations on the
+received signals can be regarded as statistically independent.
+This requirement is similar to diversity reception. Reference
+[7] derives, given a number of antenna elements, the number of
+interferers the array can suppress and the equivalent diversity
+order the array achieves. With this idea, several usersÅf signals,
+even coming from the same direction, can be resolved.
+Both the beam-forming and signal combining antennas
+require adaptive signal processing to determine the optimal
+weight coefficients that meet their criteria. In mobile communications
+environments, the received complex envelopes of the
+desired and interference signals vary rapidly due to fading.
+Therefore, the adaptive signal processing must ÅgtrackÅh the
+change in the fading envelope so that the weight coefficients
+always meet the optimality requirements. If the tracking performance
+with the adaptive algorithm is not sufficient, antenna
+performances may degrade.
+One simple alternative to the adaptive antennas is the
+switched multibeam antenna system, in which several narrow
+beams are used to cover the entire coverage of the base station
+[8]. A beam receiving the desired signal with the highest
+signal strength among the beams is selected. Even with this
+simple mechanism, the spectrum efficiency of the cellular
+system can be improved. This is because the narrower the
+beam, the smaller the probability that interference signals are
+received by the same beam selected for the desired signal. A
+similarity may be found between this concept and sectored
+cell configurations. However, the switched beam antenna does
+not require a handoff process, even if a user moves to another
+beam. Handoff to a different carrier may be initiated if none of
+the signals received by any beams does not satisfy a quality
+requirement.
+0018?9545/97$10.00 a 1997 IEEE
+MATSUMOTO et al.: BEAM-SELECTION PERFORMANCE ANALYSIS 11
+Fig. 1. Propagation scenario and antenna gains.
+The beam selection takes place using a sequence of unique
+words periodically embedded in the transmitted symbol sequence,
+and the sequence received by the selected beam is
+output. Each antenna element is followed by a filter matched
+to the unique word waveform. Simple signal processing using
+the outputs of the matched filters suppresses the effect of interferences
+on the beam selection. This process is referred to as
+ÅgvalidationÅh for convenience. However, this signal validation
+process may not be perfect. Hence, a major problem inherent
+within the switched multibeam antenna system is incorrect
+beam selection; a beam receiving a desired signal component
+having the highest SIR plus noise power ratio cannot be
+selected. Therefore, a pragmatic consideration should be given
+to two issues: how frequently the incorrect beam selection
+happens under various mobile propagation scenarios and how
+serious the outcome is that results from the incorrect selection.
+This paper theoretically analyzes the probability of incorrect
+beam selection (PIBS) with a switched multibeam antenna
+system. A two-beam antenna is assumed for simplicity. It is
+assumed that there is one desired user and one interferer and
+that each of the desired and interference transmissions has
+two propagation paths: one goes to one of the two beams and
+the other goes to the other beam. It is shown that the PIBS
+is dominated by the power ratio of the two desired signal
+components; if the ratio is small, a relatively high PIBS results.
+The impact of the incorrect beam selection on overall
+average signal-to-noise power ratio (SNR) and SIR power ratio
+is then investigated. It is shown that in both the power-limited
+and interference-limited environments, larger overall SNR (or
+SIR) improvements over the omnidirectional antenna can be
+achieved with smaller values of the average PIBS. The amount
+of the improvement depends on the power ratios of both the
+two desired signal components and two interference signal
+components.
+This paper is organized as follows. Section II presents
+the system model used. A mathematical model of the signal
+processing for the signal validation and beam selection
+is described. In Section III, it is shown that the decision
+variable used in the beam-selection process can be expressed
+as a quadratic form of the complex random variable vector
+comprised of desired, interference, and noise components at
+the matched filter output. This implies that eigenvalues of
+the matrix with the quadratic form are needed to calculate
+the PIBS. Some numerical algorithms may be applicable to
+the eigen analysis. Section IV presents, for the quaternary
+phase shift keying (QPSK), numerical calculation results for
+the PIBS under various propagation environments. In Section
+V, the impacts of the incorrect beam selection on the overall
+SNR and SIR enhancements are discussed.
+II. SYSTEM MODEL
+A. Channel Model
+There is one desired user and one cochannel interferer in
+the system being considered. The base station has a switched
+two-beam antenna system. Each antennaÅfs main beam covers
+a separate area, but its side lobe overlaps another main beamÅfs
+coverage.1 Each of the desired and interference transmissions
+has two propagation paths: one goes to one of the two
+elementÅfs main beams and the other goes to the other. As
+shown in Fig. 1, main beams and their side lobes have complex
+beam gains of , where and each take values of one or
+two. indexes the antenna element, expresses the direction
+of the th elementÅfs main beam, and expresses each userÅfs
+th propagation path.
+It is assumed that the two propagation paths for each
+user are subjected to independent frequency-flat Rayleigh
+fading. Fading variation with the desired signal is statistically
+independent of that with the interference. A block diagram of
+the multipath channel and antenna system is shown in Fig. 2.
+Output samples and of the first and second elements
+can, respectively, be expressed as
+(1.1)
+and
+(1.2)
+where , , with and
+being, respectively, the fading complex envelopes with
+the desired userÅfs first and second paths, ,
+, with and being, respectively,
+the fading complex envelopes with the interfererÅfs first and
+second paths, and is the sampling period. and
+, with and being, respectively,
+the desired userÅfs and interfererÅfs waveforms at the receiver
+filter output. We assume that the difference in the propagation
+delay between the two propagation paths is small enough
+compared to the sampling period . and
+, with and being, respectively,
+the filtered Gaussian noise components on the two antenna
+element outputs.
+1The beam pattern itself is not within the scope of this paper; the twobeam
+configuration assumed in this paper is the model for the PIBS analysis.
+In actual base stations, antenna beams may have more complex patterns; even
+main beams may overlap each other. The PIBS derivation process described
+in this paper can be applied to that situation and should result in similarity in
+the performances.
+12 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 46, NO. 1, FEBRUARY 1997
+Fig. 2. Block diagram of multipath channel and antenna system.
+B. Beam Selection
+A block diagram for overall signal processing for the beam
+selection is shown in Fig. 3(a). The overall signal processing is
+comprised of three stages: 1) signal validation; 2) averaging;
+and 3) selection of the largest output. The signal validation
+process uses a sequence of unique words periodically embedded
+in the transmitted symbol sequence.2 Fig. 3(b) shows the
+frame format. The symbol sequence received by the selected
+beam is output frame-by-frame. The unique word consists of
+symbols. Sampling of the receiver filter output takes place
+times a symbol. Hence, , where is the symbol
+duration.
+Each antenna element is followed by a matched filter
+matched to the unique word waveform. A simple configuration
+of the matched filter is shown in Fig. 3(c). The sample
+sequence is the input to the matched filter. It is assumed that
+the receiver knows the timing at which the desired signalÅfs
+unique word is received, but it does not know the interfererÅfs
+transmitted symbol sequence. The interfererÅfs symbol timing
+is asynchronous with the desired signalÅfs symbol timing.
+The matched filter output at that timing can be expressed as
+(2.1)
+where
+(2.2)
+(2.3)
+indexes the element number, and and denote
+transpose and complex conjugate, respectively. The matched
+filter output for the two antenna elements can be obtained by
+2 Periodic unique word transmission is a popular technique in digital
+mobile communications systems. The unique word is usually used for many
+purposes such as radio link control, timing adjustment, quality checking, and
+equalization.
+substituting (1.1) and (1.2) into (2.1). For the th unique word,
+the matched filter outputs become
+(3.1)
+and
+(3.2)
+where
+(3.3)
+(3.4)
+and
+(3.5)
+with
+(3.6)
+(3.7)
+(3.8)
+(3.9)
+(3.10)
+(3.11)
+, and .
+The best performance should be achieved by the coherent
+integration that first cophases the matched filter outputs and
+then sums them up. This process requires estimates of the
+complex fading envelope, for which some adaptive algorithms
+may be used. This is beyond the scope of this paper. One
+simple alternative to the averaging process in fading channels
+is noncoherent integration: the squared matched filter output
+MATSUMOTO et al.: BEAM-SELECTION PERFORMANCE ANALYSIS 13
+(a)
+(b)
+(c)
+Fig. 3. (a) Block diagram for overall signal processing for beam selection, (b) frame format, and (c) matched filter for the unique word waveform.
+is equally weighted and summed up3 over several
+consecutive unique words. The noncoherent combiner output
+can then be expressed as
+(4)
+where is the averaging times. The decision on the beam
+selection is made based on the decision variable given by
+(5)
+If , the beam corresponding to the first element is
+selected. Otherwise, the second beam is selected.
+III. PIBS DERIVATION
+A. One-Shot Observation
+For the derivation of the PIBS, a special case with
+is first considered for simplicity. After several manipulations,
+3The signal validation and noncoherent integration process is analogous
+with the energy detection of the supervisory audio tone (SAT) used in the
+advanced mobile phone service (AMPS) system for cell identification [11].
+the decision variable is found
+to be expressed as
+(6.1)
+where
+(6.2)
+and
+(6.3)
+as shown in (6.4)?(6.6) at the bottom of the page. Hence, it
+is found that the decision variable can be expressed as a
+quadratic form of the complex random variable vector .
+The desired signal and interference components and
+( ) at the matched filter output in (6.2) are the
+sums of the fading complex envelopes, as shown in (3.3) and
+(3.4), respectively. Hence, and become zero-mean
+independent complex Gaussian processes with variances of
+and , where
+and are, respectively, the correlation matrices of
+14 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 46, NO. 1, FEBRUARY 1997
+the fading complex envelopes with the desired userÅfs and
+interfererÅfs th paths. Let and be denoted by
+...
+. . .
+...
+(7.1)
+and
+...
+. . .
+...
+(7.2)
+where for , and
+, with being the average desired
+signal power of the th propagation path and being the
+average interference power of the th propagation path. If
+JakesÅf fading model [9] is used,
+and , where and are
+the maximum Doppler frequencies for the desired user and
+interferer, respectively, and is the zeroth-order Bessel
+function of the first kind.
+The noise components Åfs at the matched filter output
+in (6.2) are the sums of the samples of the filtered Gaussian
+noise, as shown in (3.5). Hence, Åfs also become zero-mean
+independent complex Gaussian processes with variances of
+, where is the correlation
+matrix of the filtered Gaussian process. Let be denoted by
+...
+. . .
+...
+(8)
+where , with being the
+noise power. If the receiver filter has its transfer function of
+, then
+(9.1)
+with being the autocorrelation function of the filtered
+noise given by
+(9.2)
+Since (6.1) is a quadratic form of the complex random
+variable vector , the decision variable Åfs characteristic
+function can be expressed using the matrix
+, given by (6.3) as
+(10)
+where is Åfs autocorrelation matrix given by (11), as
+shown at the bottom of the page. The characteristic function
+given by (10) can be rewritten as
+(12)
+where Åfs are the eigenvalues of the product matrix .
+Some numerical algorithms may be used to obtain the eigenvalues.
+The probability density function (pdf) of and
+can be calculated as an inverse Laplace transform of
+using the eigenvalues. The probabilities that and
+can then be calculated using the pdf.
+Note that if the eigenvalues are distinct, (12) may be
+rewitten as [10]
+(13)
+where Åfs are the residues of . In this case, the
+probability of can be calculated as
+Prob (14)
+B. Multiframe Observation
+In the case of , an additional index is used to
+express the th unique word, where vector , given by (6.2),
+is rewitten as
+(15)
+where and are, with , the th path components
+of the desired signal and interference, respectively, in
+the matched filter output at the th unique word timing.
+is the noise component in the th element output. Using ,
+the decision variable given by (4) can also be expressed in a
+quadratic form as
+(16.1)
+(6.4)
+(6.5)
+and
+(6.6)
+MATSUMOTO et al.: BEAM-SELECTION PERFORMANCE ANALYSIS 15
+Fig. 4. Propagation scenario for numerical calculations.
+where
+(16.2)
+and
+...
+...
+. . .
+(16.3)
+The pdf of can be obtained through the characteristic
+function approach by using and Åfs autocorrelation matrix
+instead of and in (10), respectively,
+where the size of becomes 6 6 .
+IV. NUMERICAL CALCULATIONS
+Fig. 4 shows the model used in numerical calculations. It
+is assumed that the desired userÅfs first path has the same
+incoming direction as the interfererÅfs second path (in this case,
+and ), and the desired userÅfs second
+path has the same incoming direction as the interfererÅfs first
+path ( and ). Furthermore, we assume
+for simplicity
+(17.1)
+and
+(17.2)
+where is the main beamÅfs complex gain and
+is the sidelobe beamÅfs complex gain. is the
+main beamÅfs amplitude gain, and is the sidelobe attenuation
+factor.
+QPSK is assumed for a modulation scheme. Unique word
+length and frame length are, respectively, assumed to be
+4 and 256 symbol long. The desired user transmits a fixed
+quaternary unique word pattern at every unique word timing,
+and the interferer transmits a quaternary random sequence, but
+the interfererÅfs symbol timing is not synchronized with the
+desired userÅfs. A Nyquist raised cosine transfer function was
+used for an overall filter response that is shared equally by the
+transmitter and receiver. The overall filter response waveform
+is given by
+(18)
+where is the rolloff factor. This waveform is equivalent to
+the autocorrelation function of the noise component at
+the receiver filter output.
+Prior to the PIBS calculations, the effects of timing offset
+, per-symbol sampling times , and the power ratio of
+the two interference components, , were evaluated. It
+was found from the preliminary calculations that the PIBS is
+insensitive to these factors, and, therefore, in the following
+PIBS calculations, and dB were assumed.
+For a fixed desired signalÅfs unique word pattern, PIBS was
+calculated for various interference waveforms corresponding
+to the random symbol patterns having symbol timing difference
+from the desired signal and then averaged. This
+process was repeated for other unique word patterns and
+further averaged. It is assumed that dB,
+dB, , and .
+A. Power-Limited Environment
+In power-limited environments, and .
+The average SNR on the omnidirectional antenna becomes
+. Fig. 5 shows, for the averaging times
+, the average Prob versus the average
+SNR on the omnidirectional antenna, with the power ratio
+and the desired signalÅfs maximum Doppler frequency
+normalized by the symbol duration as parameters.
+The average Prob decreases as the average SNR
+increases. This decrease in Prob is more rapid with
+than with . This is because of
+the time?diversity improvement inherent within the averaging
+process. As the average SNR becomes large, the decrease in
+Prob plateaus. This floor in Prob is due
+to ; even for a sufficiently large value of , a beam
+receiving the desired signal component on the second path is
+likely to be selected if the second path component has a large
+signal power.
+...
+...
+(11)
+16 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 46, NO. 1, FEBRUARY 1997
+Fig. 5. Average Prob(D < 0) under power-limited environment.
+Fig. 6 shows, for the average SNR dB and
+, the average Prob versus the number of the
+unique words for averaging, with as a parameter. The
+time?diversity improvement achieved by the averaging process
+can be seen clearly in the plot of the average Prob .
+However, for dB, the decrease in the average
+Prob is very slow, and, hence, averaging is not
+effective.
+B. Interference-Limited Environment
+In interference-limited environments, . The average
+SIR power ratio on the omnidirectional antenna becomes
+. Fig. 7 shows, for , the
+average Prob versus the average SIR on the
+omnidirectional antenna, with and the desired and
+interference signalsÅf normalized maximum Doppler frequency
+as parameters. The similarlity to the average
+Prob in the power-limited environment can be seen
+in the performance in the interference-limited environment.
+The time?diversity improvement can be obtained if is
+large and .
+The average Prob versus is shown in Fig. 8
+for and dB, with as a
+parameter. As increases, the average Prob
+reduces. If , this Prob
+reduction is in proportion to . This indicates that
+the equivalent diversity order of four can be achieved with
+. This is because with the frame length of 256 symbols,
+the fading variations at the four unique word timings are
+statistically independent for . If
+fading is very slow ( ), no time?diversity
+Fig. 6. Average Prob(D <0) versus number of unique words for averaging
+under a power-limited environment.
+Fig. 7. Average Prob(D < 0) under interference-limited environment.
+improvement is achieved; the Prob reduction is in
+proportion to .
+MATSUMOTO et al.: BEAM-SELECTION PERFORMANCE ANALYSIS 17
+Fig. 8. Average Prob(D < 0) versus D1=D2.
+Fig. 9 shows, for dB and ,
+the average Prob versus the averaging times ,
+with as a parameter. The time?diversity improvement
+achieved by the averaging process can clearly be seen in the
+plot of the average Prob ; however, for a small value
+of , averaging is not effective.
+V. DISCUSSIONS
+Let us assume that fading envelope variations with the
+desired and interference signal components received by the
+selected beam are independent of the beam-selection process.
+This assumption is not always correct. However, if the frame
+length is sufficiently large compared to the maximum Doppler
+frequency, this assumption is a reasonable approximation. In
+this section, impacts of the incorrect beam selection on the
+average overall SNR and SIR are investigated.
+A. Power-Limited Environment
+Average SNRÅfs on the first and second element outputs are
+and ,
+respectively. If , the first element has the correct
+main beam. This condition is equivalent to , where
+. Hence, average PIBS average Prob
+if . For the average PIBS of , the average overall SNR
+after beam selection can be approximated by
+(19)
+Fig. 9. Average Prob(D <0) versus number of unique words for averaging
+under interference-limited environment.
+The gain in the average overall SNR over the
+omnidirectional antennaÅfs average SNR then becomes
+(20)
+Fig. 10 shows the gain in the average SNR versus
+, with the average PIBS as a parameter for
+dB and dB. and are also plotted. It is
+found that the gain on the correct beam increases, and the gain
+on the incorrect beam decreases as increases. The gain
+on the correct beam approaches its maximum of dB.
+The gain on the incorrect beam approaches its minimum of 0
+dB. Even with PIBS , the gain is around 7.3 dB for all
+the values of . With PIBS , the gain is between
+7.3 dB and the gain on the correct beam. Hence, in powerlimited
+environments, an SNR improvement of over 7.3 dB
+can be achieved with dB and dB, even if
+the average PIBS is relatively large.
+B. Interference-Limited Environment
+SIRÅfs on the first and second element output are
+and ,
+respectively. If , the first element has the correct
+main beam. This condition is equivalent to , where
+and . Hence, average PIBS average
+Prob if . The average overall SIR after
+beam selection can be approximated by
+(21)
+18 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 46, NO. 1, FEBRUARY 1997
+Fig. 10. Gain in average SNR (dB) under power-limited environment.
+The gain in the average overall SIR over the
+omnidirectional antennaÅfs average SIR then becomes
+(22)
+Fig. 11(a) and (b) shows the gain in the average SIR
+versus , with the average PIBS as a parameter for
+dB and dB. Fig. 11(a) is for ,
+and Fig. 11(b) is for dB. and are
+also plotted versus . It is found that the gain on the correct
+beam increases, and the gain on the incorrect beam decreases
+as increases. The gain on the correct beam approaches
+its maximum of dB. The gain on the incorrect beam
+approaches its minimum of 0 dB. It is obvious that if PIBS
+, the gain is 0 dB. With PIBS , a positive gain can
+be achieved for both cases of and
+dB, and the gain for is larger than for
+dB. Hence, an SIR improvement can also be achieved in
+interference-limited environments, even if the average PIBS
+is relatively large.
+VI. CONCLUSION
+In this paper, we have analyzed the PIBS with a
+switched multibeam antenna system under power-limited and
+interference-limited mobile communication environments. A
+simple beam-selection mechanism was assumed; complex
+correlation peaks corresponding to the unique words, detected
+by the matched filter matched to the unique word waveform,
+are averaged over several consecutive unique words, and a
+beam having the largest output is then selected. Noncoherent
+integration was assumed for the averaging process. The beam
+selection takes place frame-by-frame.
+A two-beam antenna was assumed. It was assumed that
+there is one desired user and one interferer and that each of
+(a)
+(b)
+Fig. 11. (a) Gain in average SIR versus D1=D2 under interference-limited
+environment for U1=U2 ! 1 and (b) gain in average SIR versus D1=D2
+under interference-limited environment for U1=U2 = 0 dB.
+the desired and interference transmissions has two propagation
+paths: one goes to one of the two beams, and the other goes to
+the other beam. With this model, the decision variable assoMATSUMOTO
+et al.: BEAM-SELECTION PERFORMANCE ANALYSIS 19
+ciated with the PIBS turns out to be expressed as a quadratic
+form of the complex random variable vector comprised of
+desired interference and noise components at the matched filter
+outputs. Hence, the characteristic function approach has been
+used to derive the pdf of the decision variable.
+It has been shown that the PIBS is dominated by the power
+ratio of the two desired signal components; if the
+ratio is small, a relatively high PIBS results. The averaging
+process itself is not effective to reduce the PIBS if is
+small. Time?diversity improvements can be achieved on the
+PIBS versus by the averaging process if the maximum
+Doppler frequency is relatively high compared with the frame
+length.
+The impacts of the incorrect beam selection on overall
+average SNR and SIR were then investigated, both in the
+power-limited and interference-limited environments. Under
+the power-limited environment, the overall SNR improvement
+over the omnidirectional antenna is relatively large, even
+with PIBS Under the interference-limited environment,
+larger overall SIR improvement can be achieved by smaller
+PIBS and larger values if the interferer has only one
+propagation path ( ). If dB, the impact
+of the beam selection on the overall SIR improvement is small.
+It should be emphasized that the receiver must tolerate such an
+SNR (or SIR) encountered by the incorrect beam, even if the
+PIBS (and, hence, the time during which the incorrect beam
+is selected) can be made very small.
+ACKNOWLEDGMENT
+The authors would like to thank Prof. A. Paulraj of Stanford
+University and K. Kaczmarek, former Vice President of Nextel
+Communications, for their helpful comments and suggestions.
+The authors also would like to thank Dr. A. Chatterjee, former
+Director of Nextel Communications, for his helpful advice on
+manuscript improvement.
+REFERENCES
+[1] S. C. Swales, M. A. Beach, D. J. Edwards, and J. P. McGeehan, ÅgThe
+performance enhancement of multibeam adaptive base-station antennas
+for cellular land mobile radio systems,Åh IEEE Trans. Veh. Technol., vol.
+39, pp. 56?67, Feb. 1990.
+[2] S. C. Swales, M. A. Beach, and D. J. Edwards, ÅgMulti-beam adaptive
+base-station antennas for cellular land mobile radio systems,Åh in Proc.
+IEEE VTC Åf89, San Francisco, CA, 1989, pp. 341?348.
+[3] A. F. Naguib, A. Paulraj, and T. Kailath, ÅgCapacity improvement
+with base-station antenna arrays in cellular CDMA,Åh IEEE Trans. Veh.
+Technol., vol. 43, pp. 691?698, Aug. 1994.
+[4] J. H. Winters, ÅgOptimum combining in digital mobile radio with
+co-channel interference,Åh IEEE Trans. Veh. Technol., vol. VT-33, pp.
+144?155, Aug. 1984.
+[5] R. G. Vaughan, ÅgOn optimum combining at the mobile,Åh IEEE Trans.
+Veh. Technol., vol. 37, pp. 181?188, Nov. 1988.
+[6] J. H. Winters, ÅgSignal acquisition and tracking with adaptive arrays in
+the digital mobile radio system IS-54 with flat fading,Åh IEEE Trans. Veh.
+Technol., vol. 42, pp. 37?384, Nov. 1993.
+[7] , ÅgThe impact of antenna diversity on the capacity of wireless
+communications systems,Åh IEEE Trans. Commun., vol. 42, pp.
+1740?1751, Feb./Mar./Apr. 1994.
+[8] R. A. Shade and A. M. Kowalski, ÅgIntelligent antennas for cellular
+communications,Åh in Proc. IEEE 1994 Adaptive Ant. Syst. Symp., pp.
+29?36.
+[9] W. C. Jakes, Microwave Mobile Communications. New York: IEEE
+Press, 1974, pp. 19?26.
+[10] M. Schwarz, W. Bennett, and S. Stein, Communications Systems and
+Techniques. New York: McGraw-Hill, 1966, pp. 468?480.
+[11] A. Mehrotra, Cellular Radio-Analog and Digital Systems. Norwood,
+MA: Artech House, 1994, pp. 54?55.
+Tadashi Matsumoto (MÅf84?SMÅf95) received
+the B.S., M.S., and Ph.D. degrees in electrical
+engineering from Keio University, Yokohama-shi,
+Japan, in 1978, 1980, and 1991, respectively.
+In April 1980, he joined Nippon Telegraph and
+Telephone Corporation (NTT). From April 1980
+to May 1987, he researched signal transmission
+technologies, such as modulation/demodulation
+schemes, as well as radio link design for mobile
+communications systems. He participated in the
+R&D project of NTTÅfs high-capacity mobile
+communications system, where he was responsible for the development
+of the base-station transmitter/receiver equipment for the system. From May
+1987 to February 1991, he researched error-control strategies such as forward
+error correction (FEC), trellis-coded modulation (TCM), and automatic repeat
+request (ARQ) in digital mobile radio channels. He developed an efficient
+new ARQ scheme suitable to the error occurrence in TDMA mobile signal
+transmission environments. He was involved in the development of a Japanese
+TDMA digital cellular mobile communications system. He took the leadership
+for the development of the facsimile and data communications service units
+for the system. In July 1992, he transferred to NTT Mobile Communications
+Network, Inc. (NTT DoCoMo), Lafayette, CA. From February 1991 to April
+1994, he was responsible for research on CDMA mobile communications
+systems. He intensively researched multiuser detection schemes for multipath
+mobile communications environments. He was also responsible for research
+on error-control schemes for CDMA mobile communications systems. He
+concentrated on research of a maximum a posteriori probability (MAP)
+algorithm and its reduced complexity version for decoding of concatenated
+codes. He took the leadership for the development of error-control equipment
+for NTT DoCoMoÅfs CDMA mobile communications system. From 1992 to
+1994, he served as a part-time Lecturer at Keio University. In April 1994,
+he moved to NTT America and served as a Senior Technical Advisor of a
+joint project with NTT and NEXTEL Communications. In March 1996, he
+returned to NTT DoCoMo. Since then, he has been an Executive Research
+Engineer of DoCoMoÅfs R&D Department.
+Dr. Matsumoto is a member of the Institute of Electronics, Information,
+and Communication Engineers of Japan.
+Seiji Nishioka (MÅf95) received the B.S. degree
+in electrical engineering from Waseda University,
+Tokyo, Japan, in 1987.
+In April 1987, he joined Nippon Telegraph and
+Telephone Corporation (NTT). Since then, he has
+been engaged in the development of mobile radio
+communication systems. From April 1987 to February
+1990, he was involved in the development of
+NTTÅfs high-capacity mobile communications system.
+He was mainly involved in the development
+of a channel resource management method for base
+stations. He also participated in the trial test of that system. In July 1992, he
+transferred to NTT Mobile Communications Network, Inc. (NTT DoCoMo),
+Lafayette, CA. From February 1990 to April 1994, he was involved in the
+development of a Japanese TDMA digital cellular mobile communications
+system. He was mainly involved in the development of operations and
+maintenance equipment for that system. In April 1994, he was transferred
+to NTT America. From April 1994 to March 1996, he was involved in a joint
+project with NTT and NEXTEL as a Technical Advisor. He has been mainly
+involved in two activities in the joint project: audio transmission quality and
+RF distribution technique. Currently, he is a Senior Manager of NTT America.
+Mr. Nishioka is a member of the Institute of Electronics, Information, and
+Communication Engineers of Japan.
+20 IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, VOL. 46, NO. 1, FEBRUARY 1997
+David J. Hodder (SÅf88?MÅf90) received the B.S.
+and M.S. degrees in electrical engineering from the
+University of Nevada, Reno, in 1990 and 1993,
+respectively.
+Prior to his school years, he spent 16 years with
+the United States Navy in areas of communication
+and radar systems. From 1989 to 1994, he was a
+Chief Radio Engineer at the University of Nevada.
+In 1991, he joined Telesis Technologies Laboratory,
+PacTel Corporation, as a Senior RF Engineer for
+PCS research. From 1994 to 1995, he was a Corporate
+Manager of RF technology for Nextel Communications. He was a Project
+Director for the development of a successful switched-beam smart antenna
+system for a digital enhanced specialized mobile radio (ESMR) system. In
+1995, he joined the faculty of Truckee Meadows Community College, Reno,
+NV. Since then, he has been serving as an Associate Professor of Electronics
+and Computer Technology. Currently, he is also Vice President of Engineering
+at Telecommunications Group, Inc., Houston, TX. His research interests cover
+communications systems design deployment and testing, fiber-optics, and
+radar-guided vehicles.

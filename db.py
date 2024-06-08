@@ -77,18 +77,19 @@ def search_allK():
 
 def get_content(filenameQ, filenameK):
     if filenameQ:
-        cursor.execute("SELECT original_name, content FROM Q_files")
-        Qdata=cursor.fetchall()
-    else:
         Qdata=[]
+        for filename in filenameQ:
+            cursor.execute("SELECT content FROM Q_files WHERE original_name = ?", (filename,))
+            fetched_data = cursor.fetchall()
+            Qdata.extend([row[0] for row in fetched_data])
+    
     if filenameK:
         Kdata=[]
         for filename in filenameK:
             cursor.execute("SELECT content FROM K_files WHERE original_name = ?", (filename,))
             fetched_data = cursor.fetchall()
             Kdata.extend([row[0] for row in fetched_data])
-    else:
-        Kdata=[]
+    
     return Qdata, Kdata
     
     

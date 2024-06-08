@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let counter=1;
+        let op="default";
+        function submitForm(){
+            
+            const action=document.getElementById("analysis_input").value;
+            const form = document.getElementById("selected_file");
+            const formData = new FormData(form);  // FormDataオブジェクトを正しく作成
+            let url;
+
+            formData.append('type', action);
+            const result=document.getElementById("result");
+            if(result.innerText!=""){
+                if (op === action) {
+                    counter++;
+                } else {
+                    counter = 1;
+                }
+            }
+            formData.append('counter', counter);
+
+            if(action === 'search token'){
+                url = "/display/search";
+                
+            }
+            if(action==='token frequency'){
+                url="/token"
+            }
+            op=action;
+
+            fetch(url, {  // POSTリクエストの送信
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())  // bodyをテキストとして解釈
+            .then(data => {
+                console.log(data);
+                result.innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+         }
+
+
+        function start_search(){
+            const action=document.getElementById("analysis_input").value;
+            const form = document.getElementById("selected_file");
+            const formData = new FormData(form);  // FormDataオブジェクトを正しく作成
+            const keyword=document.getElementById("keyword").value;
+            let url;
+
+            if(action=='search token'){
+                url='/token/search'
+            }
+           
+            formData.append('keyword', keyword);
+            
+            fetch(url, {  // POSTリクエストの送信
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())  // bodyをテキストとして解釈
+            .then(data => {
+                console.log(data);
+                document.getElementById("analysis_result").innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+         }
+
+    </script>
+</head>
+<body>
+    <form id="selected_file">
+    {%for name in namelist%}
+        <label>
+            <input type="checkbox" name="option" value={{name}}>
+            {{name}}
+
+        </label>
+        <br>
+        {%endfor%}
+        <input type="text" list="analysis_option" id="analysis_input">
+        <datalist id="analysis_option">
+            <option value="search token">search token</option>
+            <option value="token frequency">token frequency</option>
+            <option value="search lema">search lema</option>
+
+        </datalist>
+        <input type="button" value="start" onclick="submitForm()">
+        
+        </form>
+
+        <div id="result"></div>
+</body>
+</html>

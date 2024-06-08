@@ -1,0 +1,526 @@
+
+Title
+BICM-ID for Relay System Allowing Intra-link
+Errors and a Similarity Constellation to ARQ
+Schemes
+
+Issue Date 2012-03
+
+Abstract| In this paper, we propose an accumulator-assisted (ACC) relay system with bit-
+interleaved coded modulation using iterative decoding (BICM-ID) technique and apply the net-
+work topology to an Automatic Repeat Request (ARQ) scheme. Our code design is based on the
+analysis of the extrinsic information transfer (EXIT) chart. The ACC enables the convergence
+tunnel of the EXIT curves opening until almost the (1, 1) point of the mutual information, which
+avoids the error Åãoor. The most advantageous point of the proposed technique is that even though
+errors may happen in the intra-link (source-relay), they can be corrected at the destination by
+exploiting the correlation knowledge between the source and the relay nodes. This technique
+signiÅPcantly reduces the complexity of the relay where the source bits are simply extracted, even
+though errors may occur due to the imperfect channel. The error rate of the intra-link can be
+estimated at the destination node by using the a-posteriori Log likelihood Ratios (LLRs) of the
+two decoders. Then, it can be further utilised in the iterative processing. Since the relay location
+directly inÅãuences the quality of the intra-link, we change the relay locations, and provide the
+analysis of the performances corresponding to diRerent relay locations. The theoretical back-
+ground of this technique is the Slepian-Wolf/Shannon theorem for correlated source coding. The
+simulation results show that the bit-error-rate (BER) performances of the proposed system are
+very close to theoretical limits supported by the Slepian-Wolf/Shannon theorem. In this paper,
+it is also shown that if the intra-link is error free, the topology of the relay network is equivalent
+to an ARQ scheme that exploits Shannon's random coding theorem by utilising an interleaver in
+the framework of ARQ. Based on this observation, results of simulations conducted to evaluate
+the throughput of an ARQ scheme are presented.
+1. INTRODUCTION
+General relay systems usually consist of three basic components, source, relay nodes and a common
+destination node. SpeciÅPcally, the transmitter is able to broadcast the information to both the
+relay and the destination nodes. The relay receives signals from the source and re-transmits them
+to the destination, by using diRerent strategies. The signals from both the source and the relay
+sides can be received at the destination, while in diRerent time slots.
+Since the intra-link (source-relay link) of relay systems is always intractable to deal with, it
+is assumed to be error free in most of the works so far. In [1], an LLR updating function is
+used at the receiver by exploiting the source-relay correlation, represented by the intra-link error
+rate, in order to enhance the system performances. Based on this contribution, we adopt the Bit-
+Interleaved Coded Modulation using Iterative Decoding (BICM-ID) technique [4] for higher order
+modulation schemes. Moreover, we also show that if the intra-link is error free, the topology of
+the relay network is equivalent to an Automatic Repeat Request (ARQ) scheme, where the relay
+re-transmits the incorrectly-detected frame of the prior transmission. Here we exploit Shannon's
+random coding theorem to achieve the best performance by utilising an interleaver between the
+ÅPrst and second transmissions in order.
+This paper is organised as follows. The relay system mode is introduced in Section 2. The
+proposed decoding method and the BICM-ID technique are described in Section 3. In Section 4,
+the EXIT Chart analysis and the results of the BER simulations are provided. Based on above, a
+simple ARQ scheme is presented in Section 5. Finally, the conclusions are given in Section 6. All
+the channels are assumed to suRer from the Additive White Gaussian Noise (AWGN) through our
+discussions. The subscripts 2sr, 2sd, and 2rd are used to indicate the source-relay, source-destination
+and relay-destination links, respectively.
+2. SYSTEM MODEL
+There is one simple relay in the proposed system, operating in a half-duplex mode. During the ÅPrst
+time slot, the transmitter broadcasts the signals to both the relay and the destination nodes. After
+282 PIERS Proceedings, Kuala Lumpur, MALAYSIA, March 27{30, 2012
+receiving signals from the source, the relay only extracts the data in a simple way while containing
+some errors. In the second time slot, the relay re-encodes the extracted data and re-transmits them
+to the destination.
+Three scenarios of diRerent relay locations are considered in this paper, as shown in Fig. 1(a).
+The relay can be allocated closer to the source or to the destination, or three nodes keep a same
+distance, d, with each other. The geometric-gain of the source-relay link with regard to the source-
+destination link can be deÅPned as:
+Gsr =
+É 
+dsd
+dsr
+Å˜R
+; (1)
+where the path loss exponent R is assumed to be 3.52 [8] in our simulations. It is straightforward
+to derive the geometric-gain of the relay-destination link Grd in the same way. Moreover, the
+geometric-gain of the source-destination link, Gsd, is ÅPxed to one. Therefore the received signals
+yij (ij 2 fsr; sd; rdg) at the relay and the destination node can be expressed as [8]:
+ysr =
+p
+Gsr Åë hsr Åë s + nr; (2)
+ysd =
+p
+Gsd Åë hsd Åë s + nd; (3)
+yrd =
+p
+Grd Åë hrd Åë sr + nd; (4)
+where s and sr represent the symbols transmitted from the source and the relay, respectively. The
+fading channel gains, hij (ij 2 fsr; sd; rdg), are equal to one in AWGN channel. Notations nr and
+nd represent the zero-mean AWGN noise vectors at the relay and the destination with variances ?2
+r
+and ?2
+d, respectively. The signal to noise ratio (SNR) of source-relay and relay-destination links at
+each location scenario are evaluated as follows: given the path loss parameter R equal to 3.52, we
+have SNRsr = SNRsd + 21.19 dB and SNRrd = SNRsd + 4.4 dB in the location A; SNRsr = SNRsd
++ 4.4 dB and SNRrd = SNRsd + 21.19 dB in location B; SNRsd = SNRrd = SNRsr in location C.
+The SNR without subscripts is with regard to the direct link (source-destination) in the following
+discussions.
+3. PROPOSED DECODING SCHEME
+The diagram of the proposed relay system is illustrated in Fig. 1(b). In this paper, memory-1 half
+rate (R = 1=2) systematic non-recursive convolutional code (SNRCC) is adopted for both encoders
+C1 and C2. The original information bits at the source node are ÅPrst encoded by the C1, interleaved
+by |1, doped-accumulated by ACC with a doping rate Pd1 and modulated using BICM. We use
+4PSK and 8PSK for the modulation. The ACC has the same structure with the memory-1 half
+rate systematic recursive convolutional code (SRCC). The output of the ACC is a systematic bit
+sequence, where every Pd1-th bit is replaced by the corresponding coded bit [1] within that frame.
+The code rate does not change after passing through it. The modulated symbols s are transmitted
+to both the relay and the destination in phase one.
+S D
+dsd
+dsd dsd
+R
+S D
+dsd /4 3 dsd /4
+R
+S D
+dsd 3 d /4 sd /4
+R
+Location B
+Location A
+Location C
+dsr drd
+dsr drd
+dsr drd
+(a)
+Lu
+e,D1
+C1 P1
+ACC-1 D1
+D2
+fc 0
+-1
+fc
+ACC
+0 C2 2
+De-M
+BICM
+1
+-1
+BICM
+ACC
+1
+De-M ACC-1 2
+-1
+2
+D1 1
+-1 ACC De-M -1
+b1
+b2
+La,M2
+La,M1
+Le,M2
+Le,M1
+Lc
+e,D2
+Lu
+e,D2
+Lc
+e,D1
+Lu
+a,D2
+Lu
+a,D1
+Phase 1 Source
+Relay
+Destination
+Extraction
+0
+(b)
+P
+P P
+P
+P
+P
+P
+P
+P
+b1
+Figure 1: (a) Proposed relay system with diRerent relay location scenarios, (b) the system structure.
+Progress In Electromagnetics Research Symposium Proceedings, KL, MALAYSIA, March 27{30, 2012 283
+-5 -4 -3 -2 -1 0 1 2 3 4 5 6 7 8 9
+10
+-5
+10
+-4
+10
+-3
+10
+-2
+10
+-1
+10
+0
+SNR
+sr
+(dB)
+BER
+4PSK, with decoding
+4PSK, only extraction
+8PSK, with decoding
+8PSK, only extraction
+Figure 2: BER comparisons of the intra-link link in AWGN channel.
+The received signals at the relay ÅPrstly go through the BICM demapper, ACC!1 and de-
+interleaver |!1
+1 . Then hard decisions of the source bits are made by the decoder D1. The Maximum
+A-Posteriori (MAP) algorithm proposed by Bahl, Cocke, Jelinek, and Raviv (BCJR) is used for
+decoding convolutional codes and the ACC. It's noticeable that the relay does not perform iterative
+channel decoding in our proposed system. After that, the recovered bits are interleaved by |0 and
+forwarded to C2 encoder, |2, and then ACC (with doping rate Pd2). Then the data are modulated
+into sr, and transmitted to the destination during the second time slot.
+At the destination node, the received signals ysd and yrd are ÅPrstly decoded via horizontal
+iterations (HI) according to Fig. 1(b). Independently, the extrinsic LLRs obtained from the
+two decoders D1 and D2 in HI are exchanged by several vertical iterations (VI) through an LLR
+updating function fc [1]. Finally, hard decisions of the original information can be made based on
+the a posteriori LLRs from D1.
+When the relay is closer to the source, signals going through the intra-link suRer from noises
+with less distortions. Errors at the relay node, with the probability Pr(b1 6= b2), may occur as
+shown in Fig. 2. Obviously, for both 4PSK and 8PSK cases, channel decoding at the relay node
+can achieve better BER performances. However, this advantage is not signiÅPcant for low SNRsr
+scenarios. In this case, the systematic bits are simply extracted instead of performing channel
+decoding. Consequently, the relay complexity can be further reduced without decreasing the system
+performances.
+3.1. BICM-ID Demapper
+The extrinsic information at the receiver is exchanged between the demapper and the decoder,
+through the HI. Further improvement of demapping can be achieved using the BICM-ID technique
+by invoking the soft-decision feedbacks from the decoder's outputs [2]. The extrinsic LLRs of v-th
+bit of symbol s after the demapper in AWGN channel can be expressed as
+Le (sv) = ln P (sv = 1 j y)
+P (sv = 0 j y)
+= ln
+P
+s2S1
+n
+exp
+n
+!jy!sj2
+2?2N
+oQM
+w6=v exp (swLa (sw))
+o
+P
+s2S0
+n
+exp
+n
+!jy!sj2
+2?2N
+oQM
+w6=v exp (swLa (sw))
+o; (5)
+where S1 and S0 denote the set of labeling have v-th bit being zero or one, respectively. M represents
+the number of bits per symbol and La(sw) is the LLR fed back from the decoder corresponding to
+the w-th position of the labeling patterns. The output LLRs of the demapper are then forwarded
+to the ACC decoder.
+3.2. LLR Updating Function
+First of all, given the a posteriori LLRs of the uncoded bits, Lu
+p;D1 and Lu
+p;D2, from the decoders
+D1 and D2, the intra-link error probability Pr can be estimated as [1]:
+Pr =
+1
+N
+XN
+n=1
+eLu
+p;D1 + eLu
+p;D2
+!
+1 + eLu
+p;D1
+Åë !
+1 + eLu
+p;D2
+Åë; (6)
+where N denotes the number of the a posteriori LLR pairs from the two decoders with suÅ}cient
+reliability. Only the LLRs with absolute values greater than a given threshold can be chosen. The
+284 PIERS Proceedings, Kuala Lumpur, MALAYSIA, March 27{30, 2012
+threshold is set to one in our simulations. Based on the estimated error probability Pr given by
+Eq. (6), the LLR updating function fc shown in Fig. 1(b) can be deÅPned as follows [5]:
+fc(x) = ln
+(1 ! Pr) Åë exp (x) + Pr
+(1 ! Pr) + Pr Åë exp (x) ; (7)
+where x denotes the input LLRs. The output of fc is the updated LLRs by exploiting Pr as the
+correlation knowledge of the intra-link. The VI operations at the receiver can be expressed as [6]:
+Lu
+a;D1 = fc
+c
+|!1
+0
+!
+Lu
+e;D2
+Åëa
+(8)
+Lu
+a;D2 = fc
+c
+|0
+!
+Lu
+e;D1
+Åëa
+(9)
+4. EXIT CHART AND BER ANALYSIS
+The EXIT curves [3] of the HI loop with regards to the source-destination link's BICM-ID detector
+using 4PSK and 8PSK are shown in Fig. 3(a) and Fig. 3(b), where HI was performed 50 times
+in the simulations. During each HI, 5 times of VI take place between D1 and D2, which pushes
+down the EXIT curves of the decoder towards the lower right side [1]. For the combined EXIT
+curves of the demapper and the ACC!1, the x-axis represents the a priori mutual information (MI)
+Ia(DeM +ACC!1), while the y-axis represents the extrinsic MI Ie(DeM +ACC!1). While for the
+decoder's EXIT curves, the y-axis denotes the a priori MI Ic
+a(D1) and x-axis denotes the extrinsic
+MI Ic
+e (D1). Each SNR value corresponds to a certain intra-link error probability Pr according to
+Fig. 2. The ACC's doping rate Pd1 was properly chosen in order to get the best matching among
+those tested values between the demapper's and decoder's EXIT curves, as shown in Fig. 3. In our
+simulations, the doping rate Pd1 for the source-destination link and the Pd2 for the relay-destination
+were set at 5, 3, 3 for the scenarios A, B and C, respectively, for 4PSK. They are set at 4, 2, 8 for
+8PSK.
+Figure 4 shows the BER performances of the proposed system with 4PSK and 8PSK modula-
+tions. The frame length is 10000 in our simulations. Obviously, less SNR is needed to achieve the
+turbo cliR when the relay is getting closer to the source node. It's noticeable that in location A,
+the BER performances are almost the same when the relay either extracts the systematic bits or
+performs the channel decoding.
+As can be seen in Fig. 4(a) and Fig. 4(b), the SNR threshold happens at low energy values for
+both the 4PSK and 8PSK modulations. Therefore, it is reasonable to rely on the Shannon/SW limit
+calculation using the Gaussian codebook. According to [7], the Shannon/SW limit with Gaussian
+codebook is !1:55 dB for 4PSK and 1.61 dB for 8PSK cases, both with the coding rate being
+1/2. Therefore, the gaps of our proposed system are 2.75 dB and 2.89 dB for 4PSK and 8PSK,
+respectively.
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+I
+a
+(DeM+ACC-1 ) , I
+e
+cD1
+I
+a
+cD1 , I
+e
+(DeM+ACC-1 )
+decoders with VI, P
+r
+= 0
+decoders with VI, P
+r
+= 0.029
+decoders with VI, P
+r
+= 0.14
+DeM+ACC-1 , P
+d1
+=5, SNR= 0.5dB
+DeM+ACC-1 , P
+d1
+=3, SNR = 1dB
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+I
+a
+(DeM+ACC-1 ) , I
+e
+cD1
+I
+a
+cD1 , I
+e
+(DeM+ACC-1 )
+decoders with VI, P
+r
+= 0
+decoders with VI, P
+r
+= 0.075
+decoders with VI, P
+r
+= 0.2
+DeM+ACC-1 , P
+d1
+=8, SNR = 0dB
+DeM+ACC-1 , P
+d1
+=2, SNR = 3dB
+DeM+ACC-1 , P
+d1
+=4, SNR = 4.5dB
+(a) (b)
+Figure 3: EXIT curves of HI for (a) 4PSK and (b) 8PSK in AWGN channel.
+Progress In Electromagnetics Research Symposium Proceedings, KL, MALAYSIA, March 27{30, 2012 285
+-6 -5 -4 -3 -2 -1 0 1 2 3 4
+10
+-5
+10
+-4
+10
+-3
+10
+-2
+10
+-1
+10
+0
+SNR(dB)
+Bit Error Rate
+Location A
+Location B
+Location C
+Location A
+extraction
+-4 -2 0 2 4 6 8
+10
+-5
+10
+-4
+10
+-3
+10
+-2
+10
+-1
+10
+0
+SNR(dB)
+Bit Error Rate
+Location A
+Location B
+Location C
+Location A
+extraction
+(a) (b)
+Figure 4: BER of the proposed relay system for (a) 4PSK and (b) 8PSK in AWGN channel.
+-4 -3 -2 -1 0 1 2 3 4 5 6
+10
+-3
+10
+-2
+10
+-1
+10
+0
+SNR (dB)
+FER
+P1 and P2
+P3
+-4 -3 -2 -1 0 1 2 3 4
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+0.5
+SNR (dB)
+Average Throughput
+(a) (b)
+Figure 5: (a) FER and (b) the average throughput of the ARQ scheme using 4PSK in AWGN channel.
+5. PROPOSED ARQ SCHEME
+If the intra-link of our previous system is assumed to be error free, a similarity constellation of
+a simple Automatic Repeat Request (ARQ) scheme can be developed: initially, the data frame is
+sent from the source to the destination and the receiver only performs HI for detecting. If the
+transmitter is acknowledged that the frame is correctly detected, it continues to transmit the next
+data frame. However, if error happens in this frame, with frame error rate (FER) denoted by P1,
+second transmission takes place. Unlike the conventional ARQ scheme, with our proposed scheme,
+the frame should ÅPrst be forwarded to a random interleaver before being re-transmitted, which is
+equivalent to the case when relay perfectly recovers the source bits and interleaves them before re-
+encoding. The FER for the second transmission is represented by P2. Finally, if both transmissions
+fail, the receiver works exactly the same as our proposed relay system, which combines VI and HI,
+based on the received signals. Therefore, the FER P3, which is the result of the collaboration of HI
+and VI decoding, can be signiÅPcantly reduced. Assigning selective repeat ARQ, the average system
+throughput Tave is given by Eq. (10). The frame length is 4000 in our simulations and 10000 frames
+are tested. The results using 4PSK are shown in Fig. 5; Fig. 5(a) shows SNR versus P1, P2 and
+P3 and Fig. 5(b) shows SNR versus the average throughput.
+Tave = R[(1 ! P1) + 0:5P1 (1 ! P2) + 0:5P1P2 (1 ! P1P2P3)]
+= R[1 ! 0:5P1 (1 + P2P3)] (10)
+where R denotes the coding rate, which is 1/2 in our simulations.
+6. CONCLUSIONS
+In this paper, we have proposed a novel technique that combines the BICM-ID with our proposed
+relay scheme for higher order modulations, which allows the intra-link errors. The intra-link error
+286 PIERS Proceedings, Kuala Lumpur, MALAYSIA, March 27{30, 2012
+probability is regarded as the correlation knowledge between source and relay nodes, which can be
+estimated and further exploited at the receiver by the LLR updating function fc due to the error
+functions in the VI. Thereby, close-limit BER performances can be achieved without requiring
+high complexity at the relay. In addition, a simple ARQ strategy has been proposed based on the
+structure.
+REFERENCES
+1. Anwar, K. and T. Matsumoto, \Accumulator-assisted distributed Turbo codes for relay system
+exploiting source-relay correlation," IEEE Trans. on Communications, May 2011, submitted.
+2. Zhao, D., A. Dauch, and T. Matsumoto, \BICM-ID using extented mapping and repetition
+code with irregular node degree allocation," IEEE Vehicular Tech. Conf.-Spring, Barcelona,
+1{5, Sep. 2009.
+3. Ten Brink, S., \Convergence behavior of iteratively decoded parallel concatenated codes,"
+IEEE Trans. Communications, Vol. 49, 1727{1737, Oct. 2001.
+4. Hanzo, L., T. H. Liew, and B. L. Yeap, Turbo Coding, Turbo Equalisation and Space-time
+Coding for Transmission over Fading Channels, John Wiley IEEE Press, New York, USA,
+2002.
+5. Lu, P.-S., V. Tervo, K. Anwar, and T. Matsumoto,, \Low-complexity strategies for multiple
+access relaying," Vehicular Technology Conference (VTC Spring), 2011 IEEE 73rd, 1{6, May
+2011.
+6. Anwar, K. and T. Matsumoto, \Spatially concatenated coded with Turbo equalization for
+correlated sources," IEEE Trans. on Signal Processing, Feb. 2011, submitted.
+7. Cristescu, R., B. Beferull-Lozano, and M. Vetterli, \Networked Slepian-Wolf: Theory, algo-
+rithm and scalling laws," IEEE Trans. on Information Theory, Vol. 51, No. 12, 4057{4073,
+Dec. 2005.
+8. Youssef, R. and A. Graell, and I. Amat, \Distributed serially concatenated codes for multi-
+source cooperative relay networks," IEEE Trans. on Wireless Communications, Vol. 10, No. 1,
+253{263, Jan. 2011.

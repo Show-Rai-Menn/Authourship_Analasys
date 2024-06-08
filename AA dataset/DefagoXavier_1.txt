@@ -1,0 +1,682 @@
+
+Title
+The cost of probabilistic agreement in oblivious
+robot networks
+
+Issue Date 2010-05-16
+
+Abstract
+In this paper, we look at the time complexity of two agreement problems in networks of oblivious mobile
+robots, namely, at the gathering and scattering problems. Given a set of robots with arbitrary initial locations and
+no initial agreement on a global coordinate system, gathering requires that all robots reach the exact same but
+not predetermined location. In contrast, scattering requires that no two robots share the same location. These
+two abstractions are fundamental coordination problems in cooperative mobile robotics. Oblivious solutions are
+appealing for self-stabilization since they are self-stabilizing at no extra cost. As neither gathering nor scattering
+can be solved deterministically under arbitrary schedulers, probabilistic solutions have been proposed recently.
+The contribution of this paper is twofold. First, we propose a detailed time complexity analysis of a modified
+probabilistic gathering algorithm. Using Markov chains tools and additional assumptions on the environment,
+we prove that the convergence time of gathering can be reduced from O(n2) (the best-known bound) to O(1) or
+O(log n  log(log n)), depending on the model of multiplicity detection. Second, using the same technique, we
+prove that scattering can also be achieved in fault-free systems with the same bounds.
+1 Introduction
+Many future applications of mobile robotics envision groups of mobile robots self-organizing and cooperating
+toward the resolution of common objectives. In many cases, such groups of robots are aimed at being deployed in
+adverse environments, such as in space, in deep sea, or after disasters (natural or not). Thus, a group must be able
+to self-organize in the absence of any prior infrastructure (e.g., no global positioning), and ensure coordination in
+spite of the presence of faulty elements among the robots, as well as other unanticipated environmental changes.
+Suzuki and Yamashita [8] proposed a formal model to analyze and prove the correctness of agreement problems
+in robot networks. In their model, robots are represented as points that evolve on a plane devoid of any
+landmarks. At any given time, a robot can be either idle or active. When a robot becomes active, it observes
+the locations of the other robots, computes a target position, and moves towards it. The time when a robot becomes
+active is governed by an activation scheduler (or daemon). Between two activations robots forget their past
+computations (robots are said to be oblivious). Interestingly, any algorithm proved correct in this model is also
+inherently self-stabilizing.
+The gathering problem, also known as the Rendezvous problem, is fundamental for coordination in oblivious
+mobile robotics. Briefly, given a set of robots with arbitrary initial locations and no initial agreement on a global
+coordinate system, gathering requires that all robots, following their algorithm, reach the exact same location.
+That location, not agreed upon initially, must be reached within a finite number of cycles, with all robots remaining
+there afterward. The dual problem of gathering is the scattering problem. Scattering requires that, starting from
+an arbitrary configuration, eventually no two robots share the same position.
+It turns out that neither deterministic gathering nor scattering are possible without additional assumptions.
+Most of the work done so far in order to circumvent this impossibility focuses on the additional assumptions
+1
+the system needs. Surprisingly, the use of randomization has however drawn only little attention so far. No formal
+framework was proposed in order to analyze the correctness and the complexity of probabilistic algorithms
+designed for robots networks. In a companion paper [1], we investigated some of the fundamental limits of deterministic
+and probabilistic gathering in the face of a wide range of synchrony and fault assumptions. Probabilistic
+scattering was analyzed for the first time by DieudonnÅLe and Petit [2]. However, neither work proposed an actual
+framework in which to analyze the complexity of proposed solutions.
+In this paper, we advocate the use of Markov chains as a simple and efficient tool to analyze and compare
+probabilistic strategies in oblivious robot networks. Note that, in oblivious robot networks, computations can
+depend only on the current view of the robots, i.e., without making any reference to the past. This behavior makes
+Markov chains an appealing tool for analyzing their correctness and complexity since, by definition, a Markov
+chain models a system wherein the next configuration depends strictly on the current one. The only difficulty
+with using Markov chains consists in associating an appropriate Markov chain to each probabilistic strategy. In
+this work, we focus on the analysis of existing probabilistic strategies for scattering and gathering. We also claim
+that our analysis can be easily applied to a broad class of probabilistic strategies (e.g., leader election, flocking,
+constrained scattering, pattern formation).
+Contribution. We show that the time complexity of probabilistic gathering in a fault-free environment can be
+improved from O(n2) to as little as O(1) rounds1 when the algorithms rely on additional information related to
+the environment (e.g., strong multiplicity knowledge). And, even when information on multiplicity is incomplete
+(weak multiplicity), we still show a convergence of O(log n  log(log n)). We also show the exact same bounds
+for the scattering problem.
+Structure. The paper is structured as follows. Section 2 describes the robot network and system model. Section 3
+formally defines the gathering and scattering problems. Section 4 presents the analysis framework. We then
+analyze the convergence of gathering and scattering both under strong multiplicity (Sect. 5) and under weak
+multiplicity (Sect. 6). Section 7 concludes the paper and discusses some open problems.
+2 Model
+We now present the system model considered throughout the paper. The model of robots, and most of the definitions,
+are due to Suzuki and Yamashita [8] and Prencipe [6].
+Robot networks. The system consists of a finite set of robots modeled as dimensionless points moving on a
+two-dimensional plane. The robots have arbitrary initial locations. They are capable of sensing the environment,
+computing a position, and moving toward a destination. When sensing, a robot can determine the position of other
+robots relative to its own local coordinate system.
+In this paper, robots are said to have unlimited visibility, in the sense that they are always able to sense the
+position of all other robots, regardless of their proximity.
+Multiplicity detection. When several robots share the same location, this location is called a point of multiplicity.
+Robots are said to have strong multiplicity knowledge when they are aware of the number of robots located at
+each point of multiplicity. In contrast, when robots have weak multiplicity knowledge, they know which points are
+points of multiplicity, but are unable to count how many robots are located there.
+Section 5 assumes strong multiplicity knowledge, while Section 6 assumes weak multiplicity.
+System model. We consider the model first introduced by Suzuki and Yamashita [8], called SYm, in which
+robots are repeatedly active and inactive. When a robot becomes active, it performs an atomic computational
+cycle composed of the following three actions: observation, computation, and motion.
+ Observation. An observation returns a snapshot of the positions of all robots.
+ Computation. Using the observed environment, a robot executes its algorithm to compute a destination.
+ Motion. The robot moves to this destination (by a non-zero distance but without always reaching it).
+The model considers discrete time at irregular intervals. At each time, some subset of the robots become
+active and complete an entire computation cycle. Robots can be active either simultaneously or sequentially. Two
+1A round is the shortest fragment of execution where all robots are activated at least once.
+2
+robots that are active simultaneously observe the exact same environment (according to their respective coordinate
+systems).
+Moreover, robots are assumed to be oblivious (i.e., stateless), in the sense that a robot does not keep any
+information between two different computational cycles.
+The algorithm of robots is expressed with an I/O automaton [3, 4]. The local state of a robot at time t is the
+state of its input/output variables and the state of its local variables and registers. A network of robots is modeled
+by the parallel composition of the individual automaton of each robot. A configuration of the system at time t is
+the union of the local states of the robots in the system at time t. An execution e = (c0; : : : ; ct; : : :) of the system
+is an infinite sequence of configurations, where c0 is the initial configuration,2 and every transition ci ! ci+1 is
+associated to the execution of a subset of the previously defined computational cycles.
+Schedulers. A scheduler decides at each configuration the set of robots allowed to perform their actions. A
+scheduler is said to be fair if, in an infinite execution, a robot is activated infinitely often. A scheduler is centralized,
+if it ensures that at most one single robot is active at any given time, otherwise it is distributed.
+3 Gathering and Scattering
+A network of robots is in a legitimate configuration with respect to the requirements of gathering if all robots in
+the system share the same position on the plane. Let us denote by PGathering this predicate. An algorithm solves
+the gathering problem in an oblivious system if the following two properties are verified:
+ Convergence. Any execution of the system starting in an arbitrary configuration reaches in a finite number
+of cycles a configuration that satisfies PGathering.
+ Closure. Any execution starting in a legitimate configuration with respect to PGathering contains only
+legitimate configurations.
+Gathering is difficult to achieve in most environments. Therefore, weaker forms of gathering have also been
+studied. One interesting variant requires robots to converge asymptotically toward a single location, rather than
+reach such a location in finite time. The convergence is however considerably easier to deal with. For instance,
+with unlimited visibility, convergence can be achieved trivially by having robots move to the barycenter of the
+network [8].
+The scattering problem was first introduced by Suzuki and Yamashita [7]. The problem aims at arranging a set
+of robots such that eventually no two robots share the same position. Let us denote by PScattering this predicate.
+In the sequel, we rely on the following definition proposed by DieudonnÅLe and Petit [2]:
+ Convergence. Any execution of the system starting in an arbitrary configuration reaches in a finite number
+of cycles a configuration that satisfies PScattering.
+ Closure. Any execution starting in a legitimate configuration with respect to PScattering contains only
+legitimate configurations.
+4 Analysis framework
+In this section, we introduce further definitions needed to analyze the convergence time of probabilistic gathering
+and scattering. A detailed description of these notions can be found in the literature [5].
+Random variables We denote by Xn a random variable. For instance, in our case this could represent the
+number of groups of size x after n cycles of the algorithm. We will study a discrete-time stochastic process, that
+is, a sequence fXngn0 of random variables.
+In the sequel, we use the following notation:
+ P[Xn = x] is the probability of the event fXn = xg.
+ E[Xn] is the expectation of Xn.
+ X : k 7! P[X = k] denotes the probability distribution of a random variable X.
+2Unless stated otherwise, we make no specific assumption regarding the respective positions of robots in initial configurations.
+3
+ P[A j B] is the conditional probability that reads: Ågthe probability of A, given BÅh.
+Markov chains Markov chains form a specific class of stochastic processes, with the following fundamental
+property: the probabilistic dependence on the past is only related to the previous state.
+Definition 1 Let (Xn)n2N be a discrete time stochastic process with countable state space E. A stochastic process
+is called a Markov chain if, for all integers n  0 and all states i0; i1; : : : ; in??1; i; j, we have:
+P[Xn+1 = j j Xn = i;Xn??1 = in??1; : : : ;X0 = i0] = P[Xn+1 = j j Xn = i]
+In this paper, we advocate that Markov chains constitute a simple verification tool, well-adapted to the analysis
+of distributed strategies in oblivious robot networks since, in such networks, the next move of a robot depends only
+on its current position.
+Asynchronous rounds and moving distance. An asynchronous round is defined as the shortest fragment of an
+execution in which each process in the system executes its actions at least once. Throughout this paper, we adopt
+the number of asynchronous rounds as the unit to evaluate the time complexity of algorithms, which is a standard
+criterion for asynchronous distributed systems. Although the maximal distance that a robot can reach in a single
+round is fixed by the model, note that the probability of two robots being at moving distance of each other does
+not depend on the number of robots. So, in order to simplify the discussion for the gathering analysis, we build
+our argument on the case where all robots are initially within moving distance of each other.
+5 The Case of Strong Multiplicity Knowledge
+In this section, we assume that robots have strong multiplicity knowledge.
+To achieve scattering, we want robots located at the same point x0 to move randomly to different destinations.
+If we are able to generate a sufficiently large number of Ågpossible destinationsÅh, it is more likely that the robots will
+move to distinct locations. Therefore, to be efficient, it is desirable that the number of these Ågpossible destinationsÅh
+increases according to the multiplicity of x0. Since robots have strong multiplicity knowledge, they are aware of
+the number of robots located at each multiplicity point.
+In gathering, we require all robots to gather at a single location. Since robots have strong multiplicity knowledge,
+they are able to determine the best location to gather, i.e, the point of maximal multiplicity.
+5.1 Probabilistic scattering
+DieudonnÅLe and Petit [2] proved that deterministic scattering is impossible in the SYm model without additional
+assumptions, and proposed an original probabilistic solution based on the use of Voronoi diagrams, described and
+analysed in Section 6.1.
+Definition 2 Let P = fp1; p2; : : : ; png be a set of points in the Cartesian 2-dimensional plane. The Voronoi
+diagram of P is a subdivision of the plane into n cells, one for each point in P. The cells have the property
+that an arbitrary point q belongs to the Voronoi cell of point pi if and only if, for any other point pj 2 P,
+dist(q; pi) < dist(q; pj) where dist(p; q) is the Euclidean distance between p and q. In particular, the strict
+inequality means that points located on the boundary of the Voronoi diagram belong to no Voronoi cell.
+In this section, we modify the scattering algorithm of [2] in order to improve the complexity. The idea of
+our algorithm referred in the following Algorithm 5.1 is as follows. Robots choose uniformly at random a point
+within 2n2 different positions in their Voronoi cell. Note that Algorithm 5.1 uses implicitly the strong multiplicity
+knowledge in the computation of the set of possible choice positions, i.e. n. If we assume n known or the
+knowledge of an upper bound of n then Algorithm 5.1 works under a weak multiplicity model.
+Theorem 1 The expected convergence time of Algorithm 5.1 is O(1).
+Proof: Let [t0; t1] be the shortest fragment in which each robot is activated at least once. Let P = fp1; p2;    ; pwg
+be the set of points occupied by two or more robots at t0, where w = jPj. We define the indicator random variable
+Zi as follows: Zi = 1 if all robots located at the same point pi are located on different points at time t1, and
+4
+Algorithm 5.1 Probabilistic Scattering executed by robot ri with strong multiplicity knowledge.
+Compute the Voronoi diagram;
+Cell i := Voronoi cell where ri is located;
+Current Pos := position where ri is located;
+Let Pos be a set of 2n2 positions in Cell i:
+Move toward a position in Pos chosen uniformly at random,
+Zi = 0 otherwise. Notice thatfZ1;Z2;    g are mutually independent because we use Voronoi diagrams and thus
+any two robots from different points never reach the same position.
+Let mi be the multiplicity of pi at t0. To prove the theorem, we show that the probability P[
+Vw
+i=1 Zi = 1] is
+bounded by a constant. Since two robots moving at different time necessarily have different destinations, the worst
+case scenario is when mi robots are activated simultaneously during the interval [t0; t1]. Thus, the probability
+P[Zi = 1] is bounded as follows:
+P[Zi = 1] 
+
+2n2 ?? 1
+2n2
+
+2n2 ?? 2
+2n2
+
+  
+
+2n2 ?? mi
+2n2
+
+
+
+1 ??
+mi
+2n2
+mi
+
+
+1 ??
+m2i
+2n2
+
+The random variables being independent, we get:
+P[
+w^
+i=1
+Zi = 1] 
+Yw
+i=1
+
+1 ??
+m2i
+2n2
+
+
+Yw
+i=1
+
+1 ??
+mi
+2n
+
+Therefore, we can write :
+log(P[
+w^
+i=1
+Zi = 1]) 
+Xw
+i=1
+log
+
+1 ??
+mi
+2n
+
+ ??
+Xw
+i=1
+mi
+2n
+The fact that
+Pw
+i=1mi  n leads to :
+P[
+w^
+i=1
+Zi = 1]  exp
+ 
+??
+Xw
+i=1
+mi
+2n
+!
+ exp
+
+??
+1
+2
+
+The theorem follows.
+5.2 Probabilistic Gathering
+In this section, we analyze the complexity of probabilistic gathering in a fault-free environment. The algorithm
+presented in this section extends one analyzed in earlier work [1].
+We prove that additional information on the environment can significantly improve the convergence time of
+gathering. Using strong multiplicity knowledge, for example, we obtain a tighter bound of O(1) which significantly
+improves the best known bound of O(n2).
+In earlier work [1], we proposed a probabilistic algorithm that solves the fault-free gathering in the SYm
+model, under a specific class of schedulers, known as k-bounded schedulers.3
+Briefly, the algorithm works as follows. A robot, when chosen by the scheduler, randomly selects one of its
+neighbors and moves towards its position with probability 1
+ , where  is the size of the robotÅfs view. In the model
+considered, robots have unlimited visibility, and hence the value of  is n.
+We proved that this strategy probabilistically solves 2-gathering in the SYm model under an arbitrary scheduler
+and converges in 2 rounds in expectation. We also proved that it solves the n-gathering problem (n  3), under
+a fair k-bounded scheduler without multiplicity knowledge and converges under fair bounded schedulers in n2
+rounds in expectation.
+3In short, a k-bounded scheduler is one ensuring that, during any two consecutive activations of any robot, no other robot is activated more
+than k times.
+5
+We now show that the complexity bound of O(n2) can be decreased to O(1) when robots use strong multiplicity
+knowledge. It turns out that the algorithm described above can be modified to meet the latter bound.
+Briefly, the modified algorithm (Algorithm 5.2) is based on the following idea. Instead of selecting a destination
+randomly, a robot p activated by the scheduler moves to the group of robots with maximal multiplicity.
+When several such groups exist, the robot p tosses a coin and moves only with probability 1
+2n. If it moves, then p
+arbitrarily selects a point of maximal multiplicity to which it does not belong, and moves toward it.
+Algorithm 5.2 Probabilistic gathering executed by robot p with strong multiplicity knowledge.
+Functions: observe neighbors :: returns the set of robots in the system
+maximal multiplicity :: returns the set of points with maximal multiplicity
+local position :: returns the local position of the robot p
+(i.e., the locations shared by the largest number of robots as returned by the observe function);
+Actions: Np = observe neighbors();
+if jmaximal multiplicity (Np)j > 1 then
+with probability 1
+2n
+let q be a point chosen arbitrarily from maximal multiplicity (Np) n lp();
+move towards q;
+with probability 1 ?? 1
+2n
+do not move;
+if jmaximal multiplicity (Np)j = 1 then
+let q be the point given by maximal multiplicity(Np);
+move towards q;
+As we show below, Algorithm 5.2 converges in O(1) rounds in expectation. Interestingly, this means that
+multiplicity knowledge?used so far in order to break the symmetry of the system?can also considerably help in
+speeding up the convergence of gathering.
+Lemma 1 Given an arbitrary configuration and only one single robot being activated, the probability to reach a
+configuration with a unique point of maximal multiplicity is at least 1
+2n.
+Proof: This lemma is an obvious consequence of Algorithm 5.2. Briefly, when there are several points of maximal
+multiplicity, the activated robot moves with probability 1
+2n and selects one of the points of maximal multiplicity
+as its destination. That pointÅfs multiplicity then increases by one.
+We are now able to prove the convergence.
+Theorem 2 Algorithm 5.2 achieves convergence in O(1) expected rounds at worst.
+Proof: The analysis can be decomposed into two phases. First, the algorithm must reach a configuration with one
+single point of maximal multiplicity. Second, the remaining robots must join that point of maximal multiplicity.
+The second part being obvious, we focus on the first one.
+Consider a situation in which, at time t0, there are at least two different points of maximal multiplicity. We
+want to obtain an upper bound on the time needed to reach a configuration with only one single point of maximal
+multiplicity. According to Lemma 1, it is enough to ensure that only one robot changes its position.
+Let the period [t0; t0 + k] be the shortest fragment where at least n activations occurs. For any j(0  j  k),
+aj denotes the number of robots activated at time t0 +j. We define X to be the random variable such that t0 +X
+is the first time after t0 when exactly one robot changes its position. We also define Yj as the indicator random
+variable of the event that no robot moves during the period [t0; t0 + j ?? 1] (for simplicity of the argument, let
+P[Y1 = 1] = 1). Then, we can obtain the following bound
+P[X = j ^ Yj = 1] =
+
+aj
+1
+
+1 ??
+1
+2n
+aj??1 
+1
+2n
+
+
+jY??1
+h=1
+
+1 ??
+1
+2n
+ah
+=
+
+aj
+1
+
+1 ??
+1
+2n
+aj??1 
+1
+2n
+
+
+
+1 ??
+1
+2n
+Pj??1
+h=1 ah
+
+
+1 ??
+aj ?? 1
+2n
+ aj
+2n
+
+
+ 
+1 ??
+Pj??1
+h=1 ah
+2n
+!
+
+aj
+8n
+6
+We use the fact that aj  n and
+Pj??1
+h=1 ah < n (notice that fewer than n robots can be activated by j??1(< k)).
+The above inequality implies the existence of a lower bound for P[X = j] as follows: P[X = j]  P[X =
+j ^ Yj = 1]  aj
+8n. Thus, we can bound the probability that the system reaches a configuration with a single point
+of maximum multiplicity by t0 + k:
+P[X  k] 
+Xk
+h=1
+aj
+8n
+
+1
+8
+Consequently, we can conclude that exactly one point with maximal multiplicity appears with constant probability
+(more than 1
+8 ) in a single round. Now, let us consider the two-states variable:
+ Zt = 1 when Ågthere is only one maximal multiplicity point at time t.Åh
+ Zt = 0 when Ågthere are several maximal multiplicity points at time t.Åh
+(Zt)t2N is a Markov chain and we need the expectation of the time needed for this stochastic process to reach
+state 1 starting from state 0. Formally,
+T1
+0 = E[minft such that Zt = 1 knowing Z0 = 0g]
+We obtain T1
+0 = 8. This is enough to prove that a unique point of maximal multiplicity can be created in O(1)
+expected rounds. Indeed, this stems from T1
+0 = 8 and the fact that as soon as a unique point is created, any
+activated robot will join it. This also gives that the gathering is achieved in a contant number of rounds.
+6 The Case ofWeak Multiplicity Knowledge
+In this section, we assume that robots have weak multiplicity knowledge. The algorithms proposed in Sect. 5, based
+heavily on strong multiplicity knowledge, do not work under weak multiplicity. For the scattering algorithm the
+multiplicity knowledge is implicitly used in the computation of the number of directions while for the gathering
+algorithm uses explicitly in the code the strong multiplicity knowledge.
+In this section we analyse Algorithm 6.1 (originally presented in [2]) that achieves scattering in a polylogarithmic
+convergence time with weak multiplicity. For gathering, since it is now impossible for robots to distinguish
+which point is the point of maximal multiplicity, we instead rely on scattering as an initial step.
+6.1 Probabilistic scattering
+The algorithm works as follows (Algorithm 6.1). Each robot uses a function Random() that returns a value
+probabilistically chosen in the set f0; 1g: 0 with probability 3
+4 , and 1 with probability 1
+4 . When a robot ri becomes
+active at time t, it first computes the Voronoi diagram of the set of points occupied by the robots. Then, ri moves
+toward an arbitrary location inside its Voronoi cell Cell i if Random() returns 0. We now look at the convergence
+time of Algorithm 6.1.
+Algorithm 6.1 Probabilistic Scattering executed by robot ri with weak multiplicity knowledge.
+Compute the Voronoi diagram;
+Cell i := Voronoi cell where ri is located;
+Current Pos := position where ri is located;
+if Random() = 0 then
+Move toward an arbitrary position in Cell i, different from Current Pos;
+else Do not move;
+Lemma 2 Let a period [t0; t1] be the shortest fragment in which all robots are activated at least once and execute
+Algorithm 6.1. We define R as the set of robots located on a multiplicity point x0 at time t0, and Q as the set of
+points on which at least one robot of R stays at time t1. Then, with probability at least 1??3e??jRj
+11 , all points in Q
+have multiplicity less than 3
+4 jRj.
+7
+Proof: We define the random variable Z as the maximal multiplicity of all points in Q. Therefore, we want to
+show that P[Z  3
+4 jRj]  3
+e
+jRj
+11
+. To do so, we introduce the following two random variables:
+ Z1 is Ågthe multiplicity of point x0 at time t1Åh
+ Z2 is Ågthe maximal multiplicity of all points in Q n fx0g at time t1Åh
+The reader may easily observe that P[Z1  3
+4 jRj ^ Z2  3
+4 jRj] = 0. Thus, we have
+P[Z  3
+4 jRj] = P[Z1  3
+4 jRj _ Z2  3
+4 jRj] = P[Z1  3
+4 jRj] + P[Z2  3
+4 jRj]
+We now study P[Z1  3
+4 jRj] and P[Z2  3
+4 jRj] separately.
+Case 1 P[Z1  3
+4 jRj]  e??jRj
+8
+Since no point occupied by some robot can become the destination of another robot, no robot moves to x0
+during [t0; t1]. Thus, if Z1  3
+4 jRj holds, at most 3
+4 jRj robots in R keep their position during [t0; t1]. From
+the fact that each robot is activated at least once during that period, the probability that some robot on x0 at
+t0 remains on x0 at t1 is at most 1
+2 . Thus, using the random variable BjRj;12
+following binomial distribution
+with parameter jRj and 1
+2 ,4 we obtain the upper bound for P[Z1  3
+4 jRj]:
+P[Z1  3
+4 jRj]  P[BjRj;12
+ 3
+4 jRj]  e??jRj
+8
+where we use ChernoffÅfs bound5 for the binomial distribution BjRj;12
+. This proves the case.
+Case 2 P[Z2  3
+4 jRj]  2e?? 3
+32 jRj
+To have a point x 2 Q n fx0g with multiplicity higher than 3
+4 jRj at t1, at least 3
+4 jRj robots must leave x0
+by time t1. In addition, those robots must leave x0 simultaneously because two robots in R leaving x0 at
+different times necessarily have distinct destinations. Thus, there exists a time when more than 3
+4 jRj robots
+at the same position are activated (if such time does not exist during [t0; t1], clearly P[Z2  3
+4 jRj] = 0).
+Let t0 be the first time after t0 when at least 3
+4 jRj robots on x0 are activated. We define y to be the
+number of robots on x0 activated at t0, and Y to be the random variable representing the number of robots
+leaving x0 at t0. Notice that if the event of 3
+4 jRj  Y  1
+4 jRj occurs, the multiplicity of any point in Q
+becomes less than 3
+4 jRj, and thus there is no chance that more than 3
+4 jRj robots located at the same point
+are simultaneously activated after t0, that is, P[
+
+Z2  3
+4 jRj j
+	
+j
+3
+4 jRj  Y  1
+4 jRj
+	
+] = 0. Thus, it results
+that P[Z2  3
+4 jRj]  P[
+3
+4 jRj  Y
+	
+_
+1
+4 jRj  Y
+	
+] holds. Since Y is equivalent to the binomial random
+variable By; 1
+2
+, using the same method as in the previous case, we obtain the following bound, which proves
+the case:
+P[Z2  3
+4 jRj]  P[
+
+3
+4 jRj  Y
+
+_
+
+1
+4 jRj  Y
+
+]
+ (P[By; 1
+2
+
+3
+4 jRj] + P[By; 1
+2
+
+1
+4 jRj])  2e??y8
+ 2e?? 3
+32 jRj
+Consequently, we obtain P[Z  3
+4 jRj]  e??jRj
+8 + 2e?? 3
+32 jRj  3e??jRj
+11 .
+Lemma 3 Let a time interval [t0; t1] be a period containing k rounds, and let m be the maximal multiplicity at
+time t0. Then, the maximal multiplicity at time t1 is less than 3m
+4 with probability (1 ?? 4n
+me
+km
+11
+).
+Proof: Let P = fp1; p2;    ; pwg be the set of points occupied by more than 3m
+4 robots at t0, where w = jPj. We
+define the indicator random variable Zi such that Zi = 1 if pi is divided into two or more points with multiplicity
+less than 3m
+4 , and Zi = 0 otherwise. Again, thanks to Voronoi diagrams, fZ1;Z2;    g are mutually independent.
+4That is, the probability distribution of Bl;q is defined as P[Bl;q = k] =
+??k
+l
+
+qk(1 ?? q)l??k for any k(0  k  l).
+5For any  > 0; P[Bl;q  (1 + )lq]  e??2lq.
+8
+From Lemma 2, the probability that the respective multiplicity of each point in W decreases to less than 3m
+4 is
+bounded:
+P
+"
+w^
+i=1
+(Zi = 1)
+#
+=
+Yw
+i=1
+P[Zi = 1]  (1 ?? 3e??km
+11 )w
+ (1 ?? 3we??km
+11 ) 
+
+1 ??
+4n
+mekm
+11
+
+where we use the fact that w  3m
+4  n. This completes the proof.
+We deduce from Lemma 3 the following two corollaries.
+Corollary 1 The maximal multiplicity decreases to less than 11 log 4n within O(log n) rounds in expectation.
+Corollary 2 Starting from the configuration with maximal multiplicity 11 log 4n or less, the scattering is achieved
+within O(log n log(log n)) rounds in expectation.
+The first corollary follows from Lemma 3 with k = 1 for the case of m > 11 log 4n, and the second one
+follows from the lemma with k = 11 log 4n for m  11 log 4n. By combining both corollaries, we obtain the
+convergence of Algorithm 6.1.
+Theorem 3 The convergence time of Algorithm 6.1 is O(log n log(log n)).
+6.2 Probabilistic gathering
+We now present an algorithm for probabilistic gathering under weak multiplicity knowledge. Algorithm 6.2, is
+built similarly to the one presented in Section 5.2 for strong multiplicity, except that it now relies on scattering
+(Algorithm 6.1) as an initial step.
+Algorithm 6.2 Probabilistic gathering executed by robot p with weak multiplicity knowledge.
+Actions: Np = observe neighbors();
+if Np includes two or more multiplicity points then
+Execute Algorithm 6.1;
+else if Np includes a single multiple point q then
+Move towards q;
+else
+let q be a point chosen arbitrarily from Np;
+With probability 1
+2n
+move towards q;
+With probability 1 ?? 1
+2n
+do not move;
+Lemma 4 Starting from any scattered configuration, a configuration with exactly one multiplicity point is reached
+in one round with constant probability.
+The proof is identical to that of Theorem 2.
+Since scattering is achieved within O(log n log(log n)) rounds in expectation, the above lemma implies that
+the system can have exactly one multiplicity point within O(log n log(log n)) rounds, starting from an arbitrary
+configuration. Thus, the convergence time of Algorithm 6.2 directly follows.
+Theorem 4 The convergence time of Algorithm 6.2 is O(log n log(log n)).
+9
+7 Conclusion and Discussions
+The contribution of this paper is twofold. First, we proposed a detailed complexity analysis of existing probabilistic
+agreement algorithms (gathering and scattering). Second, using Markov chains tools and multiplicity
+knowledge, we proved that the convergence time of gathering can be reduced from O(n2) (the best-known bound
+so far) to O(1) or O(log n  log(log n)), depending on the model of multiplicity. We have also shown the same
+bounds for the scattering problem, thus closing the complexity gap between the two problems (gathering and
+scattering are two important agreement problems in robots networks).
+Our work also confirms that the analysis based on Markov chains fits well with the oblivious robot networks
+model. Therefore, we intend to apply this approach to analyze other algorithms for oblivious robot networks, such
+as, leader election or flocking.
+Acknowledgments
+We would like to express our gratitude to the associate editor and the anonymous reviewers for their numerous
+insightful comments that greatly helped improve this manuscript. This work is partially supported by RÅLegion
+?Ile-de-France (Julien Clement), by MEXT Grant-in-Aid for Young Scientists (A) No. 18680007 (Xavier DÅLefago),
+and by the Telecommunication Advancement Foundation (Taisuke Izumi).
+References
+[1] Xavier DÅLefago, Maria Gradinariu, StÅLephane Messika, and Philippe Raipin ParvÅLedy. Fault-tolerant and selfstabilizing
+mobile robots gathering. In Shlomi Dolev, editor, DISC, pages 46?60. Springer, 2006.
+[2] Yoann DieudonnÅLe and Franck Petit. Robots and demons (code of the origins). In FUN, pages 108?119, 2007.
+[3] N. A. Lynch. Distributed Algorithms. Morgan Kaufmann, San Francisco, CA, USA, 1996.
+[4] N. A. Lynch, R. Segala, and F. W. Vaandrager. Hybrid I/O automata. Information and Computation,
+185(1):105?157, August 2003.
+[5] J.R. Norris. Markov Chains. Cambridge University Press, 1997.
+[6] G. Prencipe. CORDA: Distributed coordination of a set of autonomous mobile robots. In Proc. 4th European
+Research Seminar on Advances in Distributed Systems (ERSADSÅf01), pages 185?190, May 2001.
+[7] I. Suzuki and M. Yamashita. A theory of distributed anonymous mobile robots formation and agreement
+problems. Technical report, Wisconsin Univ. Milwakee, Dept. of EECS, 1994.
+[8] I. Suzuki and M. Yamashita. Distributed anonymous mobile robots: Formation of geometric patterns. SIAM
+Journal of Computing, 28(4):1347?1363, 1999.
+10

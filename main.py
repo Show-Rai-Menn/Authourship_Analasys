@@ -5,6 +5,8 @@ import db
 import analysis
 from multiprocessing import Process
 from collections import Counter
+import exploratory
+
 app = Flask(__name__)
 
 UPLOAD_FOLDER='uploads'
@@ -25,10 +27,6 @@ def file():
     Q_file=db.search_allQ()
     K_files=db.search_allK()
     return render_template('file.html', Q_file=Q_file, K_files=K_files)
-
-@app.route('/exploratory')
-def exploratory():
-    return render_template('exploratory.html')
 
 
 
@@ -64,6 +62,43 @@ def upload_file():
 
     return render_template('file.html', message='file upload successfully and please reload')#正常なとき
 
+
+@app.route('/exploratory')
+def exploratoryf():
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('exploratory.html', Q_file=Q_file, K_files=K_files)
+
+@app.route('/exploratory/search', methods=['POST'])
+def explonatory_search():
+    data = request.get_json()
+    search_type = data['searchType']
+    search_term = data['searchTerm']
+    Qfilenames = data.get('Q', [])
+    Kfilenames = data.get('K', [])
+    print(Qfilenames)
+    context_size = 10
+    Qcontents, Kcontents=db.get_content(Qfilenames, Kfilenames)
+
+    if search_type == 'wordToken':
+        Qresults, Kresults = exploratory.search_word_token(Qfilenames, Qcontents, Kfilenames, Kcontents, search_term, context_size)
+    elif search_type == 'lemma':
+        Qresults, Kresults = exploratory.search_lemma(Qfilenames, Qcontents, Kfilenames, Kcontents, search_term, context_size)
+    elif search_type == 'pos':
+        Qresults, Kresults = exploratory.search_pos(Qfilenames, Qcontents, Kfilenames, Kcontents, search_term, context_size)
+    elif search_type == 'ngram':
+        n = 3  # Default value for n-gram, can be adjusted as needed
+        results = search_ngram(texts, search_term, n, context_size)
+    elif search_type == 'regex':
+        results = search_regex(texts, search_term, context_size)
+    else:
+        results = []
+    
+    rendered_html = render_template(
+        'exploratory_result.html',
+        Qresults=Qresults, Kresults=Kresults
+    )
+    return jsonify(html=rendered_html)
 
 @app.route('/K_and_K')
 def K_and_K():

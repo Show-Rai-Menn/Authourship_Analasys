@@ -1,0 +1,504 @@
+
+Title
+Unconditionally Secure Oblivious Transfer Based
+on Channel Delays
+
+Issue Date 2011-11-01
+
+Abstract Without the use of computational assumptions uncondition
+ally secure oblivious transfer 
+OT is impossible in the standard model
+where the parties are using a clear channel	 Such impossibilities can be
+overcome by using a noisy channel	 Recently Palmieri and Pereira pro
+posed a protocol based on random channel delays only	 Their scheme is
+secure in the semihonest model but not in the general malicious model	
+In this paper we study oblivious transfer in the same setting but we im
+prove the result to obtain a fully secure protocol in the malicious model	
+Keywords oblivious transfer unconditional security channel delay
+?? Introduction
+Oblivious Transfer OT is a twoparty cryptographic protocol with a simple
+function However it is an important primitive because any secure computation
+can be based on OT  		
+ It is considered a universal primitive for crypto
+graphic functionalities where the users do not fully trust each other
+In the rst OT system introduced by Rabin 
+ a message is received with
+probability 	 and the sender does not know whether the message reaches the
+other side Even et al dened the 	outof OT 
+ where the sender has two
+secrets and the receiver can choose one of them in an oblivious manner That is
+the sender cannot know the receivers choice and the receiver cannot know more
+than one of the senders secrets The 	outof OT is equivalent to the Rabin
+OT 	
+ Also we may assume that the senders secrets are onebit messages in
+	outof OT because the case with string messages is reducible to it eciently
+
+
+By simple arguments it can be shown that OT cannot achieve informa
+tion theoretic security for both parties over a standard noiseless communication
+channel If a noisy channel of certain form is available between the sender and
+the receiver OT can be constructed with unconditional security   	
+ While
+OT based on noisy channels with transmission errors are relatively wellstudied
+in 	 Palmieri and Pereira 
+ proposed a new scheme using a completely dif
+ferent source of channel randomness In their paper the channel does not have
+ KaiYuen Cheong and Atsuko Miyaji
+any error on the content but a transmission delay This seems to be a remark
+ably weaker assumption than the noisy channel and random channel delays are
+abundant in media like the Internet
+In 
+ a semihonest OT protocol is proposed where the parties follow the
+protocol strictly but may try to compute more information afterwards from the
+communication transcript In this paper we improve it by removing the semi
+honest assumption The nal protocol is unconditionally secure Some techniques
+we use are from the standard ones 
+ for general OT enhancement
+Our paper is organized as follows Section  describes the preliminaries in
+cluding the assumptions about the channel used and the denition of OT In Sec
+tion  we describe a basic protocol which only works in the semihonest model
+similar to the protocol in 
+ The main contribution of this paper is shown in
+Section  where we provided the fully secure protocol before the conclusion in
+Section 
+ Preliminaries
+?? Delay Channel
+Following the tracks of 
+ we rst dene the properties of the channel called
+the binary discretetime delaying channel BDDC In this model the channel
+accepts binary strings called packets and delivers them with some delay It is
+a memoryless channel such that delays happen to each packet independently
+according to certain known probabilistic distribution The channel operates at
+discrete times such that there is a xed set of allowed time for transmitting
+and receiving the packets A packet always arrives as a whole at the same time
+without being broken into parts The channel has no other forms of errors
+A delay probability is denoted by p with p  	 We assume that p is
+publicly known and set q  	 ?? p Neither the sender nor the receiver gets
+any feedback information about the delay that occurred The BDDC has the
+following properties
+	 There is a discrete either nite or innite set of allowed input times T 
+ft?? t g and output times U  fu?? u g
+ A packet sent at ti will arrive at ui if there is no delay Otherwise it will
+arrive at uj with probability pij A packet may delay once with probability
+p and is subject to further delays with the same probability Therefore for
+j  i we have pij  pj??i ?? pj??i For j  i pij  
+It is clear that pii  q denotes the probability that the packet arrives on time
+The assumption that p  	 can generally be justied First p should be low
+for an ecient channel Also in reality time is an analog quantity and the mean
+and variance of the actual delay can be used to derive the interval in which the
+packet is expected to arrive with high probability In 
+ it is also assumed that
+p  	
+Unconditionally Secure Oblivious Transfer Based on Channel Delays 
+???? Oblivious Transfer
+In this paper the 	outof bit OT with perfect security is dened as
+	 The sender Alice inputs a pair of secret bits s?? s and the receiver Bob
+inputs a choice bit c
+ Correctness If both Alice and Bob are honest Bob outputs sc and Alice
+outputs nothing
+ Security for Alice Regardless of Bobs actions if Alice is honest there exists
+c  f 	g such that Bob receives zero information of sc?? 
+ Security for Bob If Bob is honest Alice receives zero information on c re
+gardless of her actions
+In the case where the properties above are not perfectly satised if the failure
+probability for each of them is negligible we say that the OT protocol is uncon
+ditionally secure A protocol is said to be in the semihonest model if all parties
+are assumed to follow the protocol Otherwise it is in the malicious model where
+the cheating party does not need to follow the protocol Therefore security in
+the malicious model is strictly stronger than security in semihonest model
+ A building block protocol
+ Semihonest OT
+In this part we introduce a protocol similar to 
+ It is a semihonest OT pro
+tocol A small modication is made to reduce the communication cost Impact
+to security is basically none but the analysis becomes easier in our version The
+change is that we set the variables ei to be one bit rather than a general binary
+string Our version of the protocol is
+	 For security parameter n Alice prepares random bits e e en For con
+venience n is an even number For 	  i  n she prepares vi  ijjei which is
+the string created by the concatenation of index i and bit ei Next she also
+creates v
+i  ijj	 ?? ei
+ At time t?? Alice sends all vi to the BDDC At time t she sends all v
+i Each
+of vi and v
+i is treated as one packet in the BDDC channel
+ At time u?? Bob receives the packets coming from the BDDC If fewer than
+n packets are received Bob aborts the protocol
+ Otherwise Bob randomly selects a set of indices Ic  f	    ng where c is
+his OT choice bit under the condition that jIcj  n and Bob has received
+a string in the form ijj at u?? for all i  Ic He sets I??c to be the set of all
+i  f	    ng such that i  Ic
+ Bob sends I?? I over a clear channel to Alice If there are no other channels
+the BDDC can also be used for this purpose In either case we do not add
+extra assumptions about the properties of the channels used in the protocol
+ KaiYuen Cheong and Atsuko Miyaji
+ Alice computes
+?? M
+iI??
+ei
+ M
+iI
+ei 	
+and then sets ??  s??  ?? and   s  
+ Alice sends ??  to Bob
+ Bob knows ei whenever i  Ic He computes c  LiIc
+ei and nally
+sc  c  c
+In essence in the protocol vi is a random message Alice sends to Bob and v
+i is
+for confusion such that Bob will not be able to get Alices message if he gets vi
+and v
+i at the same time Thus the setting has the feature of Rabin OT 	
+ It is
+then used to construct the 	outof OT in the standard way
+?? Security in the semihonest model
+Following the denition of OT the proof of security properties and functionality
+is divided into three parts correctness security for Alice and security for Bob
+Correctness If both parties are honest the packets sent at t?? follows a
+binomial distribution regarding to whether they are delayed or not Failure hap
+pens when there are not enough packets received at u?? Same as 
+ we use
+the Hoedings inequality to see that the upper bound of failure probability is
+e??n 
+
+??p
+ As it decreases exponentially with the increase of n we can say that
+it is negligible
+Alices security We can show that the protocol is secure even against
+a malicious Bob which is stronger than the semihonest Bob To simplify the
+analysis further let us assume that the malicious Bob is equipped with a special
+power whenever a packet is received at or after u Bob can tell the time that
+the packet in question is sent Therefore the only uncertainty is on the packets
+received at u which may be sent at t?? or t Note that the real Bob has no such
+power and is thus strictly weaker
+For any i if both vi and v
+i are received at u they are indistinguishable to
+Bob and he would have zero information on ei For one i the probability for this
+to happen is pq Therefore the probability that it never happens for 	  i  n
+is 	 ?? pqn Note that this probability falls exponentially with n
+Otherwise there exists at least one i such that Bob has zero information on
+ei Since either i  I?? or i  I it is ensured that there exists c such that Bob
+cannot get sc?? 
+Bobs security If Alice follows the protocol it is clear that she cannot get
+any information about c because all possible sets of I?? I are equally likely
+Therefore the protocol is perfectly secure against the semihonest Alice
+Unconditionally Secure Oblivious Transfer Based on Channel Delays 
+ Constructing the full protocol
+ Insecurity of the basic protocol
+The problem with the semihonest protocol is that when Alice is malicious it is
+insecure Note that Alice will not send the same packet twice or send something
+with incorrect format because they are detectable with absolute certainty On
+the other hand the honest Bob does not need to look at packets arriving at u
+or later in the protocol so Alice also does not need to care about what she sends
+to the BDDC at time t and after Moreover Alice cannot gain any information
+about c after the last message from Bob Therefore it is clear that the malicious
+Alice will only focus on adding or deleting messages to be sent at t?? in the
+following manner For each i essentially there are only three possible deviations
+from the protocol
+	 Alice sends v
+i instead of vi at t??
+ Alice sends both vi and v
+i at t??
+ Alice sends neither vi nor v
+i at t??
+The rst case cannot cause any harm to Bob as it is equivalent to ipping the
+randomly chosen ei before the protocol begins For the second case Bob can
+detect it with probability q by seeing both vi and v
+i at u?? This is a weak
+attack but not to be ignored The third case is a strong attack which leaves the
+scheme completely broken Bob will not detect anything wrong and it becomes
+certain that i  I??c Therefore Alice can get Bobs choice c with absolute
+certainty at zero risk These problems are to be solved in the full protocol
+?? The enhancement scheme
+Using a method in 
+ any OT scheme can be used k times as subprotocols
+to build a stronger OT for Bobs security against the malicious Alice At the
+end only the XOR value of all the Bobs choice bits is his real choice For
+completeness we describe the general method here
+	 At the beginning Alice has OT input fs?? sg while Bob has a choice c
+ Alice generates a list of k ?? 	 random bits ?? ??   ??k??
+ Alice chooses ??k such that Lk
+i ??i  s??
+ Alice sets the second list of bits as i  ??i  s??  s for all i
+ The two parties run k copies of the subprotocol OT For each i they use it
+to transfer the pair ??i i
+ Bob makes the choices randomly except that the XOR of all choices repre
+sents the real choice c That is denoting the choices in the OT subprotocols
+by ci we have
+k
+M
+i
+ci  c 
+ KaiYuen Cheong and Atsuko Miyaji
+ The nal output of the receiver is sc as it can be computed from
+sc 
+k
+M
+i
+cii 
+In this enhancement scheme if Alice wants to guess c she has to guess each of
+the ci correctly Therefore it can enhance Bobs security such that only one of
+the subprotocols needs to be secure for Bob
+But in our case using this enhancement only does not give a secure protocol
+from the semihonest protocol because the semihonest protocol is completely
+insecure for Bob Some extras measures are required to build a full OT scheme
+ The complete protocol
+In our full protocol we set k  n Alice and Bob run k times the semihonest
+OT using it as a subprotocol The idea is that for each subprotocol Bob
+records the number of packets received at u?? If Alice cheats by sending neither
+vi nor v
+i for at least one i the expected number of packets received at u?? drops
+to qn ?? 	 or below from the value of nq in the honest case To distinguish the
+two distributions we use the midpoint qn ?? 
+ of the two mean values After
+seeing all k subprotocols Bob aborts the main protocol if there are more than
+k subprotocols where the number of packets received at u?? is below qn?? 
+ 
+The full protocol is
+	 The k subprotocols to be run in parallel are indexed by j Alice prepares a
+matrix of random bits eij for 	  i  n and 	  j  k and sets vij  jjjijjeij 
+She also sets v
+ij  jjjijj	 ?? eij 
+ Alice sends all vij to the BDDC at t?? and all v
+ij at t
+ Bob waits to receive all packets and records their time of arrival He checks
+for basic consistency such that for every i and j he receives both jjjijj and
+jjjijj	 for exactly once each He also checks that he does not receive both
+jjjijj and jjjijj	 at u?? He aborts the protocol if any of these tests fail
+ Otherwise Bob sets a counter X   and enter the following procedure For
+	  j  k he records the number of packets in format jjj received in u??
+For any j if this number is smaller than n Bob aborts the protocol If it
+is larger than n but smaller than qn ?? 
+  Bob adds one to the counter
+X
+ Finishing the procedure above Bob aborts the protocol if X 	 k
+ 
+ If the protocol is not aborted Bob selects cj randomly for 	  j  k except
+that
+c 
+k
+M
+i
+ci 
+ For 	  j  k Bob randomly selects a set of indices Ijcj such that jIjcj j 
+n and for all i  Ijcj Bob has received some jjjijj at time u?? He sets
+Ij??cj to be the set of all i  f	    ng such that i  Ijcj  Bob sends all
+Ij?? Ij to Alice
+Unconditionally Secure Oblivious Transfer Based on Channel Delays 
+ Alice generates a list of k ?? 	 random bits ?? ??   ??k??
+ Alice chooses ??k such that Lk
+j ??j  s??
+	 Alice sets the second list of bits as j  ??j  s??  s for all j
+		 For each j Alice computes
+j??  M
+iIj??
+eij
+j  M
+iIj
+eij 
+and then sets j??  ??j  j?? and j  j  j
+	 Alice sends all j?? j to Bob
+	 Bob knows eij whenever i  Ijcj  He computes cj j for all j
+	 The nal output of Bob is sc as it can be computed from
+sc 
+k
+M
+j
+cj j  
+ Security analysis
+As usual the proof of security is divided into correctness Alices security and
+Bobs security Relying on the security of the subprotocol we show that the
+complete protocol has negligible failure probabilities in these three aspects
+Correctness Observe that when both parties are honest correctness is en
+sured if Bob does not abort the protocol In this case Bob may abort the protocol
+in two possible ways The rst possibility is at least one of the k subprotocols
+has more than n delayed packets By the union bound the probability for this
+is bounded by
+ne??n 
+
+??p
+
+which is negligible in n Next the second possibility to abort is that X 	 k
+ For
+one subprotocol regarding to the probability of having the number of packets
+received at u?? to be below qn ?? 
+  the Hoedings inequality gives the upper
+bound as
+	
+
+e
+q
+n  
+Note that this quantity increases with n This is because when n is larger the
+variance of the number of delayed packets is also larger Next we deal with the
+total number of such cases in the k runs of the subprotocol Setting
+
+ 
+	
+
+??
+	
+
+e
+q
+n  
+the probability of getting X 	 k
+ is bounded by
+e??k
+ e??n
+	
+ KaiYuen Cheong and Atsuko Miyaji
+using the Cherno bound Observe that
+n
+  n
+	
+
+??
+	
+
+e
+q
+n  		
+is a quantity that increases with n but bounded such that
+lim
+n
+n
+	
+
+??
+	
+
+e
+q
+n  
+q
+
+ 	
+Therefore the value of e??k
+falls exponentially in n Thus the correctness of
+the nal protocol is established
+Alices security By union bound the probability of failure in Alices secu
+rity in the nal protocol is no more than k times that of the subprotocol That
+is it is upper bounded by n	 ?? pqn This quantity drops exponentially in n
+too
+Bobs security The malicious Alice must be dishonest in every subprotocol
+in order to have any hope to get information on c Security is perfect for Bob
+otherwise Recall that Alice can only do the following for cheating
+	 For some i j Alice sends both vij and v
+ij at t??
+ For some i j Alice sends neither vij nor v
+ij at t??
+We argue that for the rst type of cheating if Alice sends both vij and v
+ij at t??
+this behavior will be detected with probability q Therefore Alice can only do
+this a few times To be more precise let us assume that Alice does this m times
+It is clear that m  n or the probability of detection will be overwhelming with
+the increase of n On the other hand for the second type of cheating if Alice
+sends neither vij nor v
+ij at t?? it will not be detected immediately Let us assume
+that Alice is doing this m times In order to gain any real advantage she has
+to do at least one of either types of cheating in every subprotocol Therefore
+m 	 k ?? n and there are at least k ?? n subprotocols where only the second
+type of cheating occurs
+Focusing on such cases the chance for that subprotocol to have more than
+qn ?? 
+ packets received at u?? is upper bounded by
+ 
+	
+
+e
+q
+n  	
+In the protocol to deter Alice from cheating Bob aborts if X 	 k
+  We show
+that X can reach k
+ even if we only consider these k??n subprotocols and ignore
+the rest With the Hoedings inequality the probability that X fails to reach
+k
+ is upper bounded by
+e
+
+kn  k
+
+??n??k??n
+	
+where we see that
+??
+k ?? n
+
+k
+
+?? n ?? k ?? n 
+??
+n ?? n
+
+n
+
+?? n ??
+	
+
+n ?? ne
+q
+n 
+Unconditionally Secure Oblivious Transfer Based on Channel Delays 
+
+??
+n ?? n
+
+n
+
+	 ?? e
+q
+n  ??
+ne
+q
+n
+
+?? n	
+Using the fact that n	??e
+q
+n  converges to q
+ asymptotically it is clear that
+the probability of X 	 k
+ is overwhelming with the increase of n
+ Conclusion
+With failure probabilities on correctness Alices security and Bobs security
+being negligible in n we obtain the unconditionally secure OT protocol Our
+protocol is the rst to give unconditionally security in OT using channel delays
+The practical value of our protocol is still limited because accurate knowledge of
+p is required for Bobs security Relaxing of this nontrivial assumption would be
+interesting for future study Also this protocol relies on the BDDC model We
+believe a scheme based on the real analog time channel delay may be possible
+The nal communication overhead of our protocol is On	 log n for security
+parameter n This is rather high and it would be better if it can be reduced
+References
+	 C	 Crepeau Equivalence between two avours of oblivious transfer In Advances
+in Cryptology  CRYPTO  LNCS  pp	 	
+	 C	 Crepeau Ecient cryptographic protocols based on noisy channels In Advances
+in Cryptology  EUROCRYPT  LNCS  pp	 	
+	 C	 Crepeau and J	 Kilian Achieving oblivious transfer using weakened security
+assumption In Proc IEEE FOCS pp	 	
+	 C	 Crepeau K	 Morozov and S	 Wolf Ecient unconditional oblivious transfer
+from almost any noisy channel In Fourth Conference on Security in Communica	
+tion Networks LNCS  pp	 	
+	 C	 Crepeau and G	 Savvides Optimal reductions between oblivious transfers using
+interactive hashing In Advances in Cryptology  EUROCRYPT 
+ LNCS 
+pp	 	
+	 S	 Even O	 Goldreich and A	 Lempel A randomized protocol for signing contracts
+Communications of the ACM 
+ pp	 	
+	 J	 Kilian Founding cryptography on oblivious transfer In Proc 
+th ACM Sym	
+posium on Theory of Computing pp	 	
+	 P	 Palmieri and O	 Pereira Building oblivious transfer on channel delays In Proc
+Inscrypt 
+ LNCS  pp	 	
+	 M	 Rabin How to exchange secrets by oblivious transfer Technical Report TR	
+Aiken Computation Laboratory Harvard University 	
+	 J	 Wullschleger Oblivious transfer from weak noisy channels In Theory of Cryp
+tography Conference  LNCS  pp	 	
+	 A	 Yao Protocols for secure computations Proc 
+rd IEEE Symposium on Foun	
+dations of Computer Science pp	 	
