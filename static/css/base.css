@@ -1,37 +1,51 @@
+
+
 body {
     font-family: Arial, sans-serif;
-}
+    background-color: #222222;
+    color:#fff;
 
+
+
+}
+    
 header {
-    background-color: #333;
+    background:black;
     color: #fff;
-    padding: 10px 0;
+    padding: 3px 0; /* paddingを半分にしました */
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    color: #fff
 }
 
 nav ul li {
     display: inline;
     margin-right: 10px;
+    color: #fff
 }
 
 nav ul li a {
-    color: #fff;
     text-decoration: none;
+    color: #fff;
 }
 
 nav ul li a:hover {
     text-decoration: underline;
+    color: #00FFFF;
+    underline: #00FFFF;    
 }
 
+
+
 footer {
-    background-color: #333;
+    background:linear-gradient(to right, #6a11CB, #2575FC);
     color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 3px 0; /* paddingを半分にしました */
+    justify-content: flex-end;
     position: fixed;
     width: 100%;
     bottom: 0;
