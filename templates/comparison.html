@@ -3,8 +3,10 @@
 {% block title %}Home - My Web App{% endblock %}
 {% block head %}
 
-<link rel = "stylesheet"  href = "{{ url_for('static', filename='css/comparison.css') }}">
+
 <script src="{{ url_for('static', filename='javascript/comparison.js') }}"></script>
+<link rel = "stylesheet"  href = "{{ url_for('static', filename='css/comparison.css') }}">
+
 {% endblock%}
 {% block content %}
 <h1>Welcome to the Home Page</h1>
@@ -52,7 +54,6 @@
 </div>
 <div id="result"></div>
 
-<div class="spacer"></div>
 
 
 
