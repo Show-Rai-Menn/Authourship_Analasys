@@ -15,10 +15,26 @@
 </form>
 
 
-{%if message%}
-<h2>{{message}}</h2>
-{%endif%}
+{% if message %}
+<p id="submit-result">{{message}}</p>
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/upload_failed.mp3') }}" type="audio/mpeg">
+</audio>
+{% endif %}
 
+{% if sucsess %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/upload_sucsess.mp3') }}" type="audio/mpeg">
+</audio>
+<p id="submit-sucsess">{{sucsess}}</p>
+{% endif %}
+
+{% if  deleted_sucsess %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/deleted.mp3') }}" type="audio/mpeg">
+</audio>
+<p id="deleted-sucsess">{{deleted_sucsess}}</p>
+{% endif %}
 
 
 <div>

@@ -22,8 +22,8 @@
   .submit-buttons {
     margin-bottom: 20px;
   }
-  
-  input[type="submit"] {
+    
+    input[type="submit"] {
     padding: 10px 20px;
     background-color: white;
     color: black;
@@ -34,8 +34,10 @@
     transition: all 0.5s; /* すべての変更にトランジションを適用する */
     position: relative; /* ボタンの位置を相対的に設定する */
     overflow: hidden; /* ボタンの外側に出る要素を隠す */
-  }
-  
+    display: inline-block; /* ボタンを横に配置する */
+    margin-right: 10px; /* ボタン間の余白を設定する */
+    }
+    
   input[type="submit"]:hover {
     background:linear-gradient(to right, #6a11CB, #2575FC);
     color: white;
@@ -83,5 +85,12 @@
   {
     text-align: center;
     color: #009999;
+    font-size: 1.5em;
+  }
+
+  #deleted-sucsess
+  {
+    text-align: center;
+    color: yellow;
     font-size: 1.5em;
   }

@@ -67,8 +67,9 @@ def upload_file():
             Q_file=db.search_allQ()
             K_files=db.search_allK()
             return render_template('file.html', message='file extension is wrong', Q_file = Q_file, K_files = K_files)#拡張子が違うとき
-
-    return render_template('file.html', message='file upload successfully and please reload')#正常なとき
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('file.html', sucsess='Congratulations!! Your files upload sucsessfully :)', Q_file=Q_file, K_files=K_files)#正常なとき
 
 
 @app.route('/file/manage', methods=['POST'])
@@ -81,7 +82,7 @@ def file_manage():
         message = db.delete(target, filetype)
         Q_file=db.search_allQ()
         K_files=db.search_allK()
-        return render_template('file.html', message=message, Q_file=Q_file, K_files=K_files)
+        return render_template('file.html', deleted_sucsess=message, Q_file=Q_file, K_files=K_files)
     elif action== 'update':
         content=db.getone(target, filetype)
         content=content.replace('\n', '&#10;').replace('\r', '')
