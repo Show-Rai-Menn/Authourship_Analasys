@@ -4,55 +4,43 @@
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/comparison.css') }}">
 <script src="{{ url_for('static', filename='javascript/comparison.js') }}"></script>
-{% endblock%}
+{% endblock %}
 {% block content %}
 <h1>Welcome to the Home Page</h1>
 <p>This is the home page of our web application.</p>
 
-
-
-
 <div>
-
-
-    <form id="form">
-    
-         <table id = "checkbox">
+    <form id="form" onsubmit="return comparison(event);">
+        <table id="Q_files_table">
             <th>Q files: </th>
-             {% if Q_file %}
-               {% for Q in Q_file %}
-                <tr>
-                    <td><input type="checkbox" name="Q" value="{{ Q[0] }}">{{ Q[0] }} ({{ Q[1] }})</td>
-                </tr>
-                 {% endfor %}
+            {% if Q_file %}
+                {% for Q in Q_file %}
+                    <tr>
+                        <td><input type="checkbox" name="Q" value="{{ Q[0] }}">{{ Q[0] }} ({{ Q[1] }})</td>
+                    </tr>
+                {% endfor %}
             {% else %}
                 <tr>
                     <td>No Q files found.</td>
                 </tr>
             {% endif %}
         </table>
-        <table id = "checkbox">
+        <table id="K_files_table">
             <th>K files: </th>
             {% if K_files %}
                 {% for K in K_files %}
-                <tr>
-                    <td><input type="checkbox" name="K" value="{{ K[0] }}">{{ K[0] }} ({{ K[1] }})</td>
-                </tr>
-            {% endfor %}
+                    <tr>
+                        <td><input type="checkbox" name="K" value="{{ K[0] }}">{{ K[0] }} ({{ K[1] }})</td>
+                    </tr>
+                {% endfor %}
             {% else %}
                 <tr>
                     <td>No K files found.</td>
                 </tr>
             {% endif %}
         </table>
-        <button id="submit" onclick="comparison()">GO!!</button>
+        <button type="submit">GO!!</button>
     </form>
-    
 </div>
 <div id="result"></div>
-
-<div class="spacer"></div>
-
-
-
 {% endblock %}

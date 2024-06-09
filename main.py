@@ -150,11 +150,11 @@ def Kresult():
     print(type(result))
     return render_template('K_and_K_result.html', result=result, filenames=Kfilename)
 
-
 @app.route('/comparison')
 def comparison():
-    Q_file=db.search_allQ()
-    K_files=db.search_allK()
+    Q_file = db.search_allQ()
+    K_files = db.search_allK()
+
     return render_template('comparison.html', Q_file=Q_file, K_files=K_files)
 
 @app.route('/comparison/result', methods=['POST'])
@@ -163,12 +163,10 @@ def comparison_Result():
     Qfilenames = data.get('Q', [])
     Kfilenames = data.get('K', [])
     count = data.get('count')
-    print(Qfilenames)
-    print(Kfilenames)
     
     Qcontents, Kcontents = db.get_content(Qfilenames, Kfilenames)
     token_num = count * 20
-    Qresults = {}  # ファイルごとのトークントップリストを格納する辞書
+    Qresults = {}
     Kresults = {}
 
     if Qcontents:
@@ -178,18 +176,12 @@ def comparison_Result():
     if Kcontents:
         for content, filename in zip(Kcontents, Kfilenames):
             Kresults[filename] = analysis.token_frequency(content, token_num)
-            print(type(Kresults[filename]))
-            print(type(Kresults))
     
-    # HTMLのレンダリング
     rendered_html = render_template(
         'comparison_result.html',
         Qresults=Qresults, Kresults=Kresults, token_num=token_num
     )
     return jsonify(html=rendered_html)
-            
-    
-
 
 if __name__ == '__main__':
     app.run(debug=True)

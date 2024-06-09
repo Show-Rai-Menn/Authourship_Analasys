@@ -1,5 +1,7 @@
 <h2>Comparison Result</h2>
-<table border="1">
+<p>Top {{ token_num }} words in the query and the known documents are shown below.</p>
+
+<table id = result border="1">
     <thead>
         <tr>
             <th>Top {{ token_num }} words</th>
@@ -29,3 +31,7 @@
         {% endfor %}
     </tbody>
 </table>
+
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/upload_sucsess.mp3') }}" type="audio/mpeg">
+</audio>

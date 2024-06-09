@@ -1,16 +1,16 @@
-let count=0;
+let count = 0;
 
-function comparison() {
+function comparison(event) {
+    event.preventDefault();
     const form = document.getElementById('form');
     const data = {
         Q: [],
         K: [],
-        count:0
+        count: 0
     };
     count++;
-    // 選択されているチェックボックスを取得
-    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
     
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
 
     checkboxes.forEach((checkbox) => {
         if (checkbox.name === 'Q') {
@@ -19,7 +19,8 @@ function comparison() {
             data.K.push(checkbox.value);
         }
     });
-    data.count=count;
+    data.count = count;
+    
     fetch('/comparison/result', {
         method: 'POST',
         headers: {
