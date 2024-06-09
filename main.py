@@ -23,10 +23,10 @@ def home():
 
 @app.route('/file')
 def file():
-    
+    message = request.args.get('message')  # クエリパラメータからメッセージを取得
     Q_file=db.search_allQ()
     K_files=db.search_allK()
-    return render_template('file.html', Q_file=Q_file, K_files=K_files)
+    return render_template('file.html', Q_file=Q_file, K_files=K_files, message=message)
 
 
 
@@ -61,6 +61,31 @@ def upload_file():
             return render_template('file.html', message='file extension is wrong')#拡張子が違うとき
 
     return render_template('file.html', message='file upload successfully and please reload')#正常なとき
+
+
+@app.route('/file/manage', methods=['POST'])
+def file_manage():
+    
+    target=request.form.get('filename')
+    action=request.form.get('action')
+    filetype=request.form.get('filetype')
+    if action == 'delete':
+        message = db.delete(target, filetype)
+        Q_file=db.search_allQ()
+        K_files=db.search_allK()
+        return render_template('file.html', message=message, Q_file=Q_file, K_files=K_files)
+    elif action== 'update':
+        content=db.getone(target, filetype)
+        content=content.replace('\n', '&#10;').replace('\r', '')
+        return render_template('editor.html', content=content, target=target, filetype=filetype)
+    
+@app.route('/update/<filename>', methods=['POST'])
+def update(filename):
+    content=request.form.get('content')
+    filetype=request.form.get('filetype')
+    message=db.update(filename, content, filetype)
+    return redirect(url_for('file', message=message))
+
 
 
 @app.route('/exploratory')
@@ -153,68 +178,6 @@ def comparison_Result():
     return jsonify(html=rendered_html)
             
     
-
-
-@app.route('/search/file')
-def search():
-    search_query = request.args.get('query', '')
-    file_name=db.search(search_query)
-    return jsonify([name[0] for name in file_name])
-
-@app.route('/search')
-def search_file():
-    return render_template('search.html')
-
-
-
-@app.route('/delete', methods=['POST'])
-def delete():
-    filename=request.form['filename']
-    filepath = os.path.join('uploads', filename)
-    if os.path.exists(filepath):
-        os.remove(filepath)
-        db.delete_file(filename)
-        print('File successfully deleted.')
-
-    else :
-        print('File not found.')
-
-    return redirect(url_for('index'))
-
-
- 
-
-
-    
-
-@app.route('/display/search', methods=['POST'])
-def search_display():
-    return render_template('display.html', type=request.form.get("type"))
-    
-
-@app.route('/token/search', methods=['POST'])
-def token_search():
-    try:
-        keyword=request.form.get("keyword")
-        print("success access /token/search")
-        selected=request.form.getlist("option")
-        filelist=[]
-        for filename in selected:
-            filepath=os.path.join('uploads', filename)
-            sentence_list=analysis.token_search(keyword, filepath)
-
-            if sentence_list is None:
-                sentence_list=[]
-                print("sentence is none")
-            filename="".join(filename)
-            filelist.append([filename, sentence_list])
-            
-        return render_template('token.html', filelist=filelist, analysis_method="token_search", keyword=keyword)
-            
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return "An error occurred", 500
-
 
 
 if __name__ == '__main__':

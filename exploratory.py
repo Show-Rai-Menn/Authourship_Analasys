@@ -16,7 +16,7 @@ def search_word_token(Qfilenames, Qcontents, Kfilenames, Kcontents, keyword, con
     Qresults={}
     Kresults={}
     if Qcontents is []:
-        Qresults={}
+        Qresults=[]
     else:
         for filename, content in zip(Qfilenames, Qcontents):
             doc=nlp(content)
