@@ -33,17 +33,23 @@ def file():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'files' not in request.files:
-        return render_template('file.html', message='No file part')
+        Q_file=db.search_allQ()
+        K_files=db.search_allK()
+        return render_template('file.html', message='No file part', Q_file=Q_file, K_files=K_files)
     
     files = request.files.getlist('files')
-    if not files:
-        return render_template('file.html', message='No selected file')
+    if not files:   
+        Q_file=db.search_allQ()
+        K_files=db.search_allK()
+        return render_template('file.html', message='No selected file', Q_file=Q_file, K_files=K_files)
     
     kind=request.form.get('kind')
     
     for file in files:
         if file.filename == '':
-            return render_template('file.html', message='No selected file')#ファイル選択画面を開いたが何も選択していない場合
+            Q_file=db.search_allQ()
+            K_files=db.search_allK()
+            return render_template('file.html', message='No selected file', Q_file = Q_file, K_files = K_files)#ファイル選択画面を開いたが何も選択していない場合
         
         content = file.read().decode('shift_jis')  # テキストファイルの場合
        
@@ -58,7 +64,9 @@ def upload_file():
             
 
         else:
-            return render_template('file.html', message='file extension is wrong')#拡張子が違うとき
+            Q_file=db.search_allQ()
+            K_files=db.search_allK()
+            return render_template('file.html', message='file extension is wrong', Q_file = Q_file, K_files = K_files)#拡張子が違うとき
 
     return render_template('file.html', message='file upload successfully and please reload')#正常なとき
 

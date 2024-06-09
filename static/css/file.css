@@ -1,25 +1,87 @@
-.file-item {
+  
+  /* 以下の部分は変更なし */
+  
+  form {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: 10px; /* 各項目間にスペースを追加 */
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input[type="file"] {
+    margin-bottom: 10px;
+    border: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1.2em; /* フォントサイズを大きくする */
+    transition: all 0.5s; /* すべての変更にトランジションを適用する */
+  }
+
+
+  input[type=file]:hover {
+    transform: scale(1.1); /* ホバー時にボタンを少し大きくする */
 }
-.file-item li {
-    margin-right: 10px;
+  .submit-buttons {
+    margin-bottom: 20px;
+  }
+  
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2em; /* フォントサイズを大きくする */
+    transition: all 0.5s; /* すべての変更にトランジションを適用する */
+    position: relative; /* ボタンの位置を相対的に設定する */
+    overflow: hidden; /* ボタンの外側に出る要素を隠す */
+  }
+  
+  input[type="submit"]:hover {
+    background:linear-gradient(to right, #6a11CB, #2575FC);
+    color: white;
+    transform: scale(1.1); /* ホバー時にボタンを少し大きくする */   
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  #file {
+    display: flex;
+    justify-content: center;
+    color: red;
+
+  }
+#message {
+    text-align: center;
+    color: red;
+}
+  
+  #text-list {
+    display: flex;
+    flex-direction: column; /* 縦並びにする */
+    align-items: center; /* 子要素を中央揃えにする */
+  
+  }
+  
+  #text-list li {
     list-style: none;
-}
+    padding: 5px;
+  }
+  .spacer {
+    margin-top: 100px;
+  }
 
-.file-name {
-    margin-right: 10px;
-}
+  #submit-result
+  {
+    text-align: center;
+    color: red;
+    font-size: 1.5em;
+  }
 
-.file-item button {
-    margin-left: 5px;
-}
-.file-buttons button {
-    margin-bottom: 5px;
-}
-
-.spacer {
-    height: 100px; /* 空の要素に高さを設定 */
-}
+  #submit-sucsess
+  {
+    text-align: center;
+    color: #009999;
+    font-size: 1.5em;
+  }
