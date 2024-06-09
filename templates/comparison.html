@@ -6,8 +6,12 @@
 <script src="{{ url_for('static', filename='javascript/comparison.js') }}"></script>
 {% endblock %}
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page of our web application.</p>
+<h1>Comparison Tab</h1>
+<h3>You can compare your known author text(Q file) with unknown author text(K files) here by word frequency</h3>
+<p id = "info">Select one Q file and K files you want to compare by.</p>
+<p id = "info">Then, click GO!! button. If you  click GO!! button again, </p>
+<p id = "info"> After the result is displayed, system will do additional comparison.</p> 
+<p id = "info"> e.g.  20 the most frequent words in the first result, 40 in the second result and so on</p>
 
 <div>
     <form id="form" onsubmit="return comparison(event);">
@@ -43,4 +47,6 @@
     </form>
 </div>
 <div id="result"></div>
+
+<div class = "spacer">  </div>
 {% endblock %}

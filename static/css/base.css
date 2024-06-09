@@ -9,7 +9,7 @@ body {
 
 }
 h1, h2, h3, h4, h5, h6{
-    font-family: "Courier New", monospace;
+
     color: white;
     line-height: 1.5;
     display: flex;
@@ -20,14 +20,13 @@ h1, h2, h3, h4, h5, h6{
 
 #info
 {
-    font-family: "Courier New", monospace;
+
     color: white;
     line-height: 1.5;
-    font-size: 1.2em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    align-items: left;
+    text-align: center;
 }
     
 header {
@@ -71,4 +70,14 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+#ad
+{
+    color: #2575FC;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
 }

@@ -93,8 +93,9 @@ def update(filename):
     content=request.form.get('content')
     filetype=request.form.get('filetype')
     message=db.update(filename, content, filetype)
-    return redirect(url_for('file', message=message))
-
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('file.html', updated_sucsess=message, Q_file=Q_file, K_files=K_files)
 
 
 @app.route('/exploratory')

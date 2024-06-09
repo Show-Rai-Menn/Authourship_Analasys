@@ -43,6 +43,12 @@
 <p id="deleted-sucsess">{{deleted_sucsess}}</p>
 {% endif %}
 
+{% if updated_sucsess %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/updated.mp3') }}" type="audio/mpeg">
+</audio>
+<p id="updated-sucsess">{{updated_sucsess}}</p>
+{% endif %}
 
 <table id = "filetable-Q" border = 1>
     <tr>

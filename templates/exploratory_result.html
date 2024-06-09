@@ -1,19 +1,26 @@
+<h2>Search Results</h2>
 {% if Qresults %}
     <h2>Qresults</h2>
     {% for filename, results in Qresults.items() %}
-        <div class="filename">{{ filename }}</div>
+        <hr>
+        <div class="filename">{{ filename }}:</div>
+        {% for result in results %}
+            <div class="result">{{ result|safe }}</div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+<hr>
+{% if Kresults %}
+    <h2>Kresults</h2>
+    {% for filename, results in Kresults.items() %}
+        <hr>
+        <div class="filename">{{ filename }}:</div>
         {% for result in results %}
             <div class="result">{{ result|safe }}</div>
         {% endfor %}
     {% endfor %}
 {% endif %}
 
-{% if Kresults %}
-    <h2>Kresults</h2>
-    {% for filename, results in Kresults.items() %}
-        <div class="filename">{{ filename }}</div>
-        {% for result in results %}
-            <div class="result">{{ result|safe }}</div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/analysis_sucsess.mp3') }}" type="audio/mpeg">
+</audio>
