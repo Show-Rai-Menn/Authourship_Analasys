@@ -15,6 +15,13 @@ body {
     justify-content: center;
 }
 
+.container {
+    padding: 20px;
+}
+.search-section, .result-section {
+    margin-bottom: 20px;
+}
+
 .result .highlight {
     font-weight: bold;
 }
