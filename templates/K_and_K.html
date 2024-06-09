@@ -2,15 +2,22 @@
 
 {% block title %}K and K Tab - My Web App{% endblock %}
 
-{% block content %}
-<h1>This page is K and K Tab</h1>
-<h2>Please select K files</h2>
+{% block head %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/K_and_K.css') }}">
+    <script src="{{ url_for('static', filename='javascript/K_and_K.js') }}"></script>
+{% endblock%}
 
+{% block content %}
+<h1>K and K Tab</h1>
+<h2>You can compare your known author text here</h2>
+
+<p id = "info">Please select known author text file you want to analysis.</p>
+<p id = "info">Then, click GO!! button</p>
 <div>
  <form method="post" action="/K_and_K/result">
 
 
-    <table>
+    <table id = "checkbox">
         {% if K_files %}
             {% for K in K_files %}
             <tr>
@@ -23,8 +30,15 @@
             </tr>
         {% endif %} 
     </table>
-    <button id = "GO" type="submit">Execute</button>
+  
+    <button id = "GO" type="submit">GO!!</button>
 </form>
 
 </div>
+
+
+<!-- 空の要素を追加してスクロール範囲を増やす -->
+<div class="spacer"></div>
+
+
 {% endblock %}

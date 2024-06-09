@@ -8,6 +8,29 @@ body {
 
 
 }
+h1, h2, h3, h4, h5, h6{
+    font-family: "Courier New", monospace;
+    color: white;
+    text-shadow: 0 0 5px #2575FC;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#info
+{
+    font-family: "Courier New", monospace;
+    color: white;
+    text-shadow: 0 0 5px #2575FC;
+    line-height: 1.5;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
     
 header {
     background:black;
@@ -44,6 +67,7 @@ footer {
     background:linear-gradient(to right, #6a11CB, #2575FC);
     color: #fff;
     text-align: center;
+    fony-family: "SEGOE UI", sans-serif;
     padding: 3px 0; /* paddingを半分にしました */
     justify-content: flex-end;
     position: fixed;

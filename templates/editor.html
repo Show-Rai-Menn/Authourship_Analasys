@@ -8,8 +8,10 @@
 {% endblock%}
 
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page of our web application.</p>
+
+<h1>Editor</h1>
+
+<h2>Please edit changes below</h2>
 
 <form action="{{url_for('update', filename=target)}}" method="post">
     <textarea id="editor" name="content" rows="20" cols="100">{{ content|safe }}</textarea>

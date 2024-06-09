@@ -6,10 +6,12 @@
 {% endblock%}
 {% block content %}
 
-<h1> </h1>
+<h1>File manegement tab</h1>
+<h2>Please select text file you want to analysis.</h2>
+<p id = "info">And select upload as unknown authorfile(upload as Q) or known authorfile(upload as K).</p>
 <form method="POST" action="/upload" enctype="multipart/form-data">
     <div class="file-input-container">
-        <input type="file" name="files" multiple>
+        <input type="file" name="files" multiple> 
     </div>
     <div class="submit-buttons">
         <input type="submit" name="kind" value="upload as Q">

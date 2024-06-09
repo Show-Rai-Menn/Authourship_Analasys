@@ -1,49 +1,67 @@
-#checkbox {
+form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-
-}
+    font-size: 1.2em;
+  }
 
 input[type="checkbox"] {
-    /* Add your cool styles here */
     width: 20px;
     height: 20px;
-    border: 2px solid #000;
+    border: 2px solid #2575FC;
+    margin-top: 15px;
+    margin-right: 10px;
     outline: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
     appearance: none;
-    background-color: #fff;
-    border-radius: 50%;
-    vertical-align: middle; /* Add this line */
-    position: relative; /* Add this line */
+    border-radius: 0;
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom; /* Added to vertically align the checkbox */
 }
 
 input[type="checkbox"]:checked::before {
-    opacity: 1; /* Add this line */
+    content: "\2713";
+    color: #FF6633;
+    font-size: 40px; /* Increased checkmark size to 24px */
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Modified transition duration to 0.5s */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-input[type="checkbox"]::before {
-    content: "";
-    display: inline-block; /* Change display to inline-block */
-    width: 12px;
-    height: 12px;
-    margin: 3px;
-    border-radius: 50%;
-    background-color: #000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    vertical-align: middle; /* Add this line */
-    position: absolute; /* Add this line */
-    top: 50%; /* Add this line */
-    left: 50%; /* Add this line */
-    transform: translate(-50%, -50%); /* Add this line */
+input[type="checkbox"]:hover {
+    box-shadow: 0 0 10px #2575FC;
+    text-shadow: 0 0 10px #FF6633;
 }
-
-
 
 #GO {
-    margin-top: 10px;
+    font-size: large;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+
+
+#GO:hover {
+    background: linear-gradient(to right, #6a11CB, #2575FC);
+    color: white;
+    transform: scale(1.1);
+}
+
+.spacer {
+    margin-top: 100px;
 }
 

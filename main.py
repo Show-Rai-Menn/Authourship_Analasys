@@ -142,12 +142,14 @@ def K_and_K():
     
 @app.route('/K_and_K/result', methods=['POST'])
 def Kresult():
+
     Kfilename=request.form.getlist('K')
     null, Kfiles=db.get_content(None, Kfilename)
     
     result=analysis.K_and_K(Kfilename, Kfiles)
     print(type(result))
     return render_template('K_and_K_result.html', result=result, filenames=Kfilename)
+
 
 @app.route('/comparison')
 def comparison():
