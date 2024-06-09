@@ -1,0 +1,13 @@
+.highlight {
+    background: linear-gradient(to right, #6a11CB, #2575FC);
+}
+
+.result {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.result .highlight {
+    font-weight: bold;
+}
