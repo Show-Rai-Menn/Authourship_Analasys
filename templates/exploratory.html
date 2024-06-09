@@ -12,22 +12,32 @@
     <div class="search-section">
         <h2>Exploratory Search</h2>
         <form id="form">
-            
-            {% if Q_file %}
-            {% for Q in Q_file %}
-            <li><input type="checkbox" class="file-checkbox" name="Q" value="{{ Q[0] }}">{{ Q[0] }} ({{ Q[1] }})</li>
-            {% endfor %}
-            {% else %}
-            <p>No Q files found.</p>
-            {% endif %}
-            {% if K_files %}
-            {% for K in K_files %}
-            <li><input type="checkbox" class="file-checkbox" name="K" value="{{ K[0] }}">{{ K[0] }} ({{ K[1] }})</li>
-            {% endfor %}
-            {% else %}
-            <p>No K files found.</p>
-            {% endif %}
-
+            <table>    
+                {% if Q_file %}
+                    {% for Q in Q_file %}
+                        <tr>
+                            <td><input type="checkbox" name="Q" value="{{ Q[0] }}">{{ Q[0] }} ({{ Q[1] }})</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>No Q files found.</td>
+                    </tr>
+                {% endif %}
+            </table>
+            <table>
+                {% if K_files %}
+                    {% for K in K_files %}
+                        <tr>
+                            <td><input type="checkbox" name="K" value="{{ K[0] }}">{{ K[0] }} ({{ K[1] }})</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>No K files found.</td>
+                    </tr>
+                {% endif %}
+            </table>
             <label for="searchType">Enter type of search:</label>
             <select id="searchType" name="searchType">
                 <option value="wordToken">Word Token</option>
@@ -39,6 +49,8 @@
             <label for="searchTerm">Enter search term:</label>
             <input type="text" id="searchTerm" name="searchTerm"><br><br>
             <button type="button" onclick="performSearch()">Search</button>
+        
+        
         </form>
     </div>
 
