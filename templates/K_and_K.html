@@ -4,22 +4,27 @@
 
 {% block content %}
 <h1>This page is K and K Tab</h1>
-<p>This is the home page of our web application.</p>
+<h2>Please select K files</h2>
 
 <div>
-    <form method="post" action="/K_and_K/result">
-        <button type="submit">送信</button>
+ <form method="post" action="/K_and_K/result">
 
-    {% if K_files %}
-        {% for K in K_files %}
-            <li><input type="checkbox" name="K" value="{{K[0]}}">{{ K[0] }}  ({{ K[1] }})</li>
+
+    <table>
+        {% if K_files %}
+            {% for K in K_files %}
+            <tr>
+                <td><input type="checkbox" name="K" value="{{K[0]}}">{{ K[0] }} ({{ K[1] }})</td>
+            </tr>
+            {% endfor %}
         {% else %}
-            <p>No K files found.</p>
-        {% endfor %}
-    {% else %}
-        <p>No K files found.</p>
-    {% endif %}
-    </form>
+            <tr>
+                <td><p>No K files found.</p></td>
+            </tr>
+        {% endif %} 
+    </table>
+    <button id = "GO" type="submit">Execute</button>
+</form>
+
 </div>
 {% endblock %}
-
