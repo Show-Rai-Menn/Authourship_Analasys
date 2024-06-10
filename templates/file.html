@@ -5,61 +5,106 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/file.css') }}">
 {% endblock%}
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page of our web application.</p>
 
+<h1>File manegement tab</h1>
+<h2>Please select text file you want to analysis.</h2>
+<p id = "info">And select upload as unknown authorfile(upload as Q) or known authorfile(upload as K).</p>
 <form method="POST" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="files" multiple>
-    <input type=submit name="kind" value="upload as Q">
-    <input type=submit name="kind" value="upload as K">
+    <div class="file-input-container">
+        <input type="file" name="files" multiple> 
+    </div>
+    <div class="submit-buttons">
+        <input type="submit" name="kind" value="upload as Q">
+        <input type="submit" name="kind" value="upload as K">
+    </div>
 </form>
 
+<!--For get space between button and table-->
+<div class="spacer1"></div>
 
-{%if message%}
-<h2>{{message}}</h2>
-{%endif%}
+{% if message %}
+<p id="submit-result">{{message}}</p>
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/upload_failed.mp3') }}" type="audio/mpeg">
+</audio>
+{% endif %}
 
+{% if sucsess %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/upload_sucsess.mp3') }}" type="audio/mpeg">
+</audio>
+<p id="submit-sucsess">{{sucsess}}</p>
+{% endif %}
 
+{% if  deleted_sucsess %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/deleted.mp3') }}" type="audio/mpeg">
+</audio>
+<p id="deleted-sucsess">{{deleted_sucsess}}</p>
+{% endif %}
 
-<div>
-    {% if Q_file%}
+{% if updated_sucsess %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/updated.mp3') }}" type="audio/mpeg">
+</audio>
+<p id="updated-sucsess">{{updated_sucsess}}</p>
+{% endif %}
+
+<table id = "filetable-Q" border = 1>
+    <tr>
+        <th>Q Files</th>
+        <th>Actions</th>
+    </tr>
+    {% if Q_file %}
         {% for Q in Q_file %}
-        
-            <div class="file-item">
-                <li>{{ Q[0] }} ({{ Q[1] }})</li>
-                <form action="/file/manage" method="post">
-                    <input type="hidden" name="filename" value="{{Q[0]}}">
-                    <input type="hidden" name="filetype" value="Q">
-                    <button type="submit" name="action" value="delete">Delete</button>
-                    <button type="submit" name="action" value="update">Update</button>
-                </form>
-            </div>
+            <tr>
+                <td>{{ Q[0] }} ({{ Q[1] }})</td>
+                <td id = "filetable-action">
+                    <form action="/file/manage" method="post">
+                        <input type="hidden" name="filename" value="{{Q[0]}}">
+                        <input type="hidden" name="filetype" value="Q">
+                        <button type="submit" name="action" value="delete">Delete</button>
+                        <button type="submit" name="action" value="update">Update</button>
+                    </form>
+                </td>
+            </tr>
         {% endfor %}
     {% else %}
-        <p>No Q files found.</p>
+        <tr>
+            <td colspan="2">No Q files found.</td>
+        </tr>
     {% endif %}
+</table>
+
+<table id = "filetable-K" border = 1>
+    <tr>
+        <th>K Files</th>
+        <th>Actions</th>
+    </tr>
     {% if K_files %}
         {% for K in K_files %}
-        <div class="file-item">
-            <li>{{ K[0] }} ({{ K[1] }})</li>
-                <form action="/file/manage" method="post">
-                    <input type="hidden" name="filename" value="{{K[0]}}">
-                    <input type="hidden" name="filetype" value="K">
-                    <button type="submit" name="action" value="delete">Delete</button>
-                    <button type="submit" name="action" value="update">Update</button>
-                </form>
-        </div>
-        {% else %}
-            <p>No K files found.</p>
+            <tr>
+                <td>{{ K[0] }} ({{ K[1] }})</td>
+                <td id = "filetable-action">
+                    <form action="/file/manage" method="post">
+                        <input type="hidden" name="filename" value="{{K[0]}}">
+                        <input type="hidden" name="filetype" value="K">
+                        <button type="submit" name="action" value="delete">Delete</button>
+                        <button type="submit" name="action" value="update">Update</button>
+                    </form>
+                </td>
+            </tr>
         {% endfor %}
     {% else %}
-        <p>No K files found.</p>
+        <tr>
+            <td colspan="2">No K files found.</td>
+        </tr>
     {% endif %}
-</div>
+</table>
     
 
 <!-- 空の要素を追加してスクロール範囲を増やす -->
-<div class="spacer"></div>
+<div class="spacer2"></div>
 
 
 {% endblock %}

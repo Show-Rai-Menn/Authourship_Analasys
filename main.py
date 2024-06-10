@@ -33,17 +33,23 @@ def file():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'files' not in request.files:
-        return render_template('file.html', message='No file part')
+        Q_file=db.search_allQ()
+        K_files=db.search_allK()
+        return render_template('file.html', message='No file part', Q_file=Q_file, K_files=K_files)
     
     files = request.files.getlist('files')
-    if not files:
-        return render_template('file.html', message='No selected file')
+    if not files:   
+        Q_file=db.search_allQ()
+        K_files=db.search_allK()
+        return render_template('file.html', message='No selected file', Q_file=Q_file, K_files=K_files)
     
     kind=request.form.get('kind')
     
     for file in files:
         if file.filename == '':
-            return render_template('file.html', message='No selected file')#ファイル選択画面を開いたが何も選択していない場合
+            Q_file=db.search_allQ()
+            K_files=db.search_allK()
+            return render_template('file.html', message='No selected file', Q_file = Q_file, K_files = K_files)#ファイル選択画面を開いたが何も選択していない場合
         
         content = file.read().decode('shift_jis')  # テキストファイルの場合
        
@@ -58,9 +64,12 @@ def upload_file():
             
 
         else:
-            return render_template('file.html', message='file extension is wrong')#拡張子が違うとき
-
-    return render_template('file.html', message='file upload successfully and please reload')#正常なとき
+            Q_file=db.search_allQ()
+            K_files=db.search_allK()
+            return render_template('file.html', message='file extension is wrong', Q_file = Q_file, K_files = K_files)#拡張子が違うとき
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('file.html', sucsess='Congratulations!! Your files upload sucsessfully :)', Q_file=Q_file, K_files=K_files)#正常なとき
 
 
 @app.route('/file/manage', methods=['POST'])
@@ -73,7 +82,7 @@ def file_manage():
         message = db.delete(target, filetype)
         Q_file=db.search_allQ()
         K_files=db.search_allK()
-        return render_template('file.html', message=message, Q_file=Q_file, K_files=K_files)
+        return render_template('file.html', deleted_sucsess=message, Q_file=Q_file, K_files=K_files)
     elif action== 'update':
         content=db.getone(target, filetype)
         content=content.replace('\n', '&#10;').replace('\r', '')
@@ -84,8 +93,9 @@ def update(filename):
     content=request.form.get('content')
     filetype=request.form.get('filetype')
     message=db.update(filename, content, filetype)
-    return redirect(url_for('file', message=message))
-
+    Q_file=db.search_allQ()
+    K_files=db.search_allK()
+    return render_template('file.html', updated_sucsess=message, Q_file=Q_file, K_files=K_files)
 
 
 @app.route('/exploratory')
@@ -133,6 +143,7 @@ def K_and_K():
     
 @app.route('/K_and_K/result', methods=['POST'])
 def Kresult():
+
     Kfilename=request.form.getlist('K')
     null, Kfiles=db.get_content(None, Kfilename)
     
@@ -142,8 +153,9 @@ def Kresult():
 
 @app.route('/comparison')
 def comparison():
-    Q_file=db.search_allQ()
-    K_files=db.search_allK()
+    Q_file = db.search_allQ()
+    K_files = db.search_allK()
+
     return render_template('comparison.html', Q_file=Q_file, K_files=K_files)
 
 @app.route('/comparison/result', methods=['POST'])
@@ -152,12 +164,10 @@ def comparison_Result():
     Qfilenames = data.get('Q', [])
     Kfilenames = data.get('K', [])
     count = data.get('count')
-    print(Qfilenames)
-    print(Kfilenames)
     
     Qcontents, Kcontents = db.get_content(Qfilenames, Kfilenames)
     token_num = count * 20
-    Qresults = {}  # ファイルごとのトークントップリストを格納する辞書
+    Qresults = {}
     Kresults = {}
 
     if Qcontents:
@@ -167,18 +177,12 @@ def comparison_Result():
     if Kcontents:
         for content, filename in zip(Kcontents, Kfilenames):
             Kresults[filename] = analysis.token_frequency(content, token_num)
-            print(type(Kresults[filename]))
-            print(type(Kresults))
     
-    # HTMLのレンダリング
     rendered_html = render_template(
         'comparison_result.html',
         Qresults=Qresults, Kresults=Kresults, token_num=token_num
     )
     return jsonify(html=rendered_html)
-            
-    
-
 
 if __name__ == '__main__':
     app.run(debug=True)

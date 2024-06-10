@@ -2,6 +2,10 @@
 
 {% block title %}Home - My Web App{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/K_and_K_result.css') }}">
+{% endblock %}
+
 {% block content %}
 
 
@@ -31,6 +35,10 @@
     </tbody>
 </table>
 
+<audio autoplay>
+    <source src="{{ url_for('static', filename='audio/analysis_sucsess.mp3') }}" type="audio/mpeg">
+</audio>
 
+<div class = "spacer"> </div>
 
 {% endblock %}
