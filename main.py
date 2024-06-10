@@ -6,6 +6,7 @@ import analysis
 from multiprocessing import Process
 from collections import Counter
 import exploratory
+import json
 
 app = Flask(__name__)
 
@@ -118,6 +119,16 @@ def explonatory_search():
         results = search_regex(texts, search_term, context_size)
     else:
         results = []
+    results = {
+        "Qresults": Qresults,
+        "Kresults": Kresults
+    }
+    try:
+        with open('results.json', "w", encoding='shift_jis') as f:
+            json.dump(results, f, ensure_ascii=False, indent=4)
+    except Exception as e:
+        print(f"Error saving JSON: {e}")
+
     
     rendered_html = render_template(
         'exploratory_result.html',
