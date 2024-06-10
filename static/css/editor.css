@@ -10,7 +10,7 @@ textarea {
     width: 70%;
     height: 250px;
     padding: 10px;
-    border: 1px solid #00FFFF;
+    border: 1px solid #2575FC;
     border-radius: 5px;
     resize: vertical;
     background-color: #000;
@@ -18,8 +18,8 @@ textarea {
     font-family: "Courier New", monospace;
     font-size: 14px;
     line-height: 1.5;
-    text-shadow: 0 0 5px #39C5BB;
-    box-shadow: 0 0 10px #39C5BB;
+    text-shadow: 0 0 5px #2575FC;
+    box-shadow: 0 0 10px #2575FC;
    
 }
 
