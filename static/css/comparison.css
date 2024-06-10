@@ -1,5 +1,4 @@
-
-form {
+#form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,63 +32,13 @@ input[type="checkbox"]:checked::before {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
 input[type="checkbox"]:hover {
     box-shadow: 0 0 10px #2575FC;
     text-shadow: 0 0 10px #FF6633;
-    text-align: justify;
-    font-size: 1.5em;
-
 }
 
-input[type = "text"]
-{
-    margin-top: 20px;
-    width: 25%;
-    padding: 10px;
-    border: 1px solid #00FFFF;
-    border-radius: 5px;
-    background-color: #000;
-    color: #39C5BB;
-    font-size: 1.2em;
-    line-height: 1.5;
-}
-
-
-
-.highlight {
-    background-color: #6a11CB;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.result {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-.container {
-    padding: 20px;
-}
-.search-section, .result-section {
-    margin-bottom: 20px;
-
-}
-
-.result .highlight {
-    font-weight: bold;
- 
-}
-
-.filename
-{
-    font-size: 1.5em;
-
-    margin-top: 30px;
-    margin-bottom: 30px;
-
-}
 
 th
 {
@@ -99,28 +48,6 @@ th
 
 }
 
-
-select
-{
-    margin-top: 20px;
-    width: 25%;
-    padding: 10px;
-    border: 1px solid #00FFFF;
-    border-radius: 5px;
-    background-color: #000;
-    color: #39C5BB;
-    font-size: 1.2em;
-    line-height: 1.5;
-}
-
-.spacer {
-    margin-top: 200px;
-}
-
-label {
-    font-size: 1.5em;
-    margin-top: 20px;
-}
 button
 {
     font-size: large;
@@ -143,5 +70,9 @@ button:hover {
     background: linear-gradient(to right, #6a11CB, #2575FC);
     color: white;
     transform: scale(1.1);
+}
+
+.spacer {
+    margin-top: 100px;
 }
 

@@ -2,17 +2,24 @@
 
 {% block title %}Home - My Web App{% endblock %}
 
+{% block head %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
+
+{% endblock%}
+
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page of our web application.</p>
 
+<h1>Editor</h1>
 
+<h2>Please edit changes below</h2>
 
 <form action="{{url_for('update', filename=target)}}" method="post">
-    <textarea name="content" rows="20" cols="100">{{ content|safe }}</textarea>
+    <textarea id="editor" name="content" rows="20" cols="100">{{ content|safe }}</textarea>
     <br>
-    <button type="submit">保存</button>
+ 
+    <button type="submit">Save!</button>
     <input type="hidden" name="filetype" value="{{filetype}}">
 </form>
+<div class="spacer"></div>
 
 {% endblock %}

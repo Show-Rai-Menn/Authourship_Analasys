@@ -2,24 +2,43 @@
 
 {% block title %}K and K Tab - My Web App{% endblock %}
 
+{% block head %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/K_and_K.css') }}">
+    <script src="{{ url_for('static', filename='javascript/K_and_K.js') }}"></script>
+{% endblock%}
+
 {% block content %}
-<h1>This page is K and K Tab</h1>
-<p>This is the home page of our web application.</p>
+<h1>K and K Tab</h1>
+<h2>You can compare your known author text here</h2>
 
+<p id = "info">Please select known author text file you want to analysis.</p>
+<p id = "info">Then, click GO!! button</p>
 <div>
-    <form method="post" action="/K_and_K/result">
-        <button type="submit">送信</button>
+ <form method="post" action="/K_and_K/result">
 
-    {% if K_files %}
-        {% for K in K_files %}
-            <li><input type="checkbox" name="K" value="{{K[0]}}">{{ K[0] }}  ({{ K[1] }})</li>
+
+    <table id = "checkbox">
+        {% if K_files %}
+            {% for K in K_files %}
+            <tr>
+                <td><input type="checkbox" name="K" value="{{K[0]}}">{{ K[0] }} ({{ K[1] }})</td>
+            </tr>
+            {% endfor %}
         {% else %}
-            <p>No K files found.</p>
-        {% endfor %}
-    {% else %}
-        <p>No K files found.</p>
-    {% endif %}
-    </form>
-</div>
-{% endblock %}
+            <tr>
+                <td><p>No K files found.</p></td>
+            </tr>
+        {% endif %} 
+    </table>
+  
+    <button id = "GO" type="submit">GO!!</button>
+</form>
 
+</div>
+
+<div class = "spacer"> </div>
+
+
+
+
+{% endblock %}
